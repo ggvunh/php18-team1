@@ -10,6 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin/login', 'UserController@getlogin');
-Route::post('admin/login', 'UserController@postlogout');
-Route::get('admin/logout', 'UserController@getlogout');
+
+
+Route::get('register','UserController@getregister');
+Route::post('register','UserController@postregister');
+
+Route::get('login', 'UserController@getlogin');
+Route::post('login', 'UserController@postlogin');
+
+
+Route::get('logout', 'UserController@getlogout');
+
+Route::get('index', function(){
+	return view('books.index');
+});
