@@ -31,3 +31,15 @@ Route::post('/createauthor','AuthorController@postCreateAuthor');
 Route::get('/createbook', 'BookController@createBook');
 Route::post('/createbook','BookController@postCreateBook');
 // end create book
+Route::get('register','UserController@getregister');
+Route::post('register','UserController@postregister');
+
+Route::get('login', 'UserController@getlogin');
+Route::post('login', 'UserController@postlogin');
+
+
+Route::get('logout', 'UserController@getlogout');
+
+Route::get('index', function(){
+	return view('books.index');
+});
