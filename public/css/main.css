@@ -1,0 +1,8 @@
+
+.border{
+	border: 1px outset #1b4035;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #1b7462;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+}
