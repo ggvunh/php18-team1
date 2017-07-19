@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/books', function () {
-    return view('books.index');
+
+Route::get('register','UserController@getregister');
+Route::post('register','UserController@postregister');
+
+Route::get('login', 'UserController@getlogin');
+Route::post('login', 'UserController@postlogin');
+
+
+Route::get('logout', 'UserController@getlogout');
+
+Route::get('index', function(){
+	return view('books.index');
 });
