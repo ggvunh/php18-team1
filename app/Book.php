@@ -25,7 +25,7 @@ class Book extends Model
 
     public function publish_companie()
     {
-      return $this->belongsTo('App\PublishCompanies');
+      return $this->belongsTo('App\PublishCompany');
     }
 
     public function order_detail()

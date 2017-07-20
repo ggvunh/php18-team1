@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-use App\PublishCompanies;
+use App\PublishCompany;
 use File;
 
-class PublishController extends Controller
+class PublishCompanyController extends Controller
 {
     public function createPublishCompany() 
  	{
@@ -17,7 +17,7 @@ class PublishController extends Controller
 	public function postCreatePublishCompany(Request $request)
     {
 	    $input = Input::all();
-	    $topic = PublishCompanies::create($input);
+	    $topic = PublishCompany::create($input);
 	    return redirect('/createpublishcompany');
  	}
 }

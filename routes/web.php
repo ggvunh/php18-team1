@@ -20,8 +20,8 @@ Route::get('/createtopic', 'TopicController@createTopic');
 Route::post('/createtopic','TopicController@postCreateTopic');
 // end create topic
 // create publish company
-Route::get('/createpublishcompany', 'PublishController@createPublishCompany');
-Route::post('/createpublishcompany','PublishController@postCreatePublishCompany');
+Route::get('/createpublishcompany', 'PublishCompanyController@createPublishCompany');
+Route::post('/createpublishcompany','PublishCompanyController@postCreatePublishCompany');
 // end create publish company
 // create Author
 Route::get('/createauthor','AuthorController@createAuthor');
