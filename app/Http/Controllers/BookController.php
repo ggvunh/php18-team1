@@ -34,6 +34,12 @@ class BookController extends Controller
 		$publish = PublishCompany::pluck('name','id');
 		$topic = Topic::pluck('name','id');
 		$book = Book::create($input);
-		return view('backend.createbook')->with('author',$author)->with('publish',$publish)->with('topic',$topic);
+		return redirect('/listbooks');
+	}
+
+	public function listBook()
+	{
+		$books = Book::all();
+		return view('backend.listadmin.listbooks')->with('books',$books);
 	}
 }

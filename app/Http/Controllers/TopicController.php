@@ -18,6 +18,25 @@ class TopicController extends Controller
     {
         $input = Input::all();
         $topic = Topic::create($input);
-    	return redirect('/createtopic');
+    	return redirect('/listtopics');
+ 	}
+
+ 	public function listTopics()
+ 	{
+ 		$topics = Topic::all();
+ 		return view('backend.listadmin.listtopics')->with('topics',$topics);
+ 	}
+
+ 	public function editTopic($id)
+ 	{
+ 		$topic = Topic::find($id);
+ 		return view('backend.editadmin.edittopic')->with('topic', $topic);
+ 	}
+
+ 	public function puteditTopic($id)
+ 	{
+ 		$topic = Topic::find($id);
+ 		$topic->update(Input::all());
+ 		return redirect('/listtopics');
  	}
 }

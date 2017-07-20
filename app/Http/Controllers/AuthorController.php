@@ -18,6 +18,24 @@ class AuthorController extends Controller
     {
         $input = Input::all();
         $topic = Author::create($input);
-	    return redirect('/createauthor');
+	    return redirect('/listauthors');
  	}
+ 	public function listAuthor()
+	{
+		$authors = Author::all();
+		return view('backend.listadmin.listauthors')->with('authors',$authors);
+	}
+
+	public function editAuthor($id)
+	{
+		$author = Author::find($id);
+		return view('backend.editadmin.editauthor')->with('author',$author);
+	}
+
+	public function putEditAuthor($id)
+	{
+		$author = Author::find($id);
+		$author->update(Input::all());
+		return redirect('/listauthors');
+	}
 }
