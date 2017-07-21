@@ -18,6 +18,25 @@ class PublishCompanyController extends Controller
     {
 	    $input = Input::all();
 	    $topic = PublishCompany::create($input);
-	    return redirect('/createpublishcompany');
+	    return redirect('/listpublishcompanies');
+ 	}
+
+ 	public function listPublishCompanies()
+ 	{
+ 		$publishcompanies = PublishCompany::all();
+ 		return view('backend.listadmin.listpublishcompanies')->with('publishcompanies', $publishcompanies);
+ 	}
+
+ 	public function editPublishCompany($id)
+ 	{
+ 		$publishcompany = PublishCompany::find($id);
+ 		return view('backend.editadmin.editpublishcompany')->with('publishcompany', $publishcompany);
+ 	}
+
+ 	public function putPublishCompany($id)
+ 	{
+ 		$publishcompany = PublishCompany::find($id);
+ 		$publishcompany->update(Input::all());
+ 		return redirect('/listpublishcompanies');
  	}
 }
