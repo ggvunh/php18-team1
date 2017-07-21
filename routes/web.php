@@ -49,6 +49,10 @@ Route::post('/createauthor','AuthorController@postCreateAuthor');
 // list book
 Route::get('/listbooks','BookController@listBook');
 // end list book
+// Edit book
+Route::get('/bookedit/{id}', 'BookController@editBook');
+Route::put('/edit/book/{id}', 'BookController@putEditBook');
+// end Edit book
 // create book
 Route::get('/createbook', 'BookController@createBook');
 Route::post('/createbook','BookController@postCreateBook');

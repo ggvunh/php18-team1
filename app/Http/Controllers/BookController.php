@@ -30,6 +30,10 @@ class BookController extends Controller
             $input['image'] = $file_name;
             $request->file('image')->move('upload', $file_name);
         }
+       	else
+       	{
+       		$input['image']='';
+       	}
         $author = Author::pluck('name','id');
 		$publish = PublishCompany::pluck('name','id');
 		$topic = Topic::pluck('name','id');
@@ -41,5 +45,37 @@ class BookController extends Controller
 	{
 		$books = Book::all();
 		return view('backend.listadmin.listbooks')->with('books',$books);
+	}
+
+	public function editBook($id)
+	{
+		$book = Book::find($id);
+		$author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		return view('backend.editadmin.editbook')->with('book', $book)->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
+	}
+
+	public function putEditBook(Request $request,$id)
+	{
+		$book = Book::find($id);
+		$input = Input::all();
+        if ($request->hasFile('image')) {
+
+            $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
+            $input['image'] = $file_name;
+            $request->file('image')->move('upload', $file_name);
+            //delete img 
+			$a = $book['image'];
+			$b = ('upload/'.$a);
+			File::delete($b);
+			// end delete
+			$a = $file_name;
+        }
+        $author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		$book->update($input);
+		return redirect('/listbooks');
 	}
 }
