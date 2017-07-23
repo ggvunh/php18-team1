@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Book;
-use App\Author;
-use App\PublishCompanies;
-use App\Topic;
-use App\Order;
-use App\Orderdetail;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use App\Topic;
+use App\PublishCompany;
+use App\Author;
+use App\Book;
+use Illuminate\Http\UploadedFile;
+use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+<<<<<<< .mine
 use Auth;
 use Newss\Http\Requests\CreateArticelRequest;
+=======
+class BookController extends Controller
+{
+>>>>>>> .theirs
 
 class BookController extends Controller
 {
@@ -78,5 +83,74 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
-    }
+    public function createBook()
+ 	{
+		$author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		return view('backend.createbook')->with('author',$author)->with('publish',$publish)->with('topic',$topic);
+	}
+
+	public function postCreateBook(Request $request)
+    {
+        $input = Input::all();
+        if ($request->hasFile('image')) {
+
+            $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
+            $input['image'] = $file_name;
+            $request->file('image')->move('upload', $file_name);
+        }
+       	else
+       	{
+       		$input['image']='';
+       	}
+        $author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		$book = Book::create($input);
+		return redirect('/listbooks');
+	}
+
+	public function listBook()
+	{
+		$books = Book::all();
+		return view('backend.listadmin.listbooks')->with('books',$books);
+	}
+
+	public function editBook($id)
+	{
+		$book = Book::find($id);
+		$author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		return view('backend.editadmin.editbook')->with('book', $book)->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
+	}
+
+	public function putEditBook(Request $request,$id)
+	{
+		$book = Book::find($id);
+		$input = Input::all();
+        if ($request->hasFile('image')) {
+
+            $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
+            $input['image'] = $file_name;
+            $request->file('image')->move('upload', $file_name);
+            //delete img 
+			$a = $book['image'];
+			$b = ('upload/'.$a);
+			File::delete($b);
+			// end delete
+			$a = $file_name;
+        }
+        $author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		$book->update($input);
+		return redirect('/listbooks');
+	}
 }
+<<<<<<< .mine
+}
+=======
+
+>>>>>>> .theirs

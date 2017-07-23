@@ -1,18 +1,17 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Topic extends Model
 {
-
-    use SoftDeletes;
-		protected $date = ['deleted_at'];
+	use SoftDeletes;
+    	protected $date = ['deleted_at'];
 		public $timestamp = false;
 		protected $fillable = ['name'];
-    protected $table = 'topics';
+    	protected $table = 'topics';
 
 		public function book()
     {

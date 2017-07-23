@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -26,11 +26,11 @@ class Book extends Model
 
     public function publish_companie()
     {
-      return $this->belongsTo('App\Publish_Companies');
+      return $this->belongsTo('App\PublishCompany');
     }
 
     public function order_detail()
     {
-      return $this->hasMany('App\Order_detail');
+      return $this->hasMany('App\OrderDetail');
     }
 }
