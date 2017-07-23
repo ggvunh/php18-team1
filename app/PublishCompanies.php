@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Publish_Companies extends Model
+class PublishCompanies extends Model
 {
     use SoftDeletes;
     protected $date = ['deleted_at'];
