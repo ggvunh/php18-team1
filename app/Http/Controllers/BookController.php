@@ -78,4 +78,23 @@ class BookController extends Controller
 		$book->update($input);
 		return redirect('/listbooks');
 	}
+
+	public function bookDelete($id)
+	{
+		Book::destroy($id);
+		return redirect('/listbooks');
+	}
+
+	public function sdListBook()
+	{
+		$books = Book::onlyTrashed()->get();
+		return view('backend.softdeleteadmin.sdlistbooks')->with('books',$books);
+	}
+
+	public function restoreBook($id)
+	{
+		$book = Book::onlyTrashed()->find($id);
+		$book->restore($id);
+		return redirect('/sdlistbooks');
+	}
 }
