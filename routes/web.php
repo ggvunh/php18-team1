@@ -93,7 +93,7 @@ Route::get('login', 'UserController@getlogin');
 Route::post('login', 'UserController@postlogin');
 
 
-Route::get('logout', 'UserController@getlogout');
+Route::get('logout', 'UserController@logout');
 
 Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');

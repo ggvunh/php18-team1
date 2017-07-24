@@ -10,9 +10,14 @@ use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\MessageBag;
 use App\User;
 use Hash;
+use notificationMgs;
 
 class UserController extends Controller
-{
+{   
+    public function getregister()
+    {
+        return view('auth.register');
+    }
     public function postregister(RegisterFormRequest $request)
     {
         $user = new User();
@@ -21,9 +26,13 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->address = $request->address;
+
+
+        notificationMgs('success','Bạn đã đăng kí thành công');  
         $user->save();
-        return redirect()->back()->with('thongbao','Tạo tài khoản thành công');
+        return redirect('index');
     }
+    
 
     public function getregister()
     {
@@ -33,20 +42,28 @@ class UserController extends Controller
     //LOGIN
     public function postlogin(LoginFormRequest $request)
     { 
-        if(Auth::attempt(['name'=>$request->name,'email'=>$request->email,'password'=>($request->password)]))
-        {
-            return redirect('index')->with('thongbao','Bạn đã đăng nhập thành công');
+        if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
+        {   
+           notificationMgs('success','Bạn đã đăng nhập thành công'); 
+           return redirect('index');
 
-        }
-        else
-        { 
+       }
+       else
+       { 
            return redirect('login');
        }
    }
 
    public function getlogin()
    {
-    return view('auth.login');
+   return view('auth.login');
+   }
+   public function logout()
+   {
+    Auth::logout();
+    return redirect('login');
+   }
+
     }
 
     public function listUsers()
@@ -61,3 +78,4 @@ class UserController extends Controller
         redirect('listusers');
     }
 }
+

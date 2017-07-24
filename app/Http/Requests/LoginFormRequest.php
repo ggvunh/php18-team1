@@ -24,7 +24,6 @@ class LoginFormRequest extends FormRequest
     public function rules()
     {
         return [
-        'name' => 'required',
         'email' => 'required|email',
         'password' => 'required|min:6|max:20',
         ];
@@ -32,12 +31,13 @@ class LoginFormRequest extends FormRequest
     public function messages()
     {
         return [
-        'name.required' => 'Bạn chưa nhập username',
-        'email.required' => 'Bạn chưa nhâp email',
         'email.email' => 'Email không đúng định dạng',
         'password.required' => 'Bạn chưa nhâp password',
+        'password.confirmed' => 'Password bạn nhập chưa đúng',
         'password.min' => 'Password phải có ít nhất 6 kí tự',
         'password.max' => 'Password chỉ không được quá 20 kí tự'
         ];
     }
 }
+
+
