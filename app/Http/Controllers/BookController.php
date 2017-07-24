@@ -100,19 +100,19 @@ class BookController extends Controller
     	{
     		$book = Book::find($id);
     		$input = Input::all();
-            if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
-                $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
-                $input['image'] = $file_name;
-                $request->file('image')->move('upload', $file_name);
-                //delete img
-    			$a = $book['image'];
-    			$b = ('upload/'.$a);
-    			File::delete($b);
-    			// end delete
-    			$a = $file_name;
-            }
-            $author = Author::pluck('name','id');
+            $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
+            $input['image'] = $file_name;
+            $request->file('image')->move('upload', $file_name);
+            //delete img
+      			$a = $book['image'];
+      			$b = ('upload/'.$a);
+      			File::delete($b);
+      			// end delete
+      			$a = $file_name;
+        }
+        $author = Author::pluck('name','id');
     		$publish = PublishCompany::pluck('name','id');
     		$topic = Topic::pluck('name','id');
     		$book->update($input);
