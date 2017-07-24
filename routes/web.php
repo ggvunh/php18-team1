@@ -21,6 +21,7 @@ Route::get('/listusers','UserController@listUsers');
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
 // end delete user
 Route::get('/books', 'BookController@index');
+Route::get('/books/search', 'BookController@searchbook');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
 Route::get('/sdlisttopics','TopicController@sdListTopics');

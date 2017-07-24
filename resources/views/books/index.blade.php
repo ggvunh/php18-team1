@@ -13,12 +13,12 @@
                   <!-- <p class="pull-left">438 styles found</p> -->
                   <div class="clearfix"></div>
                 </div>
-                  @foreach( $books as $book )
-                    <div class="row">
+                  <div class="row">
+                    @foreach( $books as $book )
                       <div class="col-sm-3">
                         <div class="single-item">
                           <div class="single-item-header">
-                            <a href="{{ url('/books/' . $book->id) }}"><img src="{{ $book->image }}" alt=""></a>
+                            <a href="{{ url('/books/' . $book->id) }}"><img src="{{ $book->image }}" alt="" width = "200" height = "320"></a>
                           </div>
                           <div class="single-item-body">
                             <p class="single-item-title">{{ $book->name }}</p>
@@ -33,8 +33,8 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  @endforeach
+                    @endforeach
+                  </div>
               </div> <!-- .beta-products-list -->
 
               <div class="space50">&nbsp;</div>

@@ -4,8 +4,7 @@
 <div class="container">
   <div id="content">
     <div class="row">
-      <div class="col-sm-9">
-
+      <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-4">
             <img src="{{ $book->image }}" alt="">
@@ -31,7 +30,7 @@
             <div class="space20">&nbsp;</div>
 
             <div class="single-item-desc">
-                <p>{{ $book->detail }}</p>
+                <p>{{ str_limit($book->detail, $limit = 120, $end = '...') }}</p>
             </div>
             <div class="space20">&nbsp;</div>
 
@@ -51,60 +50,31 @@
         <div class="space50">&nbsp;</div>
         <div class="beta-products-list">
           <h4>Related Book</h4>
-
-            @foreach($books as $book)
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="single-item">
-                    <div class="single-item-header">
-                      <a href="{{ url('/books/' . $book->id) }}"><img src="{{ $book->image }}" alt=""></a>
-                    </div>
-                    <div class="single-item-body">
-                      <p class="single-item-title">{{ $book->name }}</p>
-                      <p class="single-item-price">
-                        <span>Giá : {{ $book->price }}</span>
-                      </p>
-                    </div>
-                    <div class="single-item-caption">
-                      <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
-                      <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Details <i class="fa fa-chevron-right"></i></a>
-                      <div class="clearfix"></div>
+            <div class="row">
+              @foreach($books as $bo)
+                @if ($bo->topic->id == $book->topic->id)
+                  <div class="col-sm-3">
+                    <div class="single-item">
+                      <div class="single-item-header">
+                        <a href="{{ url('/books/' . $bo->id) }}"><img src="{{ $bo->image }}" alt="" width = "200" height = "320"></a>
+                      </div>
+                      <div class="single-item-body">
+                        <p class="single-item-title">{{ $bo->name }}</p>
+                        <p class="single-item-price">
+                          <span>Giá : {{ $bo->price }}</span>
+                        </p>
+                      </div>
+                      <div class="single-item-caption">
+                        <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
+                        <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Details <i class="fa fa-chevron-right"></i></a>
+                        <div class="clearfix"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            @endforeach
+                @endif
+              @endforeach
+            </div>
         </div> <!-- .beta-products-list -->
-      </div>
-      <div class="col-sm-3 aside">
-        <div class="widget">
-          <h3 class="widget-title">Best Sellers</h3>
-          <div class="widget-body">
-            <div class="beta-sales beta-lists">
-              <div class="media beta-sales-item">
-                <a class="pull-left" href="product.html"><img src="assets/dest/images/products/sales/1.png" alt=""></a>
-                <div class="media-body">
-                  Sample Woman Top
-                  <span class="beta-sales-price">$34.55</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> <!-- best sellers widget -->
-        <div class="widget">
-          <h3 class="widget-title">New Products</h3>
-          <div class="widget-body">
-            <div class="beta-sales beta-lists">
-              <div class="media beta-sales-item">
-                <a class="pull-left" href="product.html"><img src="assets/dest/images/products/sales/1.png" alt=""></a>
-                <div class="media-body">
-                  Sample Woman Top
-                  <span class="beta-sales-price">$34.55</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> <!-- best sellers widget -->
       </div>
     </div>
   </div> <!-- #content -->
