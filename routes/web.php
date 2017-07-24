@@ -12,6 +12,7 @@
 */
 use Illuminate\Support\Facades\Input;
 
+
 Route::get('/search', 'SearchController@searchAll');
 //list users
 Route::get('/listusers','UserController@listUsers');
@@ -19,6 +20,7 @@ Route::get('/listusers','UserController@listUsers');
 //delete user
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
 // end delete user
+Route::get('/books', 'BookController@index');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
 Route::get('/sdlisttopics','TopicController@sdListTopics');
@@ -95,3 +97,7 @@ Route::get('logout', 'UserController@getlogout');
 Route::get('index', function(){
 	return view('books.index');
 });
+Route::get('/books/{book}', 'BookController@show');
+Route::get('/books/authors/{name}', 'BookController@showauthor');
+Route::get('/books/topics/{name}', 'BookController@showtopic');
+Route::get('/books/publish/{name}', 'BookController@showpublish');
