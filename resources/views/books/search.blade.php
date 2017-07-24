@@ -36,7 +36,7 @@
                   </div>
                   @endforeach
                 </div>
-
+                
               </div> <!-- .beta-products-list -->
             </div>
           </div> <!-- end section with sidebar and main content -->
