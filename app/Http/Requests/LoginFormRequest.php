@@ -31,8 +31,6 @@ class LoginFormRequest extends FormRequest
     public function messages()
     {
         return [
-        // 'email.confirmed' => 'Email bạn nhập chưa đúng',
-        // 'email.required' => 'Bạn chưa nhâp email',
         'email.email' => 'Email không đúng định dạng',
         'password.required' => 'Bạn chưa nhâp password',
         'password.confirmed' => 'Password bạn nhập chưa đúng',
