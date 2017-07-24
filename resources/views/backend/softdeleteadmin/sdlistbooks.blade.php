@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8">
           <h1>
-            List Books
+            Soft Delete List Books
           </h1>
         </div>
         <div class="col-md-3">
@@ -26,7 +26,7 @@
             <p class="h5">{{$book->author->name}}</p>
           </div>
           <div class="col-sm-2">
-            <p class="h5"><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></p>
+            <p class="h5"><a href="{{url('/restorebook/'.$book->id)}}" class="glyphicon glyphicon-refresh">Restore</a></p>
           </div> 
         </div> 
     @endforeach

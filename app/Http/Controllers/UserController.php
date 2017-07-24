@@ -21,10 +21,10 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->address = $request->address;
-
         $user->save();
         return redirect()->back()->with('thongbao','Tạo tài khoản thành công');
     }
+
     public function getregister()
     {
         return view('auth.register');
@@ -43,8 +43,21 @@ class UserController extends Controller
            return redirect('login');
        }
    }
+
    public function getlogin()
    {
     return view('auth.login');
-}
+    }
+
+    public function listUsers()
+    {
+        $users = User::all();
+        return view('backend.listadmin.listusers')->with('users',$users);
+    }
+
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+        redirect('listusers');
+    }
 }

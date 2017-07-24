@@ -39,4 +39,23 @@ class PublishCompanyController extends Controller
  		$publishcompany->update(Input::all());
  		return redirect('/listpublishcompanies');
  	}
+
+ 	public function publishCompanyDelete($id)
+ 	{
+ 		PublishCompany::destroy($id);
+ 		return redirect('/listpublishcompanies');
+ 	}
+
+ 	public function sdPublishCompanies()
+ 	{
+ 		$publishcompanies = PublishCompany::onlyTrashed()->get();
+ 		return view('backend.softdeleteadmin.sdlistpublishcompanies')->with('publishcompanies',$publishcompanies);
+ 	}
+
+ 	public function restorePublishCompany($id)
+ 	{
+ 		$publishcompanies = PublishCompany::onlyTrashed()->find($id);
+ 		$publishcompanies->restore($id);
+ 		return redirect('/sdlistpublishcompanies');
+ 	}
 }

@@ -54,12 +54,12 @@ class BookController extends Controller
     }
 
     public function createBook()
- 	  {
-    		$author = Author::pluck('name','id');
-    		$publish = PublishCompany::pluck('name','id');
-    		$topic = Topic::pluck('name','id');
-    		return view('backend.createbook')->with('author',$author)->with('publish',$publish)->with('topic',$topic);
-	  }
+ 	{
+		$author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		return view('backend.createbook')->with('author',$author)->with('publish',$publish)->with('topic',$topic);
+	}
 
   	public function postCreateBook(Request $request)
     {
@@ -75,17 +75,17 @@ class BookController extends Controller
        		$input['image']='';
        	}
         $author = Author::pluck('name','id');
-    		$publish = PublishCompany::pluck('name','id');
-    		$topic = Topic::pluck('name','id');
-    		$book = Book::create($input);
-    		return redirect('/listbooks');
-	   }
-
-	   public function listBook()
-	   {
-    		$books = Book::all();
-    		return view('backend.listadmin.listbooks')->with('books',$books);
-    	}
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		$book = Book::create($input);
+		return redirect('/listbooks');
+	}
+    	
+	public function listBook()
+	{
+		$books = Book::all();
+		return view('backend.listadmin.listbooks')->with('books',$books);
+	}
 
     	public function editBook($id)
     	{
@@ -96,12 +96,12 @@ class BookController extends Controller
     		return view('backend.editadmin.editbook')->with('book', $book)->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
     	}
 
-    	public function putEditBook(Request $request,$id)
-    	{
-    		$book = Book::find($id);
-    		$input = Input::all();
-            if ($request->hasFile('image')) {
-
+	public function putEditBook(Request $request,$id)
+	{
+		$book = Book::find($id);
+		$input = Input::all();
+        if ($request->hasFile('image')) 
+            {
                 $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
                 $input['image'] = $file_name;
                 $request->file('image')->move('upload', $file_name);
@@ -112,10 +112,30 @@ class BookController extends Controller
     			// end delete
     			$a = $file_name;
             }
+            
             $author = Author::pluck('name','id');
     		$publish = PublishCompany::pluck('name','id');
     		$topic = Topic::pluck('name','id');
     		$book->update($input);
     		return redirect('/listbooks');
     	}
+
+	public function bookDelete($id)
+	{
+		Book::destroy($id);
+		return redirect('/listbooks');
+	}
+
+	public function sdListBook()
+	{
+		$books = Book::onlyTrashed()->get();
+		return view('backend.softdeleteadmin.sdlistbooks')->with('books',$books);
+	}
+
+	public function restoreBook($id)
+	{
+		$book = Book::onlyTrashed()->find($id);
+		$book->restore($id);
+		return redirect('/sdlistbooks');
+	}
 }

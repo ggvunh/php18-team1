@@ -4,12 +4,12 @@
       <div class="row">
         <div class="col-md-8">
           <h1>
-            List Books
+            Soft Delete List Topics
           </h1>
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
-	          <p class="btn btn-primary"><a href="/createbook" class="h4">Create new Book</a></p>
+	          <p class="btn btn-primary"><a href="{{url('/createtopic')}}" class="h4">Create new Topic</a></p>
 	        </div>  
         </div>  
       </div>
@@ -17,18 +17,17 @@
   @stop
   @section('content')
     <div class="col-md-10 col-md-offset-1 border">
-    @foreach ($books as $book)
+      @foreach ($topics as $topic)
         <div class="row borderlist">
           <div class="col-sm-7">
-            <p class="h5">{{$book->name}}</p>
+            <p class="h5">{{$topic->name}}</p>
           </div>
           <div class="col-sm-3">
-            <p class="h5">{{$book->author->name}}</p>
           </div>
           <div class="col-sm-2">
-            <p class="h5"><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></p>
+            <p class="h5"><a href="{{url('/restoretopic/'.$topic->id)}}" class="glyphicon glyphicon-refresh">Restore</a></p>
           </div> 
         </div> 
-    @endforeach
+      @endforeach
     </div>  
   @stop
