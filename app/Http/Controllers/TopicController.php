@@ -39,4 +39,23 @@ class TopicController extends Controller
  		$topic->update(Input::all());
  		return redirect('/listtopics');
  	}
+
+ 	public function topicDelete($id)
+ 	{
+ 		Topic::destroy($id);
+ 		return redirect('/listtopics');
+ 	}
+
+ 	public function sdListTopics()
+ 	{
+ 		$topics = Topic::onlyTrashed()->get();
+ 		return view('backend.softdeleteadmin.sdlisttopics')->with('topics',$topics);
+ 	}
+
+ 	public function restoreTopic($id)
+ 	{
+ 		$topic = Topic::onlyTrashed()->Find($id);
+ 		$topic->restore($id);
+ 		return redirect('/sdlisttopics');
+ 	}
 }

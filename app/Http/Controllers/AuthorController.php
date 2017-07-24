@@ -38,4 +38,23 @@ class AuthorController extends Controller
 		$author->update(Input::all());
 		return redirect('/listauthors');
 	}
+
+	public function authorDelete($id)
+	{
+		Author::destroy($id);
+		return redirect('/listauthors');
+	}
+
+	public function sdListAuthors()
+	{
+		$authors = Author::onlyTrashed()->get();
+		return view('backend.softdeleteadmin.sdlistauthors')->with('authors',$authors);
+	}
+
+	public function restoreAuthor($id)
+	{
+		$author = Author::onlyTrashed()->find($id);
+		$author->restore($id);
+		return redirect('sdlistauthors');
+	}
 }
