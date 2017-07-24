@@ -21,6 +21,10 @@
   <link rel="stylesheet" href="{{asset('adminlte/dist/css/skins/_all-skins.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
+  <link rel="stylesheet" href="{{asset('js/jquery-ui.min.css')}}">
+  <link rel="stylesheet" href="{{asset('js/jquery-ui.structure.css')}}">
+  <link rel="stylesheet" href="{{asset('js/jquery-ui.theme.css')}}">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -31,6 +35,13 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -117,16 +128,14 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      {!! Form::open(['url' => '/search','method'=>'get','class' => 'sidebar-form']) !!}
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          {!! Form::text('tukhoa', null, ['class' => 'form-control','placeholder'=>'seach...']) !!}
           <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
+            {{ Form::button('<i class="fa fa-search"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
+          </span>
         </div>
-      </form>
+      {!! Form::close() !!}
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -200,5 +209,6 @@
 <script src="{{asset('adminlte/dist/js/pages/dashboard2.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+<script src="{{asset('js/jquery-ui.min.js')}}"></script>
 </body>
 </html>

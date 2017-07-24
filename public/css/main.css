@@ -12,3 +12,10 @@
 .borderlist:last-child{
 	border-bottom: 1px solid #cbdae3; 
 }
+.height{
+	min-height: 400px;
+}
+.padleft{
+	margin-left: 20px;
+	margin-top: -20px;
+}

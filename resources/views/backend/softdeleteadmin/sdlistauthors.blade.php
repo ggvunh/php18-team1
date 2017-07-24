@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8">
           <h1>
-            List Author
+            Soft Delete List Author
           </h1>
         </div>
         <div class="col-md-3">
@@ -32,7 +32,7 @@
             <p class="h5">{{$author->address}}</p>
           </div>
           <div class="col-sm-2">
-            <p class="h5"><a href="{{url('/authoredit/'.$author->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/authordelete/'.$author->id)}}" class="glyphicon glyphicon-trash">Delete</a></p>
+            <p class="h5"><a href="{{url('/restoreauthor/'.$author->id)}}" class="glyphicon glyphicon-refresh">Restore</a></p>
           </div> 
         </div> 
       @endforeach
