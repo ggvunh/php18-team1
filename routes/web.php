@@ -13,6 +13,8 @@
 use Illuminate\Support\Facades\Input;
 
 
+
+Route::get('/books/search', 'BookController@searchbook');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
 //end list topics

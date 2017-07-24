@@ -35,9 +35,9 @@ class BookController extends Controller
        		$input['image']='';
        	}
         $author = Author::pluck('name','id');
-		$publish = PublishCompany::pluck('name','id');
-		$topic = Topic::pluck('name','id');
-		$book = Book::create($input);
+    		$publish = PublishCompany::pluck('name','id');
+    		$topic = Topic::pluck('name','id');
+    		$book = Book::create($input);
 		return redirect('/listbooks');
 	}
 
@@ -58,24 +58,41 @@ class BookController extends Controller
 
 	public function putEditBook(Request $request,$id)
 	{
-		$book = Book::find($id);
-		$input = Input::all();
+    		$book = Book::find($id);
+    		$input = Input::all();
         if ($request->hasFile('image')) {
 
             $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
             $input['image'] = $file_name;
             $request->file('image')->move('upload', $file_name);
-            //delete img 
-			$a = $book['image'];
-			$b = ('upload/'.$a);
-			File::delete($b);
-			// end delete
-			$a = $file_name;
+            //delete img
+      			$a = $book['image'];
+      			$b = ('upload/'.$a);
+      			File::delete($b);
+      			// end delete
+      			$a = $file_name;
         }
         $author = Author::pluck('name','id');
-		$publish = PublishCompany::pluck('name','id');
-		$topic = Topic::pluck('name','id');
-		$book->update($input);
-		return redirect('/listbooks');
+    		$publish = PublishCompany::pluck('name','id');
+    		$topic = Topic::pluck('name','id');
+    		$book->update($input);
+    		return redirect('/listbooks');
 	}
+
+  public function searchbook(Request $request)
+  {
+      if($request->key = '')
+      {
+          return ;
+      }else
+      {
+        $books = Book::where('name', 'like', '%' . $request->key . '%')
+                          ->orWhere('language', 'like', '%' . $request->key . '%')
+                          ->orWhere('price', 'like', $request->key)
+                          ->orWhere('quantity', 'like', $request->key)
+                          ->orWhere('detail', 'like', '%' . $request->key . '%')
+                          ->get();
+      }
+      return view('books.search')->with('books', $books);
+  }
 }
