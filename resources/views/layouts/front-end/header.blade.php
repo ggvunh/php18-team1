@@ -89,7 +89,7 @@
   		<div class="visible-xs clearfix"></div>
   		<nav class="main-menu">
   			<ul class="l-inline ov">
-  				<li><a href=" {{ url('/books') }} ">Trang chủ</a></li>
+  				<li><a href=" {{ url('/') }} ">Trang chủ</a></li>
   				<li><a href="#">Chủ Đề</a>
   					<ul class="sub-menu">
   						<li><a href="product_type.html">Văn Hóa</a></li>

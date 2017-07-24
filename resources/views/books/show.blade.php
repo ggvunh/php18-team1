@@ -19,10 +19,10 @@
                     <span>Ngôn Ngữ : {{ $book->language }}</span>
                   </p>
                   <p class="single-item-title">
-                    <span>Chủ Đề : <a href="{{ url('/books/topics/' . $book->topic->name) }}">{{ $book->topic->name }}</a></span>
+                    <span>Chủ Đề : <a href="{{ url('/books/topics/' . $book->topic->id) }}">{{ $book->topic->name }}</a></span>
                   </p>
                   <p class="single-item-title">
-                    <span>Tác Giả : <a href="{{ url('/books/authors/' . $book->author->name) }}">{{ $book->author->name }}</a></span>
+                    <span>Tác Giả : <a href="{{ url('/books/authors/' . $book->author->id) }}">{{ $book->author->name }}</a></span>
                   </p>
                 </div>
 
@@ -33,7 +33,13 @@
                     <p>{{ str_limit($book->detail, $limit = 120, $end = '...') }}</p>
                 </div>
                 <div class="space20">&nbsp;</div>
-
+                  <div class="single-item">
+                    <div class="single-item-caption">
+                      <a class="add-to-cart pull-left" href="{{ url('/books/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+                      <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Add Cart <i class="fa fa-chevron-right"></i></a>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
               </div>
             </div>
 

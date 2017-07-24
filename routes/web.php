@@ -20,7 +20,7 @@ Route::get('/listusers','UserController@listUsers');
 //delete user
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
 // end delete user
-Route::get('/books', 'BookController@index');
+Route::get('/', 'BookController@index');
 Route::get('/books/search', 'BookController@searchbook');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
@@ -95,10 +95,7 @@ Route::post('login', 'UserController@postlogin');
 
 Route::get('logout', 'UserController@getlogout');
 
-Route::get('index', function(){
-	return view('books.index');
-});
 Route::get('/books/{book}', 'BookController@show');
-Route::get('/books/authors/{name}', 'BookController@showauthor');
-Route::get('/books/topics/{name}', 'BookController@showtopic');
-Route::get('/books/publish/{name}', 'BookController@showpublish');
+Route::get('/books/authors/{id}', 'AuthorController@showauthor');
+Route::get('/books/topics/{id}', 'TopicController@showtopic');
+Route::get('/books/publish/{id}', 'BookController@showpublish');

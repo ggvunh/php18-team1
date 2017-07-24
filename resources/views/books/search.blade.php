@@ -37,8 +37,8 @@
                   </div>
                   @endforeach
                 </div>
-                
               </div> <!-- .beta-products-list -->
+              <div class="row">{{$books->links()}}</div>
             </div>
           </div> <!-- end section with sidebar and main content -->
         </div> <!-- .main-content -->
