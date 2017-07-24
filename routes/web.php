@@ -13,6 +13,7 @@
 use Illuminate\Support\Facades\Input;
 
 
+Route::get('/books', 'BookController@index');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
 //end list topics
@@ -68,4 +69,7 @@ Route::get('logout', 'UserController@getlogout');
 
 Route::get('index', function(){
 	return view('books.index');
-});
+});Route::get('/books/{book}', 'BookController@show');
+Route::get('/books/authors/{name}', 'BookController@showauthor');
+Route::get('/books/topics/{name}', 'BookController@showtopic');
+Route::get('/books/publish/{name}', 'BookController@showpublish');
