@@ -11,13 +11,14 @@ use App\Book;
 use Illuminate\Http\UploadedFile;
 use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Pagination\Paginator;
 
 class BookController extends Controller
 {
 
     public function index()
     {
-        $books = Book::all();
+        $books = Book::paginate(16);
         return view('books.index')->with('books', $books);
     }
 
@@ -42,19 +43,21 @@ class BookController extends Controller
         return view('books.showtopic')->with(['topic' => $topic, 'books' => $books]);
     }
 
-    public function showauthor($name)
+    public function showauthor(Book $book, $name)
     {
         $author = Author::where('name', $name)->first();
         $books = $author->book;
-        return view('books.showauthor')->with(['author' => $author, 'books' => $books]);
+        return view('books.author')->with(['author' => $author, 'books' => $books]);
     }
 
-    public function showpublish($name)
-    {
-        $publish = PublishCompany::where('name', $name)->first();
-        $books = $publish->book;
-        return view('books.showpublish')->with(['publish' => $publish, 'books' => $books]);
-    }
+    // public function showpublish($name)
+    // {
+    //     $publish = PublishCompany::where('name', $name)->first();
+    //     //dd($publish);
+    //     $books = $publish->book;
+    //     dd($books);
+    //     return view('books.showpublish')->with(['publish' => $publish, 'books' => $books]);
+    // }
 
     public function createBook()
  	{
@@ -84,7 +87,7 @@ class BookController extends Controller
 		$book = Book::create($input);
 		return redirect('/listbooks');
 	}
-    	
+
 	public function listBook()
 	{
 		$books = Book::all();
@@ -104,7 +107,7 @@ class BookController extends Controller
 	{
 		$book = Book::find($id);
 		$input = Input::all();
-        if ($request->hasFile('image')) 
+        if ($request->hasFile('image'))
             {
                 $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
                 $input['image'] = $file_name;
@@ -116,7 +119,7 @@ class BookController extends Controller
           			// end delete
           			$a = $file_name;
             }
-            
+
     		$publish = PublishCompany::pluck('name','id');
     		$topic = Topic::pluck('name','id');
     		$book->update($input);

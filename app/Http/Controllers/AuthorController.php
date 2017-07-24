@@ -9,7 +9,7 @@ use File;
 
 class AuthorController extends Controller
 {
-    public  function createAuthor() 
+    public  function createAuthor()
  	{
 		return view('backend.createauthor');
 	}

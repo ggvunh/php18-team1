@@ -8,21 +8,7 @@
             <div class="row">
               <div class="col-sm-8">
                 <div class="single-item-body">
-                  <p class="single-item-price">{{ $author->name }}</p>
-                  <div class="space20">&nbsp;</div>
-                  <p class="single-item-title">
-                    <span>Email : {{ $author->email }}</span>
-                  </p>
-                  <p class="single-item-title">
-                    <span>Phone : {{ $author->phone }}</span>
-                  </p>
-                  <p class="single-item-title">
-                    <span>Địa chỉ : {{ $author->address }}</span>
-                  </p>
-                </div>
-                <div class="clearfix"></div>
-                <div class="single-item-desc">
-                    <p>Tiểu sử : {{ $author->story }}</p>
+                  <p class="single-item-price">Chủ Đề : {{ $topic->name }}</p>
                 </div>
               </div>
             </div>
@@ -33,7 +19,7 @@
               <div class="space20">&nbsp;</div>
                 <div class="row">
                   @foreach($books as $bo)
-                    @if ($bo->author->id == $author->id)
+                    @if ($bo->topic->id == $topic->id)
                       <div class="col-sm-3">
                         <div class="single-item">
                           <div class="single-item-header">
