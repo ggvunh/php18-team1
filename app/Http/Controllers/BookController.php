@@ -128,7 +128,6 @@ class BookController extends Controller
       if($request->key == '')
       {
           $books = Book::all();
-          return view('books.index')->with('books', $books);
       }else {
           $books = Book::where('name', 'like', '%' . $request->key . '%')
                             ->orWhere('language', 'like', '%' . $request->key . '%')
@@ -136,7 +135,7 @@ class BookController extends Controller
                             ->orWhere('quantity', 'like', $request->key)
                             ->orWhere('detail', 'like', '%' . $request->key . '%')
                             ->get();
-          return view('books.search')->with('books', $books);
       }
+      return view('books.search')->with('books', $books);
   }
 }
