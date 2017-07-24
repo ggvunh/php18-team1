@@ -9,10 +9,17 @@ use File;
 
 class AuthorController extends Controller
 {
-    public  function createAuthor() 
+    public  function createAuthor()
  	{
 		return view('backend.createauthor');
 	}
+
+  public function showauthor($id)
+  {
+      $author = Author::where('id', $id)->first();
+      $books = $author->book;
+      return view('books.author')->with(['author' => $author, 'books' => $books]);
+  }
 
 	public function postCreateAuthor(Request $request)
     {
