@@ -34,6 +34,11 @@ class UserController extends Controller
     }
     
 
+    public function getregister()
+    {
+        return view('auth.register');
+    }
+
     //LOGIN
     public function postlogin(LoginFormRequest $request)
     { 
@@ -48,6 +53,7 @@ class UserController extends Controller
            return redirect('login');
        }
    }
+
    public function getlogin()
    {
    return view('auth.login');
@@ -58,4 +64,18 @@ class UserController extends Controller
     return redirect('login');
    }
 
+    }
+
+    public function listUsers()
+    {
+        $users = User::all();
+        return view('backend.listadmin.listusers')->with('users',$users);
+    }
+
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+        redirect('listusers');
+    }
 }
+

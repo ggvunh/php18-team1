@@ -1,0 +1,21 @@
+
+.border{
+	border: 1px outset #1b4035;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px #1b7462;
+	padding: 5px 20px;
+	margin-bottom: 20px;
+}
+.borderlist{
+	border-top: 1px solid #cbdae3;
+}
+.borderlist:last-child{
+	border-bottom: 1px solid #cbdae3; 
+}
+.height{
+	min-height: 400px;
+}
+.padleft{
+	margin-left: 20px;
+	margin-top: -20px;
+}

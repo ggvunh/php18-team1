@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
@@ -14,7 +15,7 @@ class Order extends Model
 
     public function order_detail()
     {
-      return $this->hasMany('App\Order_detail');
+      return $this->hasMany('App\OrderDetail');
     }
 
     public function user()
