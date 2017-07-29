@@ -67,6 +67,12 @@ class BookController extends Controller
 
   	public function postCreateBook(Request $request)
     {
+        $this->validate($request, 
+            ['name'=>'required|unique:books,min:3'],
+            ['name.required'=>'chua nhap ten',
+              'name.unique'=>'ten da ton tai',
+              'name.min'=>'name phai lon hon 3 ki tu']
+            );
         $input = Input::all();
         if ($request->hasFile('image')) {
 
@@ -91,14 +97,14 @@ class BookController extends Controller
 		return view('backend.listadmin.listbooks')->with('books',$books);
 	}
 
-    	public function editBook($id)
-    	{
-    		$book = Book::find($id);
-    		$author = Author::pluck('name','id');
-    		$publish = PublishCompany::pluck('name','id');
-    		$topic = Topic::pluck('name','id');
-    		return view('backend.editadmin.editbook')->with('book', $book)->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
-    	}
+	public function editBook($id)
+	{
+		$book = Book::find($id);
+		$author = Author::pluck('name','id');
+		$publish = PublishCompany::pluck('name','id');
+		$topic = Topic::pluck('name','id');
+		return view('backend.editadmin.editbook')->with('book', $book)->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
+	}
 
 	public function putEditBook(Request $request,$id)
 	{
@@ -147,7 +153,8 @@ class BookController extends Controller
       if($request->key == '')
       {
           $books = Book::all();
-      }else {
+      }
+      else {
           $books = Book::where('name', 'like', '%' . $request->key . '%')
                             ->orWhere('language', 'like', '%' . $request->key . '%')
                             ->orWhere('price', 'like', $request->key)

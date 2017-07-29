@@ -18,10 +18,10 @@ class CreateOrdersDetailsTable extends Migration
             $table->integer('quantity');
             $table->integer('price');
             $table->integer('book_id')->unsigned()->nullable();
-      			$table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+      		$table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
 
             $table->integer('order_id')->unsigned()->nullable();
-      			$table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+      		$table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
