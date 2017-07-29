@@ -29,10 +29,36 @@
   			        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
   				</form>
   			</div>
+        <ul class="top-details menu-beta l-inline">
+         @if(Auth::check()) 
+         <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{Auth::user()->name}}</a></li>
+         <li><a href="{{ url('/logout') }}"></span>Đăng xuất</a></li>
+         @else   
+         <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Đăng kí</a></li>
+         <li><a href="{{ url('/login') }}">Đăng nhập</a></li>       
+         @endif
+       </ul>
+     </div>
+     <div class="clearfix"></div>
+   </div> <!-- .container -->
+ </div> <!-- .header-top -->
+ <div class="header-body">
+   <div class="container beta-relative">
+    <div class="pull-left">
+      <a href="index.html" id="logo"><img src="front-end/assets/dest/images/logo-book.jpg" width="200px" alt=""></a>
+    </div>
+    <div class="pull-right beta-components space-left ov">
+     <div class="space10">&nbsp;</div>
+     <div class="beta-comp">
+      <form role="search" method="get" id="searchform" action="/">
+       <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+       <button class="fa fa-search" type="submit" id="searchsubmit"></button>
+     </form>
+   </div>
 
-  			<div class="beta-comp">
-  				<div class="cart">
-  					<div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
+   <div class="beta-comp">
+    <div class="cart">
+     <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
   					<!-- <div class="beta-dropdown cart-body">
   						<div class="cart-item">
   							<div class="media">
@@ -89,7 +115,7 @@
   		<div class="visible-xs clearfix"></div>
   		<nav class="main-menu">
   			<ul class="l-inline ov">
-  				<li><a href=" {{ url('/books') }} ">Trang chủ</a></li>
+  				<li><a href=" {{ url('/') }} ">Trang chủ</a></li>
   				<li><a href="#">Chủ Đề</a>
   					<ul class="sub-menu">
   						<li><a href="product_type.html">Văn Hóa</a></li>

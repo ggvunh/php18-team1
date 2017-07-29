@@ -1,6 +1,7 @@
 @extends('layouts.front-end.master')
 
 @section('content')
+
     <div class="container">
       <div id="content" class="space-top-none">
         <div class="main-content">
@@ -16,6 +17,7 @@
                   <div class="row">
                     @foreach( $books as $book )
                       <div class="col-sm-3">
+                        <div class="space20">&nbsp;</div>
                         <div class="single-item">
                           <div class="single-item-header">
                             <a href="{{ url('/books/' . $book->id) }}"><img src="{{ $book->image }}" alt="" width = "200" height = "320"></a>
@@ -36,7 +38,7 @@
                     @endforeach
                   </div>
               </div> <!-- .beta-products-list -->
-
+              <div class="row">{{$books->links()}}</div>
               <div class="space50">&nbsp;</div>
             </div>
           </div> <!-- end section with sidebar and main content -->
