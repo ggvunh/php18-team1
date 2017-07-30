@@ -148,13 +148,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li class="active"><a href="{{url('/listbooks')}}"><i class="fa fa-circle-o"></i> List Books</a></li>
-            <li class="active"><a href="{{url('/listauthors')}}"><i class="fa fa-circle-o"></i> List Authors</a></li>
-            <li class="active"><a href="{{url('/listtopics')}}"><i class="fa fa-circle-o"></i> List Topics</a></li>
-            <li class="active"><a href="{{url('/listpublishcompanies')}}"><i class="fa fa-circle-o"></i>List Publishs Companies</a></li>
-            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v6</a></li>
-            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v7</a></li>
+            <li><a href="index.html"><i class="fa fa-circle-o text-aqua"></i> Dashboard v1</a></li>
+            <li><a href="{{url('/listbooks')}}"><i class="fa fa-circle-o text-aqua"></i> List Books</a></li>
+            <li><a href="{{url('/listauthors')}}"><i class="fa fa-circle-o text-aqua"></i> List Authors</a></li>
+            <li><a href="{{url('/listtopics')}}"><i class="fa fa-circle-o text-aqua"></i> List Topics</a></li>
+            <li><a href="{{url('/listpublishcompanies')}}"><i class="fa fa-circle-o text-aqua"></i>List Publishs Companies</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i> Dashboard v6</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i> Dashboard v7</a></li>
           </ul>
         </li>
       </ul>

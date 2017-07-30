@@ -99,3 +99,12 @@ Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');
 Route::get('/books/topics/{id}', 'TopicController@showtopic');
 Route::get('/books/publish/{id}', 'BookController@showpublish');
+Route::get('/books/authors/{name}', 'BookController@showauthor');
+Route::get('/books/topics/{name}', 'BookController@showtopic');
+Route::get('/books/publish/{name}', 'BookController@showpublish');
+// orders
+Route::get('listorders', 'OrderController@listOrders');
+Route::get('listordersuserid/{id}', 'OrderController@listOrdersUseId');
+Route::get('listorderdate/{order_date}', 'OrderController@ordersDate');
+Route::get('/orderdetailorderid/{id}','OrderController@orderDetailOrderId');
+// end orders
