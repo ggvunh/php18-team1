@@ -9,31 +9,29 @@
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/orderdates','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
         			<div>
-        			<div class="form-group input-group-addon">
-					  {!! Form::label('from', 'From') !!}
-					  <div class="form-controls">
-					    {!! Form::date('since', null, ['class' => 'form-control']) !!}
-					  </div>
+	        			<div class="form-group input-group-addon">
+						  {!! Form::label('since', 'Since') !!}
+						  <div class="form-controls">
+						    {!! Form::date('since', null, ['class' => 'form-control']) !!}
+						  </div>
+						</div>
+						<div class="form-group input-group-addon">
+						  {!! Form::label('to', 'To') !!}
+						  <div class="form-controls">
+						    {!! Form::date('to', null, ['class' => 'form-control']) !!}
+						  </div>
+						</div> 
+						<div class="form-group input-group-addon">
+						  <div class="form-controls">
+						  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
+						  </div>
+						</div>   
 					</div>
-					<div class="form-group input-group-addon">
-					  {!! Form::label('to', 'To') !!}
-					  <div class="form-controls">
-					    {!! Form::date('to', null, ['class' => 'form-control']) !!}
-					  </div>
-					</div> 
-					<div class="form-group input-group-addon">
-					  <div class="form-controls">
-					  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
-					  </div>
-					</div> 
-					  
-					</div> 
       			{!! Form::close() !!} 
              </div>
 	    </div>
-
 
 
     </section>

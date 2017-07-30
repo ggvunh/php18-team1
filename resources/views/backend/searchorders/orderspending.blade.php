@@ -3,7 +3,7 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders User "{{$user->name}}"
+	        List Orders Has Not Been Sent
 	        <small>(All)</small>
 	      </h3>
 	    </div>
@@ -50,8 +50,7 @@
 	                  <th>Order ID</th>
 	                  <th>Address</th>
 	                  <th>Note</th>
-	                  <th>Status Order</th>
-	                  <th>Date Delete</th>
+	                  <th>Shipping Status</th>
 	                </tr>
 	                </thead>
 	                <tbody>
@@ -62,8 +61,12 @@
 			                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
 			                  <td>{{$order->address}}</td>
 			                  <td>{{$order->note}}</td>
-			                  <td>{{$order->status_order}}</td>
-			                  <td>{{$order->deleted_at}}</td>
+			                  <td class="text-center">
+			                  	 {!! Form::model($order, ['url' => 'statusorder1/' . $order->id,'method'=>'put']) !!}
+			                  	 	{!! Form::hidden('shipping_status', 1, ['class' => 'form-control']) !!}
+        							{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}    
+     							 {!! Form::close() !!}
+			                  </td>
 			                </tr>
 			            @endforeach
 	                </tbody>
