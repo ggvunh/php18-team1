@@ -31,7 +31,7 @@
                   <tr>
                     <th>Name Book</th>
                     <th>Name Author</th>
-                    <th>Features</th>
+                    <th class="text-center">Features</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@
                     <tr>
                       <td>{{$book->name}}</td>
                       <td>{{$book->author->name}}</td>
-                      <td><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                      <td class="text-center"><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
                   @endforeach  
                 </tbody>
@@ -47,7 +47,7 @@
                     <tr>
                       <th>Name Book</th>
                       <th>Name Author</th>
-                      <th>Features</th>
+                      <th class="text-center">Features</th>
                     </tr>
                   </tfoot>
               </table>

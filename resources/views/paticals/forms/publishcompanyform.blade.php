@@ -22,4 +22,6 @@
 	    {!! Form::text('address', null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
+	<div class="padright">
 	{!! Form::submit('Save Publish Company', ['class' => 'btn btn-primary pull-right']) !!}
+	</div>
