@@ -30,30 +30,21 @@ class UserController extends Controller
 
         notificationMgs('success','Bạn đã đăng kí thành công');  
         $user->save();
-        return redirect('index');
+        return redirect('books');
     }
-    
-
-    public function getregister()
-    {
-        return view('auth.register');
-    }
-
     //LOGIN
     public function postlogin(LoginFormRequest $request)
     { 
         if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
         {   
            notificationMgs('success','Bạn đã đăng nhập thành công'); 
-           return redirect('index');
-
+           return redirect('books');
        }
        else
        { 
            return redirect('login');
        }
    }
-
    public function getlogin()
    {
    return view('auth.login');
@@ -61,21 +52,41 @@ class UserController extends Controller
    public function logout()
    {
     Auth::logout();
-    return redirect('login');
+    return redirect('books');
    }
 
-    }
-
-    public function listUsers()
+   //Sua thong tin nguoi dung
+   public function info($id)
     {
-        $users = User::all();
-        return view('backend.listadmin.listusers')->with('users',$users);
-    }
+      $user = User::find($id);
 
-    public function deleteUser($id)
-    {
-        User::destroy($id);
-        redirect('listusers');
+      return view('profile.info',['user'=>$user]);
+    }
+    public function updateinfo(Request $request,$id)
+    { 
+        $user = User::find($id); 
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+
+        if($request->changepassword)
+        {
+          $this->validate($request,
+            [
+              'changepassword' => 'required|min:3|max:32',
+              're_password' => 'required'
+            ],
+            [
+              'password.required' => 'Bạn chưa nhập mật khâu',
+              'password.min' => 'Mật khẩu phải nhiều hơn 3 kí tự',
+              'password.max' => 'Mật khẩu không được quá 32 kí tự',
+              're_password.require' => 'Bạn chưa nhập lại mật khẩu',
+              're_password.same' => 'Mật khẩu nhập lại chưa khớp'
+            ]);
+          $user->password = bcrypt('$request->changepassword');
+        }
+        //notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
+        $user->save();
+        return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
     }
 }
-
