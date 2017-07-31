@@ -9,7 +9,7 @@
         "gloudemans/shoppingcart": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0"
+        "laravelcollective/html": "^5.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -27,7 +27,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [
@@ -47,7 +50,6 @@
     },
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
+        "sort-packages": true
     }
 }

@@ -5,7 +5,7 @@
     </h3>
   @stop
   @section('content')
-  	<div class="col-md-11 padleft">
+  	<div class="col-md-12 padleft">
 	  	<div id="tabs">
 		  <ul>
 		    <li><a href="#tabs-1">Search with Book</a></li>

@@ -10,54 +10,69 @@ use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\MessageBag;
 use App\User;
 use Hash;
+use notificationMgs;
 
 class UserController extends Controller
-{
-    public function postregister(RegisterFormRequest $request)
-    {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->save();
-        return redirect()->back()->with('thongbao','Tạo tài khoản thành công');
-    }
+{   
+    
+  public function getregister()
+  {
+    return view('auth.register');
+  }
 
-    public function getregister()
-    {
-        return view('auth.register');
-    }
+  public function postregister(RegisterFormRequest $request)
+  {
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    notificationMgs('success','Bạn đã đăng kí thành công');  
+    $user->save();
+    return redirect('index');
+  }   
 
-    //LOGIN
-    public function postlogin(LoginFormRequest $request)
+  // public function getregister()
+  // {
+  //   return view('auth.register');
+  // }
+
+  //LOGIN
+  public function postlogin(LoginFormRequest $request)
+  { 
+    if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
+    {   
+     notificationMgs('success','Bạn đã đăng nhập thành công'); 
+     return redirect('index');
+    }
+    else
     { 
-        if(Auth::attempt(['name'=>$request->name,'email'=>$request->email,'password'=>($request->password)]))
-        {
-            return redirect('index')->with('thongbao','Bạn đã đăng nhập thành công');
+     return redirect('login');
+    }
+  }
 
-        }
-        else
-        { 
-           return redirect('login');
-       }
-   }
-
-   public function getlogin()
-   {
+  public function getlogin()
+  {
     return view('auth.login');
-    }
+  }
 
-    public function listUsers()
-    {
-        $users = User::all();
-        return view('backend.listadmin.listusers')->with('users',$users);
-    }
+  public function logout()
+  {
+    Auth::logout();
+    return redirect('login');
+  }
 
-    public function deleteUser($id)
-    {
-        User::destroy($id);
-        redirect('listusers');
-    }
+  public function listUsers()
+  {
+    $users = User::all();
+    return view('backend.listadmin.listusers')->with('users',$users);
+  }
+
+  public function deleteUser($id)
+  {
+    User::destroy($id);
+    redirect('listusers');
+  }
 }
+
