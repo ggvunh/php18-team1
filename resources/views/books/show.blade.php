@@ -13,7 +13,7 @@
             <div class="single-item-body">
               <p class="single-item-title">{{ $book->name }}</p>
               <p class="single-item-price">
-                <span>Giá : {{ $book->price }}</span>
+                <span>Giá : {{ number_format($book->price) }}</span>
               </p>
               <p class="single-item-title">
                 <span>Ngôn Ngữ : {{ $book->language }}</span>

@@ -99,6 +99,14 @@ Route::get('index', function(){
 	return view('books.index');
 });
 Route::get('/books/{book}', 'BookController@show');
-Route::get('/books/authors/{name}', 'BookController@showauthor');
-Route::get('/books/topics/{name}', 'BookController@showtopic');
-Route::get('/books/publish/{name}', 'BookController@showpublish');
+Route::get('/books/authors/{id}', 'BookController@showauthor');
+Route::get('/books/topics/{id}', 'BookController@showtopic');
+Route::get('/books/publish/{id}', 'BookController@showpublish');
+
+Route::get('/books/{id}/addcart', 'CartController@addcart');
+Route::get('/loadCarts', 'CartController@loadCarts');
+Route::get('/cartshow', 'CartController@cartshow');
+Route::get('/deleteCart/{book}', 'CartController@deleteCart');
+Route::get('/cartcheckout', 'CartController@checkout');
+Route::get('/cartsave', 'CartController@checkout');
+Route::post('/cartsave', 'CartController@postsavecart');

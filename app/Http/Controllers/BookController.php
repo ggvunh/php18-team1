@@ -35,23 +35,23 @@ class BookController extends Controller
         return view('books.show')->with(['book' => $book, 'books' => $books])->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
     }
 
-    public function showtopic($name)
+    public function showtopic($id)
     {
-        $topic = Topic::where('name', $name)->first();
+        $topic = Topic::where('id', $id)->first();
         $books = $topic->book;
         return view('books.showtopic')->with(['topic' => $topic, 'books' => $books]);
     }
 
-    public function showauthor($name)
+    public function showauthor($id)
     {
-        $author = Author::where('name', $name)->first();
+        $author = Author::where('id', $id)->first();
         $books = $author->book;
         return view('books.showauthor')->with(['author' => $author, 'books' => $books]);
     }
 
-    public function showpublish($name)
+    public function showpublish($id)
     {
-        $publish = PublishCompany::where('name', $name)->first();
+        $publish = PublishCompany::where('id', $id)->first();
         $books = $publish->book;
         return view('books.showpublish')->with(['publish' => $publish, 'books' => $books]);
     }
@@ -79,12 +79,12 @@ class BookController extends Controller
        		$input['image']='';
        	}
         $author = Author::pluck('name','id');
-		$publish = PublishCompany::pluck('name','id');
-		$topic = Topic::pluck('name','id');
-		$book = Book::create($input);
-		return redirect('/listbooks');
+    		$publish = PublishCompany::pluck('name','id');
+    		$topic = Topic::pluck('name','id');
+    		$book = Book::create($input);
+    		return redirect('/listbooks');
 	}
-    	
+
 	public function listBook()
 	{
 		$books = Book::all();
@@ -104,19 +104,19 @@ class BookController extends Controller
 	{
 		$book = Book::find($id);
 		$input = Input::all();
-        if ($request->hasFile('image')) 
-            {
-                $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
-                $input['image'] = $file_name;
-                $request->file('image')->move('upload', $file_name);
-                //delete img
-          			$a = $book['image'];
-          			$b = ('upload/'.$a);
-          			File::delete($b);
-          			// end delete
-          			$a = $file_name;
-            }
-            
+    if ($request->hasFile('image'))
+        {
+            $file_name = time() . '-' .$request->file('image')->getClientOriginalName();
+            $input['image'] = $file_name;
+            $request->file('image')->move('upload', $file_name);
+            //delete img
+      			$a = $book['image'];
+      			$b = ('upload/'.$a);
+      			File::delete($b);
+      			// end delete
+      			$a = $file_name;
+        }
+
     		$publish = PublishCompany::pluck('name','id');
     		$topic = Topic::pluck('name','id');
     		$book->update($input);
