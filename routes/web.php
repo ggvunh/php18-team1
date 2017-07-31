@@ -20,7 +20,7 @@ Route::get('/listusers','UserController@listUsers');
 //delete user
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
 // end delete user
-Route::get('/books', 'BookController@index');
+Route::get('/', 'BookController@index');
 Route::get('/books/search', 'BookController@searchbook');
 // list topics
 Route::get('/listtopics', 'TopicController@listTopics');
@@ -99,7 +99,24 @@ Route::group(['prefix'=>'user'], function(){
 	Route::post('login', 'UserController@postlogin');
 
 
-	Route::get('logout', 'UserController@logout');
+Route::get('/books/{book}', 'BookController@show');
+Route::get('/books/authors/{id}', 'AuthorController@showauthor');
+Route::get('/books/topics/{id}', 'TopicController@showtopic');
+Route::get('/books/publish/{id}', 'BookController@showpublish');
+Route::get('/books/authors/{name}', 'BookController@showauthor');
+Route::get('/books/topics/{name}', 'BookController@showtopic');
+Route::get('/books/publish/{name}', 'BookController@showpublish');
+// orders
+Route::get('listorders', 'OrderController@listOrders');
+Route::get('listordersuserid/{id}', 'OrderController@listOrdersUseId');
+Route::get('listorderdate/{order_date}', 'OrderController@ordersDate');
+Route::get('/orderdetailorderid/{id}','OrderController@orderDetailOrderId');
+Route::get('/orderspending', 'OrderController@ordersPending');
+Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
+Route::get('orderssent', 'OrderController@ordersSent');
+Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
+Route::post('/searchsinceto', 'OrderController@searchSinceToDate');
+// end orders	Route::get('logout', 'UserController@logout');
 
 	Route::get('/books/{book}', 'BookController@show');
 	Route::get('/books/authors/{name}', 'BookController@showauthor');

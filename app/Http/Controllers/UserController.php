@@ -14,19 +14,24 @@ use notificationMgs;
 
 class UserController extends Controller
 {   
-    public function getregister()
-    {
-        return view('auth.register');
-    }
-    public function postregister(RegisterFormRequest $request)
-    {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->phone = $request->phone;
-        $user->address = $request->address;
+    
+  public function getregister()
+  {
+    return view('auth.register');
+  }
 
+  public function postregister(RegisterFormRequest $request)
+  {
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    notificationMgs('success','Bạn đã đăng kí thành công');  
+    $user->save();
+    return redirect('index');
+  }   
 
         notificationMgs('success','Bạn đã đăng kí thành công');  
         $user->save();
@@ -39,26 +44,25 @@ class UserController extends Controller
         {   
            notificationMgs('success','Bạn đã đăng nhập thành công'); 
            return redirect('books');
-       }
-       else
-       { 
-           return redirect('login');
-       }
-   }
-   public function getlogin()
-   {
-   return view('auth.login');
-   }
-   public function logout()
-   {
+  public function getlogin()
+  {
+    return view('auth.login');
+  }
+  public function logout()
+  {
     Auth::logout();
     return redirect('books');
-   }
+  }
 
    //Sua thong tin nguoi dung
    public function info($id)
     {
       $user = User::find($id);
+  public function listUsers()
+  {
+    $users = User::all();
+    return view('backend.listadmin.listusers')->with('users',$users);
+  }
 
       return view('profile.info',['user'=>$user]);
     }

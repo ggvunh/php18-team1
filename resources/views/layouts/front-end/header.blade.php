@@ -81,34 +81,34 @@
   								<a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
   							</div>
   						</div>
-             <!-- </div> giỏ hang -->
-           </div> <!-- .cart -->
-         </div>
-       </div>
-       <div class="clearfix"></div>
-     </div> <!-- .container -->
-   </div> <!-- .header-body -->
-   <div class="header-bottom" style="background-color: #0277b8;">
-     <div class="container">
-      <a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
-      <div class="visible-xs clearfix"></div>
-      <nav class="main-menu">
-       <ul class="l-inline ov">
-        <li><a href=" {{ url('/books') }} ">Trang chủ</a></li>
-        <li><a href="#">Chủ Đề</a>
-         <ul class="sub-menu">
-          <li><a href="product_type.html">Văn Hóa</a></li>
-          <li><a href="product_type.html">Nghệ Thuật</a></li>
-          <li><a href="product_type.html">Kinh Tế</a></li>
-          <li><a href="product_type.html">Du Lịch</a></li>
-          <li><a href="product_type.html">Công Nghệ</a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">Giới thiệu</a></li>
-      <li><a href="contacts.html">Liên hệ</a></li>
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-</div> <!-- .container -->
-</div> <!-- .header-bottom -->
+  					<!-- </div> giỏ hang -->
+  				</div> <!-- .cart -->
+  			</div>
+  		</div>
+  		<div class="clearfix"></div>
+  	</div> <!-- .container -->
+  </div> <!-- .header-body -->
+  <div class="header-bottom" style="background-color: #0277b8;">
+  	<div class="container">
+  		<a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
+  		<div class="visible-xs clearfix"></div>
+  		<nav class="main-menu">
+  			<ul class="l-inline ov">
+  				<li><a href=" {{ url('/') }} ">Trang chủ</a></li>
+  				<li><a href="#">Chủ Đề</a>
+  					<ul class="sub-menu">
+  						<li><a href="product_type.html">Văn Hóa</a></li>
+  						<li><a href="product_type.html">Nghệ Thuật</a></li>
+  						<li><a href="product_type.html">Kinh Tế</a></li>
+              <li><a href="product_type.html">Du Lịch</a></li>
+              <li><a href="product_type.html">Công Nghệ</a></li>
+  					</ul>
+  				</li>
+  				<li><a href="about.html">Giới thiệu</a></li>
+  				<li><a href="contacts.html">Liên hệ</a></li>
+  			</ul>
+  			<div class="clearfix"></div>
+  		</nav>
+  	</div> <!-- .container -->
+  </div> <!-- .header-bottom -->
 </div>

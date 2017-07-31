@@ -37,19 +37,19 @@
 	<div class="form-group">
 	  {!! Form::label('topic_id', 'Topic') !!}
 	  <div class="form-controls">
-	    {!! Form::select('topic_id',$topic, 2, ['class' => 'form-control']) !!}
+	    {!! Form::select('topic_id',$topic, null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
 	<div class="form-group">
 	  {!! Form::label('author_id', 'Author') !!}
 	  <div class="form-controls">
-	    {!! Form::select('author_id',$author, 2, ['class' => 'form-control']) !!}
+	    {!! Form::select('author_id',$author, null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
 	<div class="form-group">
 	  {!! Form::label('publish_id', 'Publish Company') !!}
 	  <div class="form-controls">
-	    {!! Form::select('publish_id',$publish, 2, ['class' => 'form-control']) !!}
+	    {!! Form::select('publish_id',$publish, null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
 	{!! Form::submit('Save Book', ['class' => 'btn btn-primary pull-right']) !!}

@@ -9,11 +9,18 @@ use File;
 
 class TopicController extends Controller
 {
-    public function createTopic() 
+    public function createTopic()
     {
 		return view('backend.createtopic');
 	}
 
+  public function showtopic($id)
+  {
+      $topic = Topic::where('id', $id)->first();
+      $books = $topic->book;
+      return view('books.showtopic')->with(['topic' => $topic, 'books' => $books]);
+  }
+  
 	public function postCreateTopic(Request $request)
     {
         $input = Input::all();

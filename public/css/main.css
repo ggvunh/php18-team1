@@ -15,7 +15,16 @@
 .height{
 	min-height: 400px;
 }
-.padleft{
-	margin-left: 20px;
+.padtop{
+	margin-right: 40px;
+	margin-top: -50px;
+}
+.padright{
+	padding-right: 50px;
+}
+.padleftorder{
 	margin-top: -20px;
+}
+.paddtop{
+	margin-top: 0px;
 }
