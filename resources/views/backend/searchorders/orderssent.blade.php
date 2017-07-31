@@ -3,16 +3,16 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders User "{{$user->name}}"
+	        List Orders Sent
 	        <small>(All)</small>
 	      </h3>
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/createbook','method'=>'post', 'enctype' => 'multipart/form-data']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
-						  {!! Form::label('since', 'Since') !!}
+						  {!! Form::label('from', 'From') !!}
 						  <div class="form-controls">
 						    {!! Form::date('since', null, ['class' => 'form-control']) !!}
 						  </div>
@@ -50,20 +50,23 @@
 	                  <th>Order ID</th>
 	                  <th>Address</th>
 	                  <th>Note</th>
-	                  <th>Status Order</th>
-	                  <th>Date Delete</th>
+	                  <th>Shipping Status</th>
 	                </tr>
 	                </thead>
 	                <tbody>
 	                	@foreach ($orders as $order)
 			                <tr>
 			                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-			                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
+			                  <td>{{$order->order_date}}</td>
 			                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
 			                  <td>{{$order->address}}</td>
 			                  <td>{{$order->note}}</td>
-			                  <td>{{$order->status_order}}</td>
-			                  <td>{{$order->deleted_at}}</td>
+			                  <td class="text-center">
+			                  	 {!! Form::model($order, ['url' => 'statusorder0/' . $order->id,'method'=>'put']) !!}
+			                  	 	{!! Form::hidden('shipping_status', 0, ['class' => 'form-control']) !!}
+        							{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}    
+     							 {!! Form::close() !!}
+			                  </td>
 			                </tr>
 			            @endforeach
 	                </tbody>

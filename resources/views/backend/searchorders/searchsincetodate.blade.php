@@ -3,7 +3,7 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders User "{{$user->name}}"
+	        List Orders Since {{$since}} To {{$c}}
 	        <small>(All)</small>
 	      </h3>
 	    </div>
@@ -51,7 +51,6 @@
 	                  <th>Address</th>
 	                  <th>Note</th>
 	                  <th>Status Order</th>
-	                  <th>Date Delete</th>
 	                </tr>
 	                </thead>
 	                <tbody>
@@ -63,7 +62,6 @@
 			                  <td>{{$order->address}}</td>
 			                  <td>{{$order->note}}</td>
 			                  <td>{{$order->status_order}}</td>
-			                  <td>{{$order->deleted_at}}</td>
 			                </tr>
 			            @endforeach
 	                </tbody>
