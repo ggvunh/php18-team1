@@ -86,14 +86,18 @@ Route::get('/bookdelete/{id}', 'BookController@bookDelete');
 Route::get('/createbook', 'BookController@createBook');
 Route::post('/createbook','BookController@postCreateBook');
 // end create book
-Route::get('register','UserController@getregister');
-Route::post('register','UserController@postregister');
 
-Route::get('login', 'UserController@getlogin');
-Route::post('login', 'UserController@postlogin');
+//user
+Route::group(['prefix'=>'user'], function(){
+	Route::get('register','UserController@getregister');
+	Route::post('register','UserController@postregister');
+	Route::get('info/{id}', 'UserController@info');
+	Route::post('info/{id}', 'UserController@updateinfo');
+});
 
+	Route::get('login', 'UserController@getlogin');
+	Route::post('login', 'UserController@postlogin');
 
-Route::get('logout', 'UserController@logout');
 
 Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');
@@ -112,4 +116,16 @@ Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
 Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
 Route::post('/searchsinceto', 'OrderController@searchSinceToDate');
-// end orders
+// end orders	Route::get('logout', 'UserController@logout');
+
+	Route::get('/books/{book}', 'BookController@show');
+	Route::get('/books/authors/{name}', 'BookController@showauthor');
+	Route::get('/books/topics/{name}', 'BookController@showtopic');
+	Route::get('/books/publish/{name}', 'BookController@showpublish');
+
+Route::group(['prefix' => 'order'], function(){
+		Route::get('profile', 'ProfileController@index');
+		Route::get('list/{id}', 'ProfileController@orders');
+		Route::get('listdetail/{id}', 'ProfileController@getlistdetail');
+		Route::get('delete/{id}', 'ProfileController@getdelete');
+	});

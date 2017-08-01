@@ -3,7 +3,7 @@
 <div class="container">
 	<div id="content">
 
-		<form action="register" method="post" class="beta-form-checkout">
+		<form action="user/register" method="post" class="beta-form-checkout">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="row">
 				<div class="col-sm-3"></div>
@@ -22,35 +22,35 @@
 
 
 					<div class="form-group">
-						<label for="email">Email address*</label>
+						<label for="email">Email</label>
 						<input type="email" class="form-control"  name="email" required>
 					</div>
 
 					<div class="form-group">
-						<label for="name">Fullname*</label>
+						<label for="name">Tên</label>
 						<input type="text" class="form-control" name="name" required>
 					</div>
 
 					<div class="form-group">
-						<label for="adress">Address*</label>
+						<label for="adress">Địa chỉ</label>
 						<input type="text" class="form-control" name="address"  required>
 					</div>
 
 
 					<div class="form-group">
-						<label for="phone">Phone*</label>
+						<label for="phone">Số điện thoại</label>
 						<input type="text" class="form-control" name="phone" required>
 					</div>
 					<div class="form-group">
-						<label for="phone">Password*</label>
+						<label for="phone">Mật khẩu</label>
 						<input type="password" class="form-control" name="password" required>
 					</div>
 					<div class="form-group">
-						<label for="phone">Re password*</label>
+						<label for="phone">Nhập lại mật khẩu</label>
 						<input type="password" class="form-control" name="re_password" required>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-info btn-primary">Register</button>
+						<button type="submit" class="btn btn-info btn-primary">Đăng kí</button>
 					</div>
 				</div>
 				<div class="col-sm-3"></div>
