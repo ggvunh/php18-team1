@@ -9,7 +9,7 @@
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
 						  {!! Form::label('since', 'Since') !!}
