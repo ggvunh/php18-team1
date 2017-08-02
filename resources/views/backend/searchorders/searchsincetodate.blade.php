@@ -3,7 +3,7 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders Since {{$since}} To {{$c}}
+	        List Orders Since {{$since}} To {{$to}}
 	        <small>(All)</small>
 	      </h3>
 	    </div>

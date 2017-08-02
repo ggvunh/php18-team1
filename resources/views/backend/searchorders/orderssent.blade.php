@@ -9,10 +9,10 @@
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/createbook','method'=>'post', 'enctype' => 'multipart/form-data']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
-						  {!! Form::label('from', 'From') !!}
+						  {!! Form::label('since', 'Since') !!}
 						  <div class="form-controls">
 						    {!! Form::date('since', null, ['class' => 'form-control']) !!}
 						  </div>
@@ -29,7 +29,7 @@
 						  </div>
 						</div>   
 					</div>
-      			{!! Form::close() !!} 
+      			{!! Form::close() !!}  
              </div>
 	    </div>
 
@@ -62,10 +62,11 @@
 			                  <td>{{$order->address}}</td>
 			                  <td>{{$order->note}}</td>
 			                  <td class="text-center">
-			                  	 {!! Form::model($order, ['url' => 'statusorder0/' . $order->id,'method'=>'put']) !!}
+			                  	<a class="btn btn-primary btn-sm" href="{{url('statusorder0/'.$order->id)}}">Processed</a>
+			                  	 <!-- {!! Form::model($order, ['url' => 'statusorder0/' . $order->id,'method'=>'put']) !!}
 			                  	 	{!! Form::hidden('shipping_status', 0, ['class' => 'form-control']) !!}
         							{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}    
-     							 {!! Form::close() !!}
+     							 {!! Form::close() !!} -->
 			                  </td>
 			                </tr>
 			            @endforeach

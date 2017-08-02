@@ -108,8 +108,10 @@ Route::get('listordersuserid/{id}', 'OrderController@listOrdersUseId');
 Route::get('listorderdate/{order_date}', 'OrderController@ordersDate');
 Route::get('/orderdetailorderid/{id}','OrderController@orderDetailOrderId');
 Route::get('/orderspending', 'OrderController@ordersPending');
-Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
+// Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
+Route::get('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
-Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
-Route::post('/searchsinceto', 'OrderController@searchSinceToDate');
+// Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
+Route::get('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
+Route::get('/searchsinceto', 'OrderController@searchSinceToDate');
 // end orders
