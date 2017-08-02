@@ -4,4 +4,6 @@
 	    {!! Form::text('name', null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
-	{!! Form::submit('Save Topic', ['class' => 'btn btn-primary pull-right']) !!}
+	<div class="padright">
+	{!! Form::submit('Save Topic', ['class' => 'btn btn-primary pull-right btn-lg']) !!}
+	</div>

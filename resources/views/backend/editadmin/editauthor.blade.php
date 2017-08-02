@@ -3,9 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h1>
+          <h3 class="paddtop">
             Edit Author
-          </h1>
+          </h3>
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
@@ -16,9 +16,13 @@
     </div>  
   @stop
   @section('content')
-    <div class="col-md-8 col-md-offset-2 border">
-      {!! Form::model($author, ['url' => 'edit/author/' . $author->id,'method'=>'put']) !!}
-         @include('paticals.forms.authorform')         
-      {!! Form::close() !!}
-    </div>  
+    <section class="content padtop">
+      <div class="row">
+        <div class="col-md-12">
+          {!! Form::model($author, ['url' => 'edit/author/' . $author->id,'method'=>'put']) !!}
+             @include('paticals.forms.authorform')         
+          {!! Form::close() !!}
+        </div> 
+      </div>
+    </section> 
   @stop

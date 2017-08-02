@@ -3,9 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h1>
+          <h3 class="paddtop">
             List Topics
-          </h1>
+          </h3>
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
@@ -16,18 +16,45 @@
     </div>   
   @stop
   @section('content')
-    <div class="col-md-10 col-md-offset-1 border">
-      @foreach ($topics as $topic)
-        <div class="row borderlist">
-          <div class="col-sm-7">
-            <p class="h5">{{$topic->name}}</p>
+    <section class="content padtop">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped ">
+                <thead>
+                  <tr>
+                    <th>Name Topic</th>
+                    <th class="text-center">Features</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($topics as $topic)
+                    <tr>
+                      <td>{{$topic->name}}</td>
+                      <td class="text-center"><a href="{{url('/topicedit/'.$topic->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/topicdelete/'.$topic->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                    </tr>
+                  @endforeach  
+                </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Name Topic</th>
+                      <th class="text-center">Features</th>
+                    </tr>
+                  </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
           </div>
-          <div class="col-sm-3">
-          </div>
-          <div class="col-sm-2">
-            <p class="h5"><a href="{{url('/topicedit/'.$topic->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/topicdelete/'.$topic->id)}}" class="glyphicon glyphicon-trash">Delete</a></p>
-          </div> 
-        </div> 
-      @endforeach
-    </div>  
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
   @stop
