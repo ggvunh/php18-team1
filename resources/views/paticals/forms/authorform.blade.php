@@ -28,4 +28,6 @@
 	    {!! Form::textarea('story', null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
-	{!! Form::submit('Save Author', ['class' => 'btn btn-primary pull-right']) !!}
+	<div class="padright">
+	{!! Form::submit('Save Author', ['class' => 'btn btn-primary pull-right btn-lg']) !!}
+	</div>

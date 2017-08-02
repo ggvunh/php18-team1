@@ -52,4 +52,6 @@
 	    {!! Form::select('publish_id',$publish, null, ['class' => 'form-control']) !!}
 	  </div>
 	</div>
-	{!! Form::submit('Save Book', ['class' => 'btn btn-primary pull-right']) !!}
+	<div class="padright">
+	{!! Form::submit('Save Book', ['class' => 'btn btn-primary pull-right btn-lg']) !!}
+	</div>

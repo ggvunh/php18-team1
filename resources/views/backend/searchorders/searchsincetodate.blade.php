@@ -3,13 +3,13 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders Since {{$since}} To {{$c}}
+	        List Orders Since {{$since}} To {{$to}}
 	        <small>(All)</small>
 	      </h3>
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
 						  {!! Form::label('since', 'Since') !!}

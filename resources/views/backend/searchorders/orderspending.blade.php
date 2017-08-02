@@ -9,7 +9,7 @@
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
 						  {!! Form::label('since', 'Since') !!}
@@ -62,10 +62,11 @@
 			                  <td>{{$order->address}}</td>
 			                  <td>{{$order->note}}</td>
 			                  <td class="text-center">
-			                  	 {!! Form::model($order, ['url' => 'statusorder1/' . $order->id,'method'=>'put']) !!}
+			                  	<a class="btn btn-primary" href="{{url('statusorder1/'.$order->id)}}">Processed</a>
+			                  	 <!-- {!! Form::model($order, ['url' => 'statusorder1/' . $order->id, 'method'=>'put']) !!}
 			                  	 	{!! Form::hidden('shipping_status', 1, ['class' => 'form-control']) !!}
         							{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}    
-     							 {!! Form::close() !!}
+     							 {!! Form::close() !!} -->
 			                  </td>
 			                </tr>
 			            @endforeach

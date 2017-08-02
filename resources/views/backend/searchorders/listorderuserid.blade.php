@@ -3,7 +3,7 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders User "{{$user->name}}"
+	        List Orders User
 	        <small>(All)</small>
 	      </h3>
 	    </div>
