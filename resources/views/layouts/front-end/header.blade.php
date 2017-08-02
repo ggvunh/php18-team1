@@ -16,7 +16,7 @@
   		<div class="clearfix"></div>
   	</div> <!-- .container -->
   </div> <!-- .header-top -->
-  <div class="header-body">
+  <!-- <div class="header-body">
   	<div class="container beta-relative">
   		<div class="pull-left">
   			 <a href="index.html" id="logo"><img src="front-end/assets/dest/images/logo-book.jpg" width="200px" alt=""></a>
@@ -30,17 +30,17 @@
     				    </form>
     			  </div>
         <ul class="top-details menu-beta l-inline">
-         @if(Auth::check()) 
+         @if(Auth::check())
          <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{Auth::user()->name}}</a></li>
          <li><a href="{{ url('/logout') }}"></span>Đăng xuất</a></li>
-         @else   
+         @else
          <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Đăng kí</a></li>
-         <li><a href="{{ url('/login') }}">Đăng nhập</a></li>       
+         <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
          @endif
        </ul>
      </div>
      <div class="clearfix"></div>
-   </div> <!-- .container -->
+   </div> <!-- .container --> 
  </div> <!-- .header-top -->
  <div class="header-body">
    <div class="container beta-relative">
@@ -61,7 +61,6 @@
                   <div class="beta-select" id = "cart"><i class="fa fa-shopping-cart"></i><span id="count">Giỏ Hàng ({{ \Cart::count() }})</span> <i class="fa fa-chevron-down"></i></div>
                   <ul class="beta-dropdown cart-body">
                         <div class="cart-item">
-  						</div>
 
                         </div>
                         <div class="cart-caption">

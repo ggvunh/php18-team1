@@ -61,11 +61,11 @@ class CartController extends Controller
           foreach($order_detail as $item){
             OrderDetail::create(['quantity' => $item->qty, 'price' => $item->price, 'book_id' => $item->id, 'order_id' => $order->id]);
           }
-      }else
-      {
-          // MsgBox("Bạn có chắc muốn hủy đơn hàng?", vbOkCancel, "Thông Báo!");
+      // }else
+      // {
+      //      MsgBox("Bạn có chắc muốn hủy đơn hàng?", vbOkCancel, "Thông Báo!");
       }
       Cart::destroy();
-      return redirect('/books');
+      return redirect('/');
     }
 }

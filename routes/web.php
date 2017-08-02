@@ -100,8 +100,6 @@ Route::get('/books/authors/{id}', 'AuthorController@showauthor');
 Route::get('/books/topics/{id}', 'TopicController@showtopic');
 Route::get('/books/publish/{id}', 'BookController@showpublish');
 
-Route::get('/books/{id}/addcart', 'CartController@addcart');
-Route::get('/loadCarts', 'CartController@loadCarts');
 // orders
 Route::get('listorders', 'OrderController@listOrders');
 Route::get('listordersuserid/{id}', 'OrderController@listOrdersUseId');
@@ -112,7 +110,11 @@ Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
 Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
 Route::post('/searchsinceto', 'OrderController@searchSinceToDate');
-// end ordersRoute::get('/cartshow', 'CartController@cartshow');
+// end orders
+//cart
+Route::get('/cartshow', 'CartController@cartshow');
+Route::get('/books/{id}/addcart', 'CartController@addcart');
+Route::get('/loadCarts', 'CartController@loadCarts');
 Route::get('/deleteCart/{book}', 'CartController@deleteCart');
 Route::get('/cartcheckout', 'CartController@checkout');
 Route::get('/cartsave', 'CartController@checkout');

@@ -29,7 +29,7 @@
                             </p>
                           </div>
                           <div class="single-item-caption">
-                            <a class="add-to-cart pull-left" onclick="addCart({{ $book->id }})" name = "kick"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="#" class="add-to-cart pull-left" onclick="addCart({{ $book->id }})" name = "kick"><i class="fa fa-shopping-cart"></i></a>
                             <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Details <i class="fa fa-chevron-right"></i></a>
                             <div class="clearfix"></div>
                           </div>
