@@ -29,6 +29,7 @@
               <table id="example1" class="table table-bordered table-striped ">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Name Public Company</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -39,6 +40,7 @@
                 <tbody>
                   @foreach ($publishcompanies as $publishcompany)
                     <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
                       <td>{{$publishcompany->name}}</td>
                       <td>{{$publishcompany->email}}</td>
                       <td>0{{$publishcompany->phone}}</td>
@@ -49,6 +51,7 @@
                 </tbody>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>Name Public Company</th>
                       <th>Email</th>
                       <th>Phone</th>

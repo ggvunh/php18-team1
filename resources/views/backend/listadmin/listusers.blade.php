@@ -7,6 +7,16 @@
             List Users
           </h3>
         </div>
+        <div class="col-md-3">
+          {!! Form::open(['url' => '/searchuser','method'=>'get']) !!}
+            <div class="input-group">
+              {!! Form::text('key', null, ['class' => 'form-control','placeholder'=>'seach user...']) !!}
+              <span class="input-group-btn">
+                {{ Form::button('<i class="fa fa-search"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
+              </span>
+            </div>
+          {!! Form::close() !!}
+        </div>
       </div>
     </div>   
   @stop
@@ -24,6 +34,7 @@
               <table id="example1" class="table table-bordered table-striped ">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Name User</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -34,7 +45,8 @@
                 <tbody>
                   @foreach ($users as $user)
                     <tr>
-                      <td>{{$user->name}}</td>
+                      <td class="text-center">{{ $loop->iteration }}</td>
+                      <td><a href="{{url('/listordersuserid/'.$user->id)}}">{{$user->name}}</a></td>
                       <td>{{$user->email}}</td>
                       <td>0{{$user->phone}}</td>
                       <td>{{$user->address}}</td>
@@ -44,6 +56,7 @@
                 </tbody>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>Name User</th>
                       <th>Email</th>
                       <th>Phone</th>
@@ -60,5 +73,14 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-8 paginate">
+          @if(isset($key))
+            {!! $users->appends(['key'=> $key])->links()!!}
+          @else
+            {!! $users->links()!!}
+          @endif  
+        </div>
+      </div>
     </section>
   @stop

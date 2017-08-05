@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use Hash;
 use notificationMgs;
@@ -44,11 +45,14 @@ class UserController extends Controller
     {   
      notificationMgs('success','Bạn đã đăng nhập thành công'); 
      return redirect('/');
-   }}
-   public function getlogin()
-   {
+    }
+  }
+
+  public function getlogin()
+  {
     return view('auth.login');
   }
+
   public function logout()
   {
     Auth::logout();
@@ -57,7 +61,7 @@ class UserController extends Controller
 
   public function listUsers()
   {
-    $users = User::all();
+    $users = User::paginate(10);
     return view('backend.listadmin.listusers')->with('users',$users);
   }
       //Sua thong tin nguoi dung
@@ -65,6 +69,7 @@ class UserController extends Controller
   {   $user = User::find($id);
     return view('profile.info',['user'=>$user]);
   }
+
   public function updateinfo(Request $request,$id)
   { 
     $user = User::find($id); 
@@ -91,5 +96,14 @@ class UserController extends Controller
         //notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
     $user->save();
     return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
+  }
+
+  public function searchUser()
+  {
+    $input = Input::all();
+    $key = $input['key'];
+    $users = User::where('name','like','%'.$key.'%')->
+                    orWhere('email','like','%'.$key.'%')->paginate(10);
+    return view('backend.listadmin.listusers')->with('users',$users)->with('key',$key);
   }
 }

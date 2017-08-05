@@ -45,6 +45,7 @@
 	              <table id="example1" class="table table-bordered table-striped">
 	                <thead>
 	                <tr>
+	                  <th class="text-center"></th>
 	                  <th>Order ID</th>
 	                  <th>Name Books</th>
 	                  <th>Quantity</th>
@@ -55,6 +56,7 @@
 	                <tbody>
 	                	@foreach ($orderdetails as $orderdetail)
 			                <tr>
+			                  <td class="text-center">{{ $loop->iteration }}</td>
 			                  <td>{{$orderdetail->order->id}}</td>
 			                  <td>{{$orderdetail->book->name}}</td>
 			                  <td class="text-right">{{$orderdetail->quantity}}</td>
@@ -65,6 +67,7 @@
 	                </tbody>
 	                <tfoot>
 	                	<tr>
+	                	  <th class="text-center"></th>
 		                  <th></th>
 		                  <th></th>
 		                  <th></th>

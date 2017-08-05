@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 Route::get('/search', 'SearchController@searchAll');
 //list users
 Route::get('/listusers','UserController@listUsers');
+Route::get('/searchuser', 'UserController@searchUser');
 // end list users
 //delete user
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
