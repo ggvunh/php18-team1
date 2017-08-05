@@ -64,7 +64,7 @@ class OrderController extends Controller
 
     public function ordersSent()
     {
-        $orders = Order::where('shipping_status','=','1')->get();
+        $orders = Order::where('shipping_status','=','1')->paginate(3);
         return view('backend.searchorders.orderssent')->with('orders', $orders);
     }
 
@@ -81,7 +81,7 @@ class OrderController extends Controller
         return redirect('/orderssent');
     } 
 
-    public function searchSinceToDate(Request $request)
+    public function searchSinceToDate()
     {
         // $input = Input::all();
         // $since = $input['since'];
@@ -97,7 +97,19 @@ class OrderController extends Controller
         $input = Input::all();
         $since = $input['since'];
         $to = $input['to'];
-        $orders = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->get();
-        return view('backend.searchorders.searchsincetodate')->with('orders', $orders)->with('since', $since)->with('to', $to);
+        $orders = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->paginate(2);
+        $orderssums = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->get();
+        $count = count($orderssums);
+        $sum = 0;
+        foreach ($orderssums as $order) {
+            $id_order = $order->id;
+            $orderdetails = Orderdetail::where('order_id','=',$id_order)->get();
+            foreach ($orderdetails as $orderdetail) {
+              $sum += $orderdetail['price'] * $orderdetail['quantity'];  
+            }
+        }
+        
+
+        return view('backend.searchorders.searchsincetodate')->with('orders', $orders)->with('since', $since)->with('to', $to)->with('sum', $sum)->with('count', $count);
     }  
 }

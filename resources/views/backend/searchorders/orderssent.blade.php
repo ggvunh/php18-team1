@@ -80,5 +80,10 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
+      <div class="row">
+	              	<div class="col-xs-4 col-xs-offset-8 paginate">
+	              		{!! $orders->links() !!}
+	              	</div>
+	              </div>
     	</section> 
   @stop
