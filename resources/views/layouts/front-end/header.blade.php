@@ -9,6 +9,9 @@
   		</div>
   		<div class="pull-right auto-width-right">
   			<ul class="top-details menu-beta l-inline">
+
+        {{-- @if(Auth::chech()->is_admin ==1)
+        <a href="{{ url('/listorders') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> --}}
          @if(Auth::check()) 
          <li><a href="{{ url('order/profile') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{Auth::user()->name}}</a></li>
          <li><a href="{{ url('/logout') }}"></span>Đăng xuất</a></li>

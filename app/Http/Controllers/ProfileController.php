@@ -16,14 +16,12 @@ class ProfileController extends Controller
     public function orders()
      {	
     	 $user_id = Auth::user()->id;
-     	 $order = Order::all()->where('user_id', $user_id);
+     	 $order = Order::withTrashed()->where('user_id', $user_id)->get();
      	 return view('profile.orders',['order'=>$order]);
     }
     public function getlistdetail($id)
     {	
-     
-       $orderdetail = OrderDetail::find($id);
-
+        $orderdetail = OrderDetail::where('order_id', '=', $id)->get();
     	return view('profile.orderdetail',['orderdetail'=>$orderdetail]);
      }
     public function getdelete($id)
@@ -38,7 +36,7 @@ class ProfileController extends Controller
         else
         {    
             notificationMgs('success','Bạn đã hủy đơn hàng thành công'); 
-            $order->forcedelete();
+            $order->delete();
 
             return redirect('order/list/'.Auth::user()->id);
         }

@@ -59,8 +59,9 @@ Route::get('/publishcompanydelete/{id}', 'PublishCompanyController@publishCompan
 Route::get('/listauthors','AuthorController@listAuthor');
 Route::get('/sdlistauthors', 'AuthorController@sdListAuthors');
 Route::get('/restoreauthor/{id}', 'AuthorController@restoreAuthor');
+Route::get('/dashboard', 'DashboardController@index');
 //end list author
-//edit author
+//edit authoredit
 Route::get('/authoredit/{id}','AuthorController@editAuthor');
 Route::put('edit/author/{id}','AuthorController@putEditAuthor');
 //end edit author
@@ -90,20 +91,6 @@ Route::post('/createbook','BookController@postCreateBook');
 Route::get('register','UserController@getregister');
 Route::post('register','UserController@postregister');
 
-Route::get('login', 'UserController@getlogin');
-Route::post('login', 'UserController@postlogin');
-//user
-Route::group(['prefix'=>'user'], function(){
-	Route::get('register','UserController@getregister');
-	Route::post('register','UserController@postregister');
-	Route::get('info/{id}', 'UserController@info');
-	Route::post('info/{id}', 'UserController@updateinfo');
-});
-
-Route::get('login', 'UserController@getlogin');
-Route::post('login', 'UserController@postlogin');
-
-Route::get('logout', 'UserController@logout');
 
 Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');
@@ -121,19 +108,53 @@ Route::get('/orderspending', 'OrderController@ordersPending');
 // Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
-// Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
-Route::get('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
-Route::get('/searchsinceto', 'OrderController@searchSinceToDate');
-// end orders	Route::get('logout', 'UserController@logout');
+Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
+Route::post('/searchsinceto', 'OrderController@searchSinceToDate');	
+
 
 Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{name}', 'BookController@showauthor');
 Route::get('/books/topics/{name}', 'BookController@showtopic');
 Route::get('/books/publish/{name}', 'BookController@showpublish');
 
+//using PDF export
+Route::get('listorders/getPDF', 'PDFController@getPDFlistorders');
+Route::get('listusers/getPDF', 'PDFController@getPDFlistusers');
+Route::get('orderspending/getPDF', 'PDFController@getPDForderspending');
+Route::get('orderssent/getPDF', 'PDFController@getPDForderssent');
+Route::get('listbooks/getPDF', 'PDFController@getPDFlistbooks');
+Route::get('listauthors/getPDF', 'PDFController@getPDFlistauthors');
+Route::get('listpublishcompanies/getPDF', 'PDFController@getPDFlistcompanies');
+Route::get('listtopics/getPDF', 'PDFController@getPDFlisttopics');
+
+   //using Excel export
+Route::get('listauthors/getExport', 'ExcelController@getExportauthors');
+Route::get('listbooks/getExport', 'ExcelController@getExportbooks');
+Route::get('listorders/getExport', 'ExcelController@getExportorders');
+Route::get('listtopics/getExport', 'ExcelController@getExporttoppics');
+Route::get('listpublishcompanies/getExport', 'ExcelController@getExportcompanies');
+Route::get('listusers/getExport', 'ExcelController@getExportusers');
+Route::get('orderspending/getExport', 'ExcelController@getExportorderspending');
+Route::get('orderssent/getExport', 'ExcelController@getExportorderssent');
+Route::get('order/list/{id}/getExport', 'ExcelController@getExportorder');
+
+//user
+Route::group(['prefix'=>'user'], function(){
+	Route::get('register','UserController@getregister');
+	Route::post('register','UserController@postregister');
+	Route::get('info/{id}', 'UserController@info');
+	Route::post('info/{id}', 'UserController@updateinfo');
+	Route::get('changepass/{id}', 'UserController@pass');
+	Route::post('changepass/{id}', 'UserController@changepass');
+});
+
+Route::get('login', 'UserController@getlogin');
+Route::post('login', 'UserController@postlogin');
+Route::get('logout', 'UserController@logout');
+
 Route::group(['prefix' => 'order'], function(){
-		Route::get('profile', 'ProfileController@index');
-		Route::get('list/{id}', 'ProfileController@orders');
-		Route::get('listdetail/{id}', 'ProfileController@getlistdetail');
-		Route::get('delete/{id}', 'ProfileController@getdelete');
-	});
+	Route::get('profile', 'ProfileController@index');
+	Route::get('list/{id}', 'ProfileController@orders');
+	Route::get('/{id}/orderdetail', 'ProfileController@getlistdetail');
+	Route::get('delete/{id}', 'ProfileController@getdelete');
+});
