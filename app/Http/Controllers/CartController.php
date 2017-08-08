@@ -52,7 +52,7 @@ class CartController extends Controller
       if($submit == 'submit')
       {
           $phone = $req->Input('phone');
-          dd($phone);
+          //dd($phone);
           $datetime = new DateTime('now');
           $order = Order::create(['order_date' => $datetime, 'status_order' => 1, 'phone' => $req->Input('phone'), 'shipping_status' => 0,
                                   'note' => $req->Input('notes'), 'address' => $req->Input('adress'), 'user_id' => Auth::user()->id]);

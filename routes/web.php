@@ -207,7 +207,7 @@ Route::post('register','UserController@postregister');
 		Route::get('/cartsave', 'CartController@checkout');
 		Route::post('/cartsave', 'CartController@postsavecart');
 	});
-});
+
 Route::get('/', 'BookController@index');
 //cart
 Route::get('/cartshow', 'CartController@cartshow');
