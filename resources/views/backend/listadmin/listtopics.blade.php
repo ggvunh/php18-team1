@@ -29,6 +29,7 @@
               <table id="example1" class="table table-bordered table-striped ">
                 <thead>
                   <tr>
+                    <th class="text-center"></th>
                     <th>Name Topic</th>
                     <th class="text-center">Features</th>
                   </tr>
@@ -36,6 +37,7 @@
                 <tbody>
                   @foreach ($topics as $topic)
                     <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
                       <td>{{$topic->name}}</td>
                       <td class="text-center"><a href="{{url('/topicedit/'.$topic->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/topicdelete/'.$topic->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
@@ -43,6 +45,7 @@
                 </tbody>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>Name Topic</th>
                       <th class="text-center">Features</th>
                     </tr>

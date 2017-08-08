@@ -29,6 +29,7 @@
               <table id="example1" class="table table-bordered table-striped ">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Name Author</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -39,6 +40,7 @@
                 <tbody>
                   @foreach ($authors as $author)
                     <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
                       <td>{{$author->name}}</td>
                       <td>{{$author->email}}</td>
                       <td>0{{$author->phone}}</td>
@@ -49,6 +51,7 @@
                 </tbody>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>Name Author</th>
                       <th>Email</th>
                       <th>Phone</th>

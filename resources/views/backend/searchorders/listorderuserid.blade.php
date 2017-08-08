@@ -4,12 +4,15 @@
     	<div class="col-md-6">
 	      <h3>
 	        List Orders User
+	        @if(isset($user))"{{$user->name}}"
+	        @else
 	        <small>(All)</small>
+	        @endif
 	      </h3>
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
 						  {!! Form::label('since', 'Since') !!}
@@ -57,6 +60,7 @@
 	                <tbody>
 	                	@foreach ($orders as $order)
 			                <tr>
+			                  <td>{{ $loop->iteration }}</td>
 			                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
 			                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
 			                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
