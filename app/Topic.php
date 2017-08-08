@@ -9,8 +9,8 @@ class Topic extends Model
 {
 	use SoftDeletes;
     	protected $date = ['deleted_at'];
-		public $timestamp = false;
-		protected $fillable = ['name'];
+			public $timestamp = false;
+			protected $fillable = ['name'];
     	protected $table = 'topics';
 
 		public function book()
