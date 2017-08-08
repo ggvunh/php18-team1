@@ -1,37 +1,44 @@
 $( document ).ready(function() {
-    $('.btn-number').click(function(e){
-        e.preventDefault();
+  function ud_find_text(self) {
+      var children = self.parentNode.getElementsByTagName('input');
+      for (var i = 0; i < children.length; i++) {
+          if (children[i].getAttribute('type') == 'text') {
+              return children[i];
+          }
+      }
+  }
 
-        var fieldName = $(this).attr('data-field');
-        var type      = $(this).attr('data-type');
-        var input = $("input[name='"+fieldName+"']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
-            if(type == 'minus') {
-                var minValue = parseInt(input.attr('min'));
-                if(!minValue) minValue = 1;
-                if(currentVal > minValue) {
-                    input.val(currentVal - 1).change();
-                }
-                if(parseInt(input.val()) == minValue) {
-                    $(this).attr('disabled', true);
-                }
+  function ud_inc(self) {
+      var text = ud_find_text(self);
+      text.value++;
+  }
 
-            } else if(type == 'plus') {
-                var maxValue = parseInt(input.attr('max'));
-                if(!maxValue) maxValue = 9999999999999;
-                if(currentVal < maxValue) {
-                    input.val(currentVal + 1).change();
-                    // $('#count').replaceWith('<span class="amount" id="amount">' + data->subtotal() + '</span> ');
-                }
-                if(parseInt(input.val()) == maxValue) {
-                    $(this).attr('disabled', true);
-                }
+  function ud_dec(self) {
+      var text = ud_find_text(self);
+      if (text.value > 0) text.value--;
+  }
 
-            }
-        } else {
-            input.val(0);
-        }
-    });
+    function down(rowId){
+        $root = '{{ url('/') }}';
+        $.get($root + rowId + '/' + 'downqty', function(data, status){
+            var subtotal = data.subtotal;
+            //console.log(data);
+            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
+            $('#total').replaceWith('<span id="total">' + data.total + '</span>');
+        });
+    }
+
+    function up(rowId){
+        //console.log(rowId);
+        $root = '{{ url('/') }}';
+        $.get($root + rowId + '/' + 'upqty', function(data, status){
+            var subtotal = data.subtotal;
+            //console.log(data);
+            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
+            $('#total').replaceWith('<span id="total">' + data.total + '</span>');
+        });
+    }
 
 });

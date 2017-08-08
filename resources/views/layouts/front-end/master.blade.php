@@ -30,15 +30,15 @@
 	@include('themes.alert')
 	@yield('content')
 	@include('layouts.front-end.footer')
-	
-	<script src="js/jquery.min.js"></script>
+
+	<!-- <script src="js/jquery.min.js"></script> -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/my.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script>
+    <script src="js/my.js"></script> -->
 	@yield('script')
 </body>
 			<script src="front-end/assets/dest/js/jquery-3.2.1.min.js"></script>
-			<script src="front-end/assets/dest/js/cart.js"></script>
+			<!-- <script src="front-end/assets/dest/js/cart.js"></script> -->
 			<script src="front-end/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
 			<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 			<script src="front-end/assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
@@ -88,8 +88,8 @@
 
 								//console.log(data);
 							//   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
-								$('#count').replaceWith('<span id="count">Gi? H‡ng (' + data.count +')</span> ');
-								alert("–„ ThÍm V‡o Gi? H‡ng!");
+								$('#count').replaceWith('<span id="count">Gi·ªè H√†ng (' + data.count +')</span> ');
+								alert("ƒê√£ Th√™m V√†o Gi·ªè H√†ng!");
 							});
 					}
 
@@ -101,10 +101,56 @@
 						//
 						// 		//console.log(data);
 						// //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
-						// 	$('#count').replaceWith('<span id="count">Gi? H‡ng (' + data.count +')</span> ');
-						// 	alert("–„ XÛa Kh?i Gi? H‡ng!");
+						// 	$('#count').replaceWith('<span id="count">Gi? HÔøΩng (' + data.count +')</span> ');
+						// 	alert("ÔøΩÔøΩ XÔøΩa Kh?i Gi? HÔøΩng!");
 						// });
 					}
+
+					// $( document ).ready(function() {
+					  function ud_find_text(self) {
+					      var children = self.parentNode.getElementsByTagName('input');
+					      for (var i = 0; i < children.length; i++) {
+					          if (children[i].getAttribute('type') == 'text') {
+					              return children[i];
+					          }
+					      }
+					  }
+
+					  function ud_inc(self) {
+					      var text = ud_find_text(self);
+					      text.value++;
+					  }
+
+					  function ud_dec(self) {
+					      var text = ud_find_text(self);
+					      if (text.value > 0) text.value--;
+					  }
+
+					    function down(rowId){
+					        $root = '{{ url('/cart') }}';
+					        $.get($root + '/' + rowId + '/' + 'downqty', function(data, status){
+					            var subtotal = data.subtotal;
+											console.log(data);
+					            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+					            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
+											$('#total').replaceWith('<span id="total">' + data.total + '</span>');
+									});
+					    }
+
+					    function up(rowId){
+					        //console.log(rowId);
+					        $root = '{{ url('/cart') }}';
+					        $.get($root + '/' + rowId + '/' + 'upqty', function(data, status){
+					            var subtotal = data.subtotal;
+											//console.log(data);
+					            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+					            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
+											$('#total').replaceWith('<span id="total">' + data.total + '</span>');
+									});
+					    }
+
+					// });
+
 			</script>
 		</body>
 </html>

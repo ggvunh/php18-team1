@@ -56,7 +56,7 @@ class CartController extends Controller
           $datetime = new DateTime('now');
           $order = Order::create(['order_date' => $datetime, 'status_order' => 1, 'phone' => $req->Input('phone'), 'shipping_status' => 0,
                                   'note' => $req->Input('notes'), 'address' => $req->Input('adress'), 'user_id' => Auth::user()->id]);
-          dd($order);
+          //dd($order);
           $order_detail = Cart::content();
           foreach($order_detail as $item){
             OrderDetail::create(['quantity' => $item->qty, 'price' => $item->price, 'book_id' => $item->id, 'order_id' => $order->id]);
@@ -67,5 +67,23 @@ class CartController extends Controller
       }
       Cart::destroy();
       return redirect('/');
+    }
+
+    public function downqty($rowId)
+    {
+        //dd($rowId);
+        $item = Cart::get($rowId);
+        Cart::update($rowId, $item->qty - 1);
+        $total = Cart::total();
+        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'total' => $total], 200);
+    }
+
+    public function upqty($rowId)
+    {
+      //dd($rowId);
+      $item = Cart::get($rowId);
+      Cart::update($rowId, $item->qty + 1);
+      $total = Cart::total();
+      return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'total' => $total], 200);
     }
 }

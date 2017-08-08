@@ -13,8 +13,8 @@ use Hash;
 use notificationMgs;
 
 class UserController extends Controller
-{   
-    
+{
+
   public function getregister()
   {
     return view('auth.register');
@@ -28,22 +28,22 @@ class UserController extends Controller
     $user->password = Hash::make($request->password);
     $user->phone = $request->phone;
     $user->address = $request->address;
-    notificationMgs('success','Bạn đã đăng kí thành công');  
+    notificationMgs('success','Bạn đã đăng kí thành công');
     $user->save();
     return redirect('index');
-  }   
+  }
 
-        notificationMgs('success','Bạn đã đăng kí thành công');  
+        notificationMgs('success','Bạn đã đăng kí thành công');
         $user->save();
         return redirect('books');
     }
     //LOGIN
-    public function postlogin(LoginFormRequest $request)
-    { 
-        if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
-        {   
-           notificationMgs('success','Bạn đã đăng nhập thành công'); 
-           return redirect('books');
+  public function postlogin(LoginFormRequest $request)
+  {
+      if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
+      {
+         notificationMgs('success','Bạn đã đăng nhập thành công');
+         return redirect('books');
   public function getlogin()
   {
     return view('auth.login');
@@ -67,8 +67,8 @@ class UserController extends Controller
       return view('profile.info',['user'=>$user]);
     }
     public function updateinfo(Request $request,$id)
-    { 
-        $user = User::find($id); 
+    {
+        $user = User::find($id);
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->address = $request->address;
@@ -89,8 +89,9 @@ class UserController extends Controller
             ]);
           $user->password = bcrypt('$request->changepassword');
         }
-        //notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
+        //notificationMgs('success','Bạn đã thay đổi thông tin thành công');
         $user->save();
         return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
     }
+
 }

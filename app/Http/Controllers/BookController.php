@@ -18,7 +18,10 @@ class BookController extends Controller
 
   public function index()
   {
-      $books = Book::paginate(16);
+      $books = Book::paginate(8);
+      $authors = Author::paginate(4);
+      $publishs = PublishCompany::paginate(4);
+      $topics = Topic::paginate(4);
       return view('books.index')->with('books', $books);
   }
 
@@ -47,7 +50,7 @@ class BookController extends Controller
 
 	public function postCreateBook(Request $request)
   {
-    $this->validate($request, 
+    $this->validate($request,
         ['name'=>'required|unique:books,min:3'],
         ['name.required'=>'chua nhap ten',
           'name.unique'=>'ten da ton tai',
@@ -70,7 +73,7 @@ class BookController extends Controller
     $topic = Topic::pluck('name','id');
     $book = Book::create($input);
     return redirect('/listbooks');
-  }  	 	
+  }
 
 	public function listBook()
 	{
