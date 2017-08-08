@@ -3,7 +3,7 @@
 <div class="container">
   <div class="breadcrumbs">
     <ol class="breadcrumb" id="breadcrumb">
-      <li><a href="{{ url('/books') }}">Trang chủ</a></li>
+      <li><a href="{{ url('/') }}">Trang chủ</a></li>
       <li class="active">Đặt hàng</li>
     </ol>
   </div>
@@ -23,34 +23,22 @@
   <div class="row">
     @include('profile.menu');
     <div class="col-sm-9">
-      <h2 class="page-header" align="center"><span style='color:green'>{{ucwords(Auth::user()->name)}}</span>, thông tin của bạn</h2>
+      <h2 class="page-header" align="center"><span style='color:green'>{{ucwords(Auth::user()->name)}}</span>, Mật khẩu của bạn</h2>
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <form action="user/info/{{ Auth::user()->id }}" method="post" class="beta-form-checkout">
+          <form action="user/changepass/{{ Auth::user()->id }}" method="post" class="beta-form-checkout">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <h4>Thay đổi thông tin</h4>
+            <h4>Thay đổi mật khẩu</h4>
             <div class="space20">&nbsp;</div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control"  name="email" value="{{ $user->email }}" required readonly="">
-              <span style="color:red">{{ $errors->first('email') }}</span>
-            </div>
-
-            <div class="form-group">
-              <label for="name">Tên</label>
-              <input type="text" class="form-control" name="name" value="{{ $user->name }}" required>
-              <span style="color:red">{{ $errors->first('name') }}</span>
-            </div>
-
-            <div class="form-group">
-              <label for="adress">Địa chỉ</label>
-              <input type="text" class="form-control" name="address" value="{{ $user->address }}" required>
-              <span style="color:red">{{ $errors->first('address') }}</span>
+              <label>Mật khẩu hiện tại</label>
+              <input type="password" class="form-control" name="oldPassword" required>
+              <span style="color:red">{{ $errors->first('old_password') }}</span>
             </div>
             <div class="form-group">
-              <label for="phone">Số điện thoại</label>
-              <input type="text" class="form-control" name="phone" value="{{ $user->phone }}" required>
-              <span style="color:red">{{ $errors->first('phone') }}</span>
+              <label>Mật khẩu mới</label>
+              <input type="password" class="form-control" name="newPassword" required>
+              <span style="color:red">{{ $errors->first('newPassword') }}</span>
             </div>
             <div class="form-group" align="center">
               <button type="submit" class="btn btn-info btn-primary">Thay đổi</button>

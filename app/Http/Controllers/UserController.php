@@ -8,89 +8,122 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\MessageBag;
+//use Illuminate\Support\Facades\Hash;
 use App\User;
 use Hash;
 use notificationMgs;
 
 class UserController extends Controller
 {   
-    
-  public function getregister()
-  {
+
+  public function getregister(){
     return view('auth.register');
   }
 
-  public function postregister(RegisterFormRequest $request)
-  {
-    $user = new User();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->phone = $request->phone;
-    $user->address = $request->address;
-    notificationMgs('success','Bạn đã đăng kí thành công');  
-    $user->save();
-    return redirect('index');
-  }   
-
-        notificationMgs('success','Bạn đã đăng kí thành công');  
-        $user->save();
-        return redirect('books');
-    }
-    //LOGIN
-    public function postlogin(LoginFormRequest $request)
-    { 
-        if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
-        {   
-           notificationMgs('success','Bạn đã đăng nhập thành công'); 
-           return redirect('books');
-  public function getlogin()
-  {
-    return view('auth.login');
-  }
-  public function logout()
-  {
-    Auth::logout();
-    return redirect('books');
-  }
-
-   //Sua thong tin nguoi dung
-   public function info($id)
+  public function postregister(RegisterFormRequest $request){
     {
-      $user = User::find($id);
-  public function listUsers()
-  {
-    $users = User::all();
-    return view('backend.listadmin.listusers')->with('users',$users);
+      $user = new User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->password = Hash::make($request->password);
+      $user->phone = $request->phone;
+      $user->address = $request->address;
+    }
+    {
+
+      Auth::check() == true;
+      notificationMgs('success','Bạn đã đăng kí thành công');  
+      $user->save();
+      return redirect('/');
+      
+      
+    }   
   }
 
-      return view('profile.info',['user'=>$user]);
+    //LOGIN
+  public function postlogin(LoginFormRequest $request){ 
+    if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
+    {   
+      $user = Auth::user();
+      if($user->is_admin == 0)
+      {
+       notificationMgs('success','Bạn đã đăng nhập thành công'); 
+       return redirect('/');
+     }else
+     {
+      notificationMgs('success','Bạn đã đăng nhập thành công');
+      return redirect('/orderspending');
     }
-    public function updateinfo(Request $request,$id)
-    { 
-        $user = User::find($id); 
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
+  }
+  else
+  {
+     notificationMgs('error','Bạn đăng nhập không thành công');
+     return redirect('/login');
+  }
+}
+public function getlogin(){
+  return view('auth.login');
+}
+public function logout()
+{
+  Auth::logout();
+  return redirect('/');
+}
 
-        if($request->changepassword)
-        {
-          $this->validate($request,
-            [
-              'changepassword' => 'required|min:3|max:32',
-              're_password' => 'required'
-            ],
-            [
-              'password.required' => 'Bạn chưa nhập mật khâu',
-              'password.min' => 'Mật khẩu phải nhiều hơn 3 kí tự',
-              'password.max' => 'Mật khẩu không được quá 32 kí tự',
-              're_password.require' => 'Bạn chưa nhập lại mật khẩu',
-              're_password.same' => 'Mật khẩu nhập lại chưa khớp'
-            ]);
-          $user->password = bcrypt('$request->changepassword');
-        }
-        //notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
-        $user->save();
-        return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
-    }
+public function listUsers(){
+  $users = User::all();
+  return view('backend.listadmin.listusers')->with('users',$users);
+}
+      //Sua thong tin nguoi dung
+public function info($id)
+{   $user = User::find($id);
+  return view('profile.info',['user'=>$user]);
+}
+public function updateinfo(Request $request,$id)
+{ 
+  $user = User::find($id); 
+  $user->name = $request->name;
+  $user->phone = $request->phone;
+  $user->address = $request->address;
+
+  // if($request->changepassword)
+  // {
+  //   $this->validate($request,
+  //     [
+  //     'changepassword' => 'required|min:3|max:32',
+  //     're_password' => 'required'
+  //     ],
+  //     [
+  //     'password.required' => 'Bạn chưa nhập mật khâu',
+  //     'password.min' => 'Mật khẩu phải nhiều hơn 3 kí tự',
+  //     'password.max' => 'Mật khẩu không được quá 32 kí tự',
+  //     're_password.require' => 'Bạn chưa nhập lại mật khẩu',
+  //     're_password.same' => 'Mật khẩu nhập lại chưa khớp'
+  //     ]);
+  //   $user->password = bcrypt('$request->changepassword');
+  // }
+  //       //notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
+  $user->save();
+  return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
+  }
+  public function pass($id)
+  {   
+  $user = User::find($id);
+  return view('profile.changepassword',['user'=>$user]);
+  }
+  public function changepass(Request $request,$id)
+  {  
+    $oldPassword = $request->oldPassword;
+    $newPassword = $request->newPassword;
+
+    if(!Hash::check($oldPassword, Auth::user()->password)){
+      echo "Mật khâu bạn nhập không đúng";
+     }
+     else{ 
+      $request->user()->fill(['password' => Hash::make($newPassword)])->save();
+      //echo 'done';//update password into user table
+     };
+  notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
+  return back();
+  }
 }

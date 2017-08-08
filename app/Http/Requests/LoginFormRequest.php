@@ -25,18 +25,17 @@ class LoginFormRequest extends FormRequest
     {
         return [
         'email' => 'required|email',
-        'password' => 'required|min:6|max:20|same:password',
+        'password' => 'required|min:6|max:20',
         ];
     }
     public function messages()
     {
         return [
+        'email.required' => 'Bạn chưa nhập email',
         'email.email' => 'Email không đúng định dạng',
         'password.required' => 'Bạn chưa nhâp password',
-        'password.confirmed' => 'Password bạn nhập chưa đúng',
         'password.min' => 'Mật khẩu phải có ít nhất 6 kí tự',
         'password.max' => 'Mật khẩu chỉ không được quá 20 kí tự',
-        'password.same' => 'Mật khẩu nhập không đúng'
         ];
     }
 }

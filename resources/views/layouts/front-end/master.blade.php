@@ -24,17 +24,15 @@
 	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	<link rel="stylesheet" title="style" href="/css/app.css">
+	
 </head>
 <body>
 	@include('layouts.front-end.header')
 	@include('themes.alert')
 	@yield('content')
 	@include('layouts.front-end.footer')
-	
-	<script src="js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/my.js"></script>
 	@yield('script')
 </body>
 </html>

@@ -11,38 +11,68 @@
 
       <div class="x_content">
         <div class="table-responsive">
-          <table class="table table-bordered jambo_table bulk_action">
+         {{--  <table class="table table-bordered jambo_table bulk_action">
+          @foreach ($orderdetail as $element)
+
+          <p> 'Mã đơn hàng'.{{$element->id}}</p>
+        </br>
               <tr class="headings">
                 <th class="column-title">Mã đơn hàng</th>
-                <td class=" ">{{ $orderdetail->id }}</td>
+                <td class=" ">{{ $element->id }}</td>
               </tr>
               <tr>
                 <th class="column-title">Số lượng </th>
-                <td class=" ">{{ $orderdetail->quantity }}</td>
+                <td class=" ">{{ $element->quantity }}</td>
               </tr>
               <tr>
                 <th class="column-title">Đơn giá</th>
-                <td class=" ">{{ $orderdetail->price}}</td>
+                <td class=" ">{{ $element->price}}</td>
               </tr>
               <tr>
                 <th class="column-title">Tên sách</th>
-                <td class=" ">{{ $orderdetail->book->name }}</td>
+                <td class=" ">{{ $element->book->name }}</td>
               </tr>
               <tr>
                 <th class="column-title">Ngày đặt</th>
 
-                <td class=" ">{{ $orderdetail->order->created_at}}</td>
+                <td class=" ">{{ $element->order->created_at}}</td>
               </tr>
               <tr>
                 <th class="column-title">Update_at</th>
-                <td class=" ">{{ $orderdetail->updated_at }}</td> 
+                <td class=" ">{{ $element->updated_at }}</td> 
               </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          @endforeach
+        </table> --}}
+        <table class="table table-bordered table-responsive jambo_table bulk_action">
+          <thead>
+            <tr class="headings">
+              <th class="column-title">Mã đơn hàng</th>
+              <th class="column-title">Số lượng</th>
+              <th class="column-title">Đơn giá</th>
+              <th class="column-title">Tên sách</th>
+              <th class="column-title">Ngày đặt hàng</th>
+              <th class="column-title">Ngày sửa</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @foreach ($orderdetail as $element)
+            <tr>
+             <td class=" ">{{ $element->id }}</td>
+             <td class=" ">{{ $element->quantity }}</td>
+             <td class=" ">{{ $element->price}}</td>
+             <td class=" ">{{ $element->book->name }}</td>
+             <td class=" ">{{ $element->order->created_at}}</td>
+             <td class=" ">{{ $element->updated_at }}</td>   
+           </tr>
+           @endforeach
+         </tbody>                   
+       </table>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
 <!-- /page content -->
 </div>  
 @stop
