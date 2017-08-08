@@ -166,10 +166,20 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
             <li><a href="{{url('/listorders')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders</a></li>
             <li><a href="{{url('/orderspending')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Pending</a></li>
             <li><a href="{{url('/orderssent')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Sent</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Users</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
           </ul>
         </li>
       </ul>

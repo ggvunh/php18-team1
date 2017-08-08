@@ -3,9 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h1>
+          <h3 class="paddtop">
             Edit Topic
-          </h1>
+          </h3>
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
@@ -16,9 +16,13 @@
     </div>  
   @stop
   @section('content')
-    <div class="col-md-8 col-md-offset-2 border">
-      {!! Form::model($topic, ['url' => 'edit/topic/' . $topic->id,'method'=>'put']) !!}
-        @include('paticals.forms.topicform')
-      {!! Form::close() !!}
-    </div>  
+     <section class="content padtop">
+      <div class="row">
+        <div class="col-md-12">
+          {!! Form::model($topic, ['url' => 'edit/topic/' . $topic->id,'method'=>'put']) !!}
+            @include('paticals.forms.topicform')
+          {!! Form::close() !!}
+        </div> 
+      </div>
+    </section> 
   @stop

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\MessageBag;
-//use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use Hash;
 use notificationMgs;
@@ -125,5 +125,14 @@ public function updateinfo(Request $request,$id)
      };
   notificationMgs('success','Bạn đã thay đổi thông tin thành công');  
   return back();
+  }
+
+  public function searchUser()
+  {
+    $input = Input::all();
+    $key = $input['key'];
+    $users = User::where('name','like','%'.$key.'%')->
+                    orWhere('email','like','%'.$key.'%')->paginate(10);
+    return view('backend.listadmin.listusers')->with('users',$users)->with('key',$key);
   }
 }

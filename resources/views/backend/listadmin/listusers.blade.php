@@ -20,6 +20,16 @@
           <li class="divider"></li>
           <li></li>
         </ul>
+        <div class="col-md-3">
+          {!! Form::open(['url' => '/searchuser','method'=>'get']) !!}
+            <div class="input-group">
+              {!! Form::text('key', null, ['class' => 'form-control','placeholder'=>'seach user...']) !!}
+              <span class="input-group-btn">
+                {{ Form::button('<i class="fa fa-search"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
+              </span>
+            </div>
+          {!! Form::close() !!}
+        </div>
       </div>
     </div>
   </div>

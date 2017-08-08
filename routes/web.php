@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 Route::get('/search', 'SearchController@searchAll');
 //list users
 Route::get('/listusers','UserController@listUsers');
+Route::get('/searchuser', 'UserController@searchUser');
 // end list users
 //delete user
 Route::get('/userdelete/{id}', 'UserController@deleteUser');
@@ -87,6 +88,8 @@ Route::get('/bookdelete/{id}', 'BookController@bookDelete');
 Route::get('/createbook', 'BookController@createBook');
 Route::post('/createbook','BookController@postCreateBook');
 // end create book
+Route::get('register','UserController@getregister');
+Route::post('register','UserController@postregister');
 
 
 Route::get('/books/{book}', 'BookController@show');
@@ -102,7 +105,8 @@ Route::get('listordersuserid/{id}', 'OrderController@listOrdersUseId');
 Route::get('listorderdate/{order_date}', 'OrderController@ordersDate');
 Route::get('/orderdetailorderid/{id}','OrderController@orderDetailOrderId');
 Route::get('/orderspending', 'OrderController@ordersPending');
-Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
+// Route::put('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
+Route::get('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
 Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
 Route::post('/searchsinceto', 'OrderController@searchSinceToDate');	

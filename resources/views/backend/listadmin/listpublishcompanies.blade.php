@@ -3,9 +3,9 @@
 <div class="container">
   <div class="row">
       <div class="col-md-7">
-          <h1>
+          <h3 class="paddtop">
             List Publics Companies
-          </h1>
+          </h3>
       </div>
     <div class="col-md-2">
         <div class="btn-group" align="center">

@@ -3,13 +3,13 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders Since {{$since}} To {{$c}}
+	        List Orders Since {{$since}} To {{$to}}
 	        <small>(All)</small>
 	      </h3>
 	    </div>
 	    <div class="col-md-6">
 	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
         			<div>
 	        			<div class="form-group input-group-addon">
 						  {!! Form::label('since', 'Since') !!}
@@ -42,16 +42,19 @@
 	          <div class="box">
 	            <!-- /.box-header -->
 	            <div class="box-body">
+	            	<div class="col-xs-6 col-xs-offset-6">
+	            		<h4>Sum Order: =<strong>&nbsp{{ $count }}</strong> &nbsp &nbsp Sum Money:<strong>&nbsp{{ number_format($sum,0,',',',') }}. đ </strong></h4>
+	            	</div>
 	              <table id="example1" class="table table-bordered table-striped">
 	                <thead>
-	                <tr>
-	                  <th>Account</th>
-	                  <th>Order Date</th>
-	                  <th>Order ID</th>
-	                  <th>Address</th>
-	                  <th>Note</th>
-	                  <th>Status Order</th>
-	                </tr>
+		                <tr>
+		                  <th>Account</th>
+		                  <th>Order Date</th>
+		                  <th>Order ID</th>
+		                  <th>Address</th>
+		                  <th>Note</th>
+		                  <th>Status Order</th>
+		                </tr>
 	                </thead>
 	                <tbody>
 	                	@foreach ($orders as $order)
@@ -74,5 +77,10 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
+      	  <div class="row">
+          	<div class="col-xs-4 col-xs-offset-8 paginate">
+          		{!! $orders->appends(['since'=> $since, 'to' =>$to])->render()!!}
+          	</div>
+          </div>
     	</section> 
   @stop
