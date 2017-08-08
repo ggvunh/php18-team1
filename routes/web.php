@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Input;
 Route::group(['middleware' => ['auth']], function(){
 	Route::get('/books/{book}', 'BookController@show');
 
+Route::get(['middleware' => 'admin'], function(){
+
+});
+
 Route::get('/search', 'SearchController@searchAll');
 //list users
 Route::get('/listusers','UserController@listUsers');
@@ -192,7 +196,7 @@ Route::get('/orderspending', 'OrderController@ordersPending');
 Route::get('statusorder1/{id}', 'OrderController@putEditStatusOrder1');
 Route::get('orderssent', 'OrderController@ordersSent');
 Route::put('statusorder0/{id}', 'OrderController@putEditStatusOrder0');
-Route::post('/searchsinceto', 'OrderController@searchSinceToDate');	
+Route::post('/searchsinceto', 'OrderController@searchSinceToDate');
 
 
 Route::get('/books/{book}', 'BookController@show');
@@ -266,7 +270,7 @@ Route::group(['prefix' => 'order'], function(){
 		Route::get('/cartcheckout', 'CartController@checkout');
 		Route::get('/cartsave', 'CartController@checkout');
 		Route::post('/cartsave', 'CartController@postsavecart');
-	});
+});
 
 Route::get('/', 'BookController@index');
 //cart

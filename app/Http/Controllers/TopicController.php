@@ -20,12 +20,12 @@ class TopicController extends Controller
       $books = $topic->book;
       return view('books.showtopic')->with(['topic' => $topic, 'books' => $books]);
   }
-  
+
 	public function postCreateTopic(Request $request)
     {
         $input = Input::all();
         $topic = Topic::create($input);
-    	return redirect('/listtopics');
+    	  return redirect('/listtopics');
  	}
 
  	public function listTopics()
