@@ -33,6 +33,7 @@ class BookController extends Controller
       $author = Author::all();
       $publish = PublishCompany::all();
       $topic = Topic::all();
+      //dd($book);
       return view('books.show')->with(['book' => $book, 'books' => $books])->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
   }
 
@@ -46,7 +47,7 @@ class BookController extends Controller
 
 	public function postCreateBook(Request $request)
   {
-    $this->validate($request, 
+    $this->validate($request,
         ['name'=>'required|unique:books,min:3'],
         ['name.required'=>'chua nhap ten',
           'name.unique'=>'ten da ton tai',
@@ -69,7 +70,7 @@ class BookController extends Controller
     $topic = Topic::pluck('name','id');
     $book = Book::create($input);
     return redirect('/listbooks');
-  }  	 	
+  }
 
 	public function listBook()
 	{

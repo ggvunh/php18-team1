@@ -80,7 +80,7 @@
                     @endif
                   @endforeach
                 </div>
-            </div> <!-- .beta-products-list -->
+            </div> <!-- .beta-products-list-->
           </div>
         </div>
       </div> <!-- #content -->
