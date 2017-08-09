@@ -15,7 +15,7 @@
 	  <div class="form-controls">
 	    {!! Form::text('language', null, ['class' => 'form-control']) !!}
 	  </div>
-	</div>  
+	</div>
 	<div class="form-group">
 	  {!! Form::label('price', 'Price') !!}
 	  <div class="form-controls">
@@ -27,7 +27,7 @@
 	  <div class="form-controls">
 	    {!! Form::number('quantity', null, ['class' => 'form-control']) !!}
 	  </div>
-	</div>   
+	</div>
 	<div class="form-group">
 	  {!! Form::label('detail', 'Description') !!}
 	  <div class="form-controls">

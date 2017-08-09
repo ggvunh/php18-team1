@@ -3,7 +3,7 @@
     <section class="content-header">
     	<div class="col-md-6">
 	      <h3>
-	        List Orders On Date 
+	        List Orders On Date
 	        <small>(All)</small>
 	      </h3>
 	    </div>
@@ -22,14 +22,14 @@
 						  <div class="form-controls">
 						    {!! Form::date('to', null, ['class' => 'form-control']) !!}
 						  </div>
-						</div> 
+						</div>
 						<div class="form-group input-group-addon">
 						  <div class="form-controls">
 						  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
 						  </div>
-						</div>   
+						</div>
 					</div>
-      			{!! Form::close() !!} 
+      			{!! Form::close() !!}
              </div>
 	    </div>
 
@@ -61,7 +61,7 @@
 			                  <td>{{$orderdetail->book->name}}</td>
 			                  <td class="text-right">{{$orderdetail->quantity}}</td>
 			                  <td class="text-right">{{$orderdetail->price}}</td>
-			                  <td class="text-right">{{$orderdetail->quantity * $orderdetail->price}}</td> 
+			                  <td class="text-right">{{$orderdetail->quantity * $orderdetail->price}}</td>
 			                </tr>
 			            @endforeach
 	                </tbody>
@@ -84,5 +84,5 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
-    	</section> 
+    	</section>
   @stop

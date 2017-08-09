@@ -25,7 +25,7 @@
                       <div class="single-item-body">
                         <p class="single-item-title">{{$book->name}}</p>
                         <p class="single-item-price">
-                          <span>{{ $book->price }} VND</span>
+                          <span>{{ number_format($book->price) }} VND</span>
                         </p>
                       </div>
                       <div class="single-item-caption">

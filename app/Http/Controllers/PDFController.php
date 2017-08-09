@@ -27,7 +27,7 @@ class PDFController extends Controller
 		$orders = Order::where('shipping_status','=','0')->get();
 		$pdf=PDF::loadview('pdf.listorderspending',['orders' => $orders]);
 		return $pdf->download('listorderspending.pdf');
-	} 
+	}
 	public function getPDForderssent(){
 		$orders = Order::where('shipping_status','=','1')->get();
 		$pdf=PDF::loadview('pdf.orderssent',['orders' => $orders]);
