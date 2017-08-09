@@ -18,7 +18,10 @@ class BookController extends Controller
 
   public function index()
   {
-      $books = Book::paginate(16);
+      $books = Book::paginate(8);
+      $authors = Author::paginate(4);
+      $publishs = PublishCompany::paginate(4);
+      $topics = Topic::paginate(4);
       return view('books.index')->with('books', $books);
   }
 
@@ -38,6 +41,7 @@ class BookController extends Controller
   }
 
   public function createBook()
+
  	{
 		$author = Author::pluck('name','id');
 		$publish = PublishCompany::pluck('name','id');

@@ -9,9 +9,9 @@
       <div class="row">
         <div class="col-md-12">
           {!! Form::open(['url' => '/createauthor','method'=>'post']) !!}
-             @include('paticals.forms.authorform')         
+             @include('paticals.forms.authorform')
           {!! Form::close() !!}
         </div>
       </div>
-    </section>      
+    </section>
   @stop

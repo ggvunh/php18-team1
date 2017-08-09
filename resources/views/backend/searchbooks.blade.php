@@ -25,10 +25,10 @@
 			          </div>
 			          <div class="col-sm-2">
 			            <a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a>
-			          </div> 
-			        </div> 
+			          </div>
+			        </div>
 			    @endforeach
-	   		</div>  
+	   		</div>
 		  </div>
 		  <div id="tabs-2" class="height">
 		    <div class="col-md-12">
@@ -41,8 +41,8 @@
 		          </div>
 		          <div class="col-sm-2">
 		            <a href="{{url('/topicedit/'.$topic->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/topicdelete/'.$topic->id)}}" class="glyphicon glyphicon-trash">Delete</a>
-		          </div> 
-		        </div> 
+		          </div>
+		        </div>
 		      @endforeach
 		    </div>
 		  </div>
@@ -64,8 +64,8 @@
 		          </div>
 		          <div class="col-sm-2">
 		            <a href="{{url('/authoredit/'.$author->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/authordelete/'.$author->id)}}" class="glyphicon glyphicon-trash">Delete</a>
-		          </div> 
-		        </div> 
+		          </div>
+		        </div>
 		      @endforeach
    	 		</div>
 		  </div>
@@ -87,10 +87,10 @@
 		          </div>
 		          <div class="col-sm-2">
 		            <a href="{{url('/editpublishcompany/'.$publishcompany->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/publishcompanydelete/'. $publishcompany->id)}}" class="glyphicon glyphicon-trash">Delete</a>
-		          </div> 
-		        </div> 
+		          </div>
+		        </div>
 		      @endforeach
-		    </div> 
+		    </div>
 		  </div>
 		</div>
 	</div>

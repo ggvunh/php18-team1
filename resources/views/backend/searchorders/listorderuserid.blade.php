@@ -25,14 +25,14 @@
 						  <div class="form-controls">
 						    {!! Form::date('to', null, ['class' => 'form-control']) !!}
 						  </div>
-						</div> 
+						</div>
 						<div class="form-group input-group-addon">
 						  <div class="form-controls">
 						  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
 						  </div>
-						</div>   
+						</div>
 					</div>
-      			{!! Form::close() !!} 
+      			{!! Form::close() !!}
              </div>
 	    </div>
 
@@ -80,5 +80,5 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
-    	</section> 
+    	</section>
   @stop

@@ -9,9 +9,9 @@
       <div class="row">
         <div class="col-md-12">
           {!! Form::open(['url' => '/createpublishcompany','method'=>'post']) !!}
-             @include('paticals.forms.publishcompanyform')   
+             @include('paticals.forms.publishcompanyform')
           {!! Form::close() !!}
-        </div> 
+        </div>
       </div>
-    </section>   
+    </section>
   @stop

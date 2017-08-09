@@ -15,9 +15,9 @@
          @if(Auth::check()) 
          <li><a href="{{ url('order/profile') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{Auth::user()->name}}</a></li>
          <li><a href="{{ url('/logout') }}"></span>Đăng xuất</a></li>
-         @else   
+         @else
          <li><a href="{{ url('user/register') }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Đăng kí</a></li>
-         <li><a href="{{ url('/login') }}">Đăng nhập</a></li>       
+         <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
          @endif
        </ul>
   		</div>
@@ -38,55 +38,22 @@
      </form>
    </div>
 
-   <div class="beta-comp">
-    <div class="cart">
-     <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (Trống) <i class="fa fa-chevron-down"></i></div>
-  					<!-- <div class="beta-dropdown cart-body">
-  						<div class="cart-item">
-  							<div class="media">
-  								<a class="pull-left" href="#"><img src="front-end/assets/dest/images/products/cart/1.png" alt=""></a>
-  								<div class="media-body">
-  									<span class="cart-item-title">Sample Woman Top</span>
-  									<span class="cart-item-options">Size: XS; Colar: Navy</span>
-  									<span class="cart-item-amount">1*<span>$49.50</span></span>
-  								</div>
-  							</div>
-  						</div>
+            <div class="beta-comp">
+              <div class="cart">
+                  <div class="beta-select" id = "cart"><i class="fa fa-shopping-cart"></i><span id="count">Giỏ Hàng ({{ \Cart::count() }})</span> <i class="fa fa-chevron-down"></i></div>
+                  <ul class="beta-dropdown cart-body">
+                        <div class="cart-item">
 
-  						<div class="cart-item">
-  							<div class="media">
-  								<a class="pull-left" href="#"><img src="front-end/assets/dest/images/products/cart/2.png" alt=""></a>
-  								<div class="media-body">
-  									<span class="cart-item-title">Sample Woman Top</span>
-  									<span class="cart-item-options">Size: XS; Colar: Navy</span>
-  									<span class="cart-item-amount">1*<span>$49.50</span></span>
-  								</div>
-  							</div>
-  						</div>
-
-  						<div class="cart-item">
-  							<div class="media">
-  								<a class="pull-left" href="#"><img src="front-end/assets/dest/images/products/cart/3.png" alt=""></a>
-  								<div class="media-body">
-  									<span class="cart-item-title">Sample Woman Top</span>
-  									<span class="cart-item-options">Size: XS; Colar: Navy</span>
-  									<span class="cart-item-amount">1*<span>$49.50</span></span>
-  								</div>
-  							</div>
-  						</div>
-
-  						<div class="cart-caption">
-  							<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">$34.55</span></div>
-  							<div class="clearfix"></div>
-
-  							<div class="center">
-  								<div class="space10">&nbsp;</div>
-  								<a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
-  							</div>
-  						</div>
-  					<!-- </div> giỏ hang -->
-  				</div> <!-- .cart -->
-  			</div>
+                        </div>
+                        <div class="cart-caption">
+                          <div class="center">
+                            <div class="space10">&nbsp;</div>
+                            <a href="{{ url('/cartshow') }}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+                          </div>
+                        </div>
+                  </ul>
+                </div>
+            </div>
   		</div>
   		<div class="clearfix"></div>
   	</div> <!-- .container -->
@@ -100,11 +67,9 @@
   				<li><a href=" {{ url('/') }} ">Trang chủ</a></li>
   				<li><a href="#">Chủ Đề</a>
   					<ul class="sub-menu">
-  						<li><a href="product_type.html">Văn Hóa</a></li>
-  						<li><a href="product_type.html">Nghệ Thuật</a></li>
-  						<li><a href="product_type.html">Kinh Tế</a></li>
-              <li><a href="product_type.html">Du Lịch</a></li>
-              <li><a href="product_type.html">Công Nghệ</a></li>
+                @foreach($topics as $topic)
+  						      <li><a href="{{url('/books/topics/' . $topic->id)}}">{{ $topic->name }}</a></li>
+                @endforeach
   					</ul>
   				</li>
   				<li><a href="about.html">Giới thiệu</a></li>

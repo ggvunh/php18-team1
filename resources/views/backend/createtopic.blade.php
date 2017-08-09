@@ -11,7 +11,7 @@
       {!! Form::open(['url' => '/createtopic','method'=>'post']) !!}
         @include('paticals.forms.topicform')
       {!! Form::close() !!}
-    </div>  
+    </div>
   </div>
 </section>
   @stop
