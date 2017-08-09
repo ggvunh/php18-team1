@@ -9,11 +9,11 @@ use File;
 
 class PublishCompanyController extends Controller
 {
-    public function createPublishCompany() 
+    public function createPublishCompany()
  	{
 		return view('backend.createpublishcompany');
 	}
-	
+
 	public function postCreatePublishCompany(Request $request)
     {
 	    $input = Input::all();

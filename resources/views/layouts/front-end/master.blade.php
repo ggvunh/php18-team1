@@ -26,7 +26,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 	<link rel="stylesheet" title="style" href="/css/app.css">
-	
+
 </head>
 <body>
 	@include('layouts.front-end.header')
@@ -86,8 +86,8 @@
 
 								//console.log(data);
 							//   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
-								$('#count').replaceWith('<span id="count">Gi? Hàng (' + data.count +')</span> ');
-								alert("Ðã Thêm Vào Gi? Hàng!");
+								$('#count').replaceWith('<span id="count">Gi? Hï¿½ng (' + data.count +')</span> ');
+								alert("ï¿½ï¿½ Thï¿½m Vï¿½o Gi? Hï¿½ng!");
 							});
 					}
 

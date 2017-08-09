@@ -17,9 +17,9 @@
               </ul>
             </div>
           @endif
-        </div>  
+        </div>
       </div>
-    </div>   
+    </div>
   @stop
   @section('content')
     <section class="content padtop">
@@ -28,7 +28,7 @@
           {!! Form::open(['url' => '/createbook','method'=>'post', 'enctype' => 'multipart/form-data']) !!}
             @include('paticals.forms.bookform')
           {!! Form::close() !!}
-        </div> 
+        </div>
       </div>
-    </section>       
+    </section>
   @stop

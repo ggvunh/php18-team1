@@ -13,13 +13,13 @@
 use Illuminate\Support\Facades\Input;
 
 Route::group(['middleware' => ['auth']], function(){
-	Route::get('/books/{book}', 'BookController@show');
+		Route::get('/books/{book}', 'BookController@show');
 
-Route::get(['middleware' => 'admin'], function(){
+		Route::group(['middleware' => ['admin']], function(){
+			Route::get('/search', 'SearchController@searchAll');
+		});
 
-});
 
-Route::get('/search', 'SearchController@searchAll');
 //list users
 Route::get('/listusers','UserController@listUsers');
 Route::get('/searchuser', 'UserController@searchUser');

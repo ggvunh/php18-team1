@@ -37,14 +37,14 @@
 					<div class="form-controls">
 						{!! Form::date('to', null, ['class' => 'form-control']) !!}
 					</div>
-				</div> 
+				</div>
 				<div class="form-group input-group-addon">
 					<div class="form-controls">
 						{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
 					</div>
-				</div>   
+				</div>
 			</div>
-			{!! Form::close() !!} 
+			{!! Form::close() !!}
 		</div>
 	</div>
 	</section>
@@ -78,7 +78,7 @@
 									<td class="text-center">
 										{!! Form::model($order, ['url' => 'statusorder1/' . $order->id,'method'=>'put']) !!}
 										{!! Form::hidden('shipping_status', 1, ['class' => 'form-control']) !!}
-										{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}    
+										{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}
 										{!! Form::close() !!}
 									</td>
 								</tr>
@@ -93,5 +93,5 @@
 			<!-- /.col -->
 		</div>
 		<!-- /.row -->
-	</section> 
+	</section>
 	@stop

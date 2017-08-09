@@ -10,10 +10,10 @@
         <div class="col-md-3">
 	        <div class="pull-right">
 	          <p class="btn btn-primary"><a href="/createbook" class="h4">Create new Book</a></p>
-	        </div>  
-        </div>  
+	        </div>
+        </div>
       </div>
-    </div>   
+    </div>
   @stop
   @section('content')
     <div class="col-md-10 col-md-offset-1 border">
@@ -27,8 +27,8 @@
           </div>
           <div class="col-sm-2">
             <p class="h5"><a href="{{url('/restorebook/'.$book->id)}}" class="glyphicon glyphicon-refresh">Restore</a></p>
-          </div> 
-        </div> 
+          </div>
+        </div>
     @endforeach
-    </div>  
+    </div>
   @stop
