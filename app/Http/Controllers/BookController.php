@@ -36,7 +36,8 @@ class BookController extends Controller
       $author = Author::all();
       $publish = PublishCompany::all();
       $topic = Topic::all();
-      return view('books.show')->with(['book' => $book, 'books' => $books])->with('author', $author)->with('publish', $publish)-> with('topic', $topic);
+      //dd($topic);
+      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic])->with('publish', $publish);
   }
 
   public function createBook()

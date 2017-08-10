@@ -7,7 +7,7 @@
           <div class="col-sm-12">
             <div class="row">
               <div class="col-sm-4">
-                <img src="{{ $book->image }}" alt="">
+                <img src="upload/{{ $book->image }}" alt="" width="90%">
               </div>
               <div class="col-sm-8">
                 <div class="single-item-body">
@@ -58,11 +58,12 @@
               <h4>Related Book</h4>
                 <div class="row">
                   @foreach($books as $bo)
-                    @if ($bo->topic->id == $book->topic->id)
+                    @if ($bo->author->id == $book->author->id)
                       <div class="col-sm-3">
+                        <div class="space20">&nbsp;</div>
                         <div class="single-item">
                           <div class="single-item-header">
-                            <a href="{{ url('/books/' . $bo->id) }}"><img src="{{ $bo->image }}" alt="" width = "200" height = "320"></a>
+                            <a href="{{ url('/books/' . $bo->id) }}"><img src="upload/{{ $bo->image }}" alt="" width = "200" height = "320"></a>
                           </div>
                           <div class="single-item-body">
                             <p class="single-item-title">{{ $bo->name }}</p>
@@ -71,8 +72,8 @@
                             </p>
                           </div>
                           <div class="single-item-caption">
-                            <a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
-                            <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Details <i class="fa fa-chevron-right"></i></a>
+                            <a class="add-to-cart pull-left" onclick="addCart({{ $bo->id }})"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="beta-btn primary" href="{{ url('/books/' . $bo->id) }}">Details <i class="fa fa-chevron-right"></i></a>
                             <div class="clearfix"></div>
                           </div>
                         </div>
@@ -80,7 +81,7 @@
                     @endif
                   @endforeach
                 </div>
-            </div> <!-- .beta-products-list -->
+            </div> <!-- .beta-products-list-->
           </div>
         </div>
       </div> <!-- #content -->
