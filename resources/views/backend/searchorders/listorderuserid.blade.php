@@ -1,45 +1,45 @@
 @extends('layouts.admin.master')
   @section('header')
-    <section class="content-header">
-    	<div class="col-md-6">
-	      <h3>
-	        List Orders User
-	        @if(isset($user))"{{$user->name}}"
-	        @else
-	        <small>(All)</small>
-	        @endif
-	      </h3>
-	    </div>
-	    <div class="col-md-6">
-	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
-        			<div>
-	        			<div class="form-group input-group-addon">
-						  {!! Form::label('since', 'Since') !!}
-						  <div class="form-controls">
-						    {!! Form::date('since', null, ['class' => 'form-control']) !!}
-						  </div>
+    <div class="container">
+		<div class="row">
+	    	<div class="col-md-5">
+		      <h3>
+		        List Orders User
+		        @if(isset($user))"{{$user->name}}"
+		        @else
+		        @endif
+		      </h3>
+		    </div>
+		    <div class="col-md-6">
+		    	<div class="form-group">
+	               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
+	        			<div>
+		        			<div class="form-group input-group-addon">
+							  {!! Form::label('since', 'Since') !!}
+							  <div class="form-controls">
+							    {!! Form::date('since', null, ['class' => 'form-control']) !!}
+							  </div>
+							</div>
+							<div class="form-group input-group-addon">
+							  {!! Form::label('to', 'To') !!}
+							  <div class="form-controls">
+							    {!! Form::date('to', null, ['class' => 'form-control']) !!}
+							  </div>
+							</div>
+							<div class="form-group input-group-addon">
+							  <div class="form-controls">
+							  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
+							  </div>
+							</div>
 						</div>
-						<div class="form-group input-group-addon">
-						  {!! Form::label('to', 'To') !!}
-						  <div class="form-controls">
-						    {!! Form::date('to', null, ['class' => 'form-control']) !!}
-						  </div>
-						</div>
-						<div class="form-group input-group-addon">
-						  <div class="form-controls">
-						  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
-						  </div>
-						</div>
-					</div>
-      			{!! Form::close() !!}
-             </div>
-	    </div>
-
-    </section>
+	      			{!! Form::close() !!}
+	             </div>
+		    </div>
+		</div>
+    </div>
   @stop
   @section('content')
-    	<section class="content padright padleftorder">
+    	<div class="content padright padleftorder">
 	      <div class="row">
 	        <div class="col-xs-12">
 	          <div class="box">
@@ -80,5 +80,14 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
-    	</section>
+      	  <div class="row">
+	      	<div class="col-xs-4 col-xs-offset-8 paginate">
+	      	@if(isset($user))
+	      		{!! $orders->appends(['user'=> $user])->render()!!}
+	      	@else
+		        {!! $orders->links() !!}
+		    @endif
+	      	</div>
+	      </div>
+    	</div>
   @stop

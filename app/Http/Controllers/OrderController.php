@@ -13,25 +13,25 @@ class OrderController extends Controller
 {
     public function listOrders()
     {
-    	$orders = Order::withTrashed()->get();
+    	$orders = Order::withTrashed()->paginate(10);
     	return view('backend.listadmin.listorders')->with('orders', $orders);
     }
 
     public function listOrdersUseId($id)
     {
     	$user = User::find($id);
-    	$orders = Order::withTrashed()->where('user_id',$id)->get();
+    	$orders = Order::withTrashed()->where('user_id',$id)->paginate(2);
     	return view('backend.searchorders.listorderuserid')->with('user',$user)->with('orders', $orders);
     }
 
     public function ordersDate($order_date)
     {
-        // $date = substr($order_date,0,10);
-        // $a = date('Y-m-d', strtotime($date));
-        // $orders = Order::withTrashed()->where('order_date','like',$date."%")->get();
-        // return view('backend.searchorders.listorderuserid')->with('orders',$orders)->with('date',$date);
-        $orders = Order::whereDate('order_date', $order_date)->get();
-        return view('backend.searchorders.listorderuserid')->with('orders',$orders);
+        $date = substr($order_date,0,10);
+        $a = date('Y-m-d', strtotime($date));
+        $orders = Order::withTrashed()->where('order_date','like',$date."%")->paginate(2);
+        return view('backend.searchorders.listorderuserid')->with('orders',$orders)->with('date',$date);
+        // $orders = Order::whereDate('order_date', $order_date)->paginate(2);
+        // return view('backend.searchorders.listorderuserid')->with('orders',$orders);
     }
 
     public function orderDetailOrderId($id)
@@ -47,7 +47,7 @@ class OrderController extends Controller
 
     public function ordersPending()
     {
-        $orders = Order::where('shipping_status','=','0')->get();
+        $orders = Order::where('shipping_status','=','0')->paginate(2);
         return view('backend.searchorders.orderspending')->with('orders', $orders);
     }
 
@@ -64,7 +64,7 @@ class OrderController extends Controller
 
     public function ordersSent()
     {
-        $orders = Order::where('shipping_status','=','1')->paginate(3);
+        $orders = Order::where('shipping_status','=','1')->paginate(10);
         return view('backend.searchorders.orderssent')->with('orders', $orders);
     }
 
@@ -77,7 +77,6 @@ class OrderController extends Controller
         $order->shipping_status = 0;
         $order->status_order = 0;
         $order->save();
-
         return redirect('/orderssent');
     }
 
@@ -101,10 +100,12 @@ class OrderController extends Controller
         $orderssums = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->get();
         $count = count($orderssums);
         $sum = 0;
-        foreach ($orderssums as $order) {
+        foreach ($orderssums as $order) 
+        {
             $id_order = $order->id;
             $orderdetails = Orderdetail::where('order_id','=',$id_order)->get();
-            foreach ($orderdetails as $orderdetail) {
+            foreach ($orderdetails as $orderdetail) 
+            {
               $sum += $orderdetail['price'] * $orderdetail['quantity'];
             }
         }

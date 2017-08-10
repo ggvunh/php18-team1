@@ -51,7 +51,7 @@ class BookController extends Controller
 	public function postCreateBook(Request $request)
   {
     $this->validate($request,
-        ['name'=>'required|unique:books,min:3'],
+        ['name'=>'required|unique:books|min:3'],
         ['name.required'=>'chua nhap ten',
           'name.unique'=>'ten da ton tai',
           'name.min'=>'name phai lon hon 3 ki tu']

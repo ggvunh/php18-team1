@@ -1,56 +1,58 @@
 @extends('layouts.admin.master')
 @section('header')
-<section class="content-header">
-	<div class="col-md-5">
-		<h3>
-			List Orders Has Not Been Sent
-			<small>(All)</small>
-		</h3>
-	</div>
-    <div class="col-md-2">
-		<div class="btn-group export" align="center">
-			<button type="button" class="btn btn-info">Export</button>
-			<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-				<span class="caret"></span>
-				<span class="sr-only">Toggle Dropdown</span>
-			</button>
-			<ul class="dropdown-menu" role"menu" id="export-menu">
-				<li id="export-to-exel"><a href="{{ url('orderspending/getExport') }}">Export to Exel</a></li>
-				 <li id="export-to-PDF"><a href="{{ url('orderspending/getPDF') }}">Export to PDF</a></li>
-				<li class="divider"></li>
-				<li></li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-md-5">
-		<div class="form-group">
-			{!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
-			<div>
-				<div class="form-group input-group-addon">
-					{!! Form::label('since', 'Since') !!}
-					<div class="form-controls">
-						{!! Form::date('since', null, ['class' => 'form-control']) !!}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>
+					List Orders Has Not Been Sent
+					<small>(All)</small>
+				</h3>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+					<div>
+						<div class="form-group input-group-addon">
+							{!! Form::label('since', 'Since') !!}
+							<div class="form-controls">
+								{!! Form::date('since', null, ['class' => 'form-control']) !!}
+							</div>
+						</div>
+						<div class="form-group input-group-addon">
+							{!! Form::label('to', 'To') !!}
+							<div class="form-controls">
+								{!! Form::date('to', null, ['class' => 'form-control']) !!}
+							</div>
+						</div>
+						<div class="form-group input-group-addon">
+							<div class="form-controls">
+								{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="form-group input-group-addon">
-					{!! Form::label('to', 'To') !!}
-					<div class="form-controls">
-						{!! Form::date('to', null, ['class' => 'form-control']) !!}
-					</div>
-				</div>
-				<div class="form-group input-group-addon">
-					<div class="form-controls">
-						{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
-					</div>
+					{!! Form::close() !!}
 				</div>
 			</div>
-			{!! Form::close() !!}
+			<div class="col-md-2">
+				<div class="btn-group export" align="center">
+					<button type="button" class="btn btn-info">Export</button>
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role"menu" id="export-menu">
+						<li id="export-to-exel"><a href="{{ url('orderspending/getExport') }}">Export to Exel</a></li>
+						 <li id="export-to-PDF"><a href="{{ url('orderspending/getPDF') }}">Export to PDF</a></li>
+						<li class="divider"></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
-	</section>
-	@stop
-	@section('content')
-	<section class="content padright padleftorder">
+@stop
+@section('content')
+	<div class="content padright padleftorder">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
@@ -93,5 +95,10 @@
 			<!-- /.col -->
 		</div>
 		<!-- /.row -->
-	</section>
-	@stop
+		<div class="row">
+	      	<div class="col-xs-4 col-xs-offset-8 paginate">
+	      		{!! $orders->links() !!}
+	      	</div>
+	    </div>
+	</div>
+@stop
