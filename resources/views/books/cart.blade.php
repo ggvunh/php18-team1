@@ -33,7 +33,7 @@
                   <tr class="cart_item">
                     <td class="product-name">
                       <div class="media">
-                        <img class="pull-left" src="{{$item->options->image}}" width = "10%" alt=""/>
+                        <img class="pull-left" src="upload/{{$item->options->image}}" width = "10%" alt=""/>
                         <div class="media-body">
                           <p class="font-large table-title">{{ $item->name }}</p>
                         </div>
@@ -45,11 +45,11 @@
                     </td>
 
                     <td class="product-quantity">
-                      <div class="input-group">
+                      <div class="input-group>
                           <span class="input-group-btn">
                             <input class="btn btn-default btn-number" type="button" name="giam" value="-" onclick="down('{{$item->rowId}}')">
                           </span>
-                          <input type="text" id="{{ $item->rowId }}" name="quantity" value="{{ $item->qty }}">
+                          <input class="text-right" type="text" id="{{ $item->rowId }}" name="quantity" value="{{ $item->qty }}">
                           <span class="input-group-btn">
                             <input class="btn btn-default btn-number" name="tang" type="button" value="+" onclick="up('{{ $item->rowId}}')">
                           </span>

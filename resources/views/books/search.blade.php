@@ -20,7 +20,7 @@
                     <div class="space20">&nbsp;</div>
                     <div class="single-item">
                       <div class="single-item-header">
-                        <a href="{{ url('/books/' . $book->id) }}"><img src="{{ $book->image }}" alt="" width = "200" height = "320"></a>
+                        <a href="{{ url('/books/' . $book->id) }}"><img src="upload/{{ $book->image }}" alt="" width = "200" height = "320"></a>
                       </div>
                       <div class="single-item-body">
                         <p class="single-item-title">{{$book->name}}</p>
@@ -29,7 +29,7 @@
                         </p>
                       </div>
                       <div class="single-item-caption">
-                        <a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="add-to-cart pull-left" onclick="addCart({{ $book->id }})"><i class="fa fa-shopping-cart"></i></a>
                         <a class="beta-btn primary" href="{{ url('/books/' . $book->id) }}">Details <i class="fa fa-chevron-right"></i></a>
                         <div class="clearfix"></div>
                       </div>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use App\User;
 use Hash;
 use notificationMgs;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class UserController extends Controller
 {
@@ -67,6 +68,7 @@ public function getlogin(){
 public function logout()
 {
   Auth::logout();
+  Cart::destroy();
   return redirect('/');
 }
 
