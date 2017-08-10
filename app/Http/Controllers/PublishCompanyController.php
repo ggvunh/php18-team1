@@ -23,7 +23,7 @@ class PublishCompanyController extends Controller
 
  	public function listPublishCompanies()
  	{
- 		$publishcompanies = PublishCompany::all();
+ 		$publishcompanies = PublishCompany::paginate(10);
  		return view('backend.listadmin.listpublishcompanies')->with('publishcompanies', $publishcompanies);
  	}
 

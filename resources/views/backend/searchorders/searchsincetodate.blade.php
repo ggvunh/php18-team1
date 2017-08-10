@@ -32,7 +32,6 @@
   			{!! Form::close() !!}
          </div>
     </div>
-
 </section>
 @stop
 @section('content')

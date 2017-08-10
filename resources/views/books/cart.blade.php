@@ -45,7 +45,7 @@
                     </td>
 
                     <td class="product-quantity">
-                      <div class="input-group>
+                      <div class="input-group">
                           <span class="input-group-btn">
                             <input class="btn btn-default btn-number" type="button" name="giam" value="-" onclick="down('{{$item->rowId}}')">
                           </span>

@@ -47,7 +47,7 @@ class OrderController extends Controller
 
     public function ordersPending()
     {
-        $orders = Order::where('shipping_status','=','0')->paginate(2);
+        $orders = Order::where('shipping_status','=','0')->paginate(10);
         return view('backend.searchorders.orderspending')->with('orders', $orders);
     }
 

@@ -82,11 +82,11 @@
       <!-- /.row -->
       	  <div class="row">
 	      	<div class="col-xs-4 col-xs-offset-8 paginate">
-	      	@if(isset($user))
-	      		{!! $orders->appends(['user'=> $user])->render()!!}
-	      	@else
-		        {!! $orders->links() !!}
-		    @endif
+		      	@if(isset($user))
+		      		{!! $orders->appends(['user'=> $user])->render()!!}
+		      	@else
+			        {!! $orders->links() !!}
+			    @endif
 	      	</div>
 	      </div>
     	</div>

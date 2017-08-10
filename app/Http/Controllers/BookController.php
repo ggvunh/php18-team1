@@ -25,9 +25,9 @@ class BookController extends Controller
       return view('books.index')->with('books', $books);
   }
 
-  public function return()
+  public function viewhome()
   {
-      return redirect('/books');
+      return redirect('/');
   }
 
   public function show(Book $book)
@@ -36,8 +36,8 @@ class BookController extends Controller
       $author = Author::all();
       $publish = PublishCompany::all();
       $topic = Topic::all();
-      //dd($topic);
-      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic])->with('publish', $publish);
+      //dd($book->name);
+      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic]);
   }
 
   public function createBook()
@@ -78,7 +78,7 @@ class BookController extends Controller
 
 	public function listBook()
 	{
-		$books = Book::all();
+		$books = Book::paginate(15);
 		return view('backend.listadmin.listbooks')->with('books',$books);
 	}
 

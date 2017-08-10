@@ -7,7 +7,12 @@
         List Books
       </h3>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
+     <div class="pull-right">
+       <p class="btn btn-primary"><a href="/createbook" class="h4">Create new Book</a></p>
+     </div>  
+   </div> 
+   <div class="col-md-2">
       <div class="btn-group" align="center">
         <button type="button" class="btn btn-info">Export</button>
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -21,12 +26,7 @@
           <li></li>
         </ul>
       </div>
-    </div>
-    <div class="col-md-3">
-     <div class="pull-right">
-       <p class="btn btn-primary"><a href="/createbook" class="h4">Create new Book</a></p>
-     </div>  
-   </div>  
+    </div> 
  </div>
 </div>   
 @stop
@@ -52,8 +52,8 @@
             <tbody>
               @foreach($books as $book)
               <tr>
-                <td>{{$book->name}}</td>
-                <td>{{$book->author->name}}</td>
+                <td><a href="{{ url('/books/'.$book->id) }}">{{$book->name}}</a></td>
+                <td><a href="{{ url('/books/authors/' . $book->author->id) }}">{{$book->author->name}}</a></td>
                 <td><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
               </tr>
               @endforeach  
@@ -74,5 +74,10 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+  <div class="row">
+          <div class="col-xs-4 col-xs-offset-8 paginate">
+            {!! $books->links() !!}
+          </div>
+      </div>
 </section>
 @stop

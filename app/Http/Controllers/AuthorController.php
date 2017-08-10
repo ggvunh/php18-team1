@@ -29,7 +29,7 @@ class AuthorController extends Controller
  	}
  	public function listAuthor()
 	{
-		$authors = Author::all();
+		$authors = Author::paginate(15);
 		return view('backend.listadmin.listauthors')->with('authors',$authors);
 	}
 
