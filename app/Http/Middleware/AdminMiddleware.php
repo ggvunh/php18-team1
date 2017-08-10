@@ -22,10 +22,10 @@ class AdminMiddleware
             if($user->is_admin == 1){
                 return $next($request);
             }else {
-                return redirect('/');
+                return redirect('/')->withSuccess('Ban khong co quyen truy cap.');
             }
         }else {
-          return redirect('/');
+          return redirect('/login');
         }
 
     }

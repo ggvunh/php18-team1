@@ -46,7 +46,7 @@
                     <!--  one item	 -->
                         @foreach(Cart::content() as $item)
                           <div class="media">
-                            <img width="10%" src="{{$item->options->image}}" alt="" class="pull-left">
+                            <img width="10%" src="upload/{{$item->options->image}}" alt="" class="pull-left">
                             <div class="media-body">
                               <p class="font-large">{{$item->name}}</p>
                               <span class="color-gray your-order-info">Sô Lượng : {{ $item->qty }} </span>
