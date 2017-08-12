@@ -15,12 +15,12 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<h2>Hiên thị</h2>
 	<table>
+	<caption style="font-size: 30px">LIST TOPICS</caption>
 		<thead>
 			<tr>
-				<th>Số thứ tự</th>
-				<th>Thể loại</th>
+				<th>ID</th>
+				<th>NAME</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -8,6 +8,5 @@ table td {
 	padding: 10px;
 }
 .active {
-	background-color: red;
-	color: #fff;
+	background-color: #66FFCC;
 }

@@ -16,13 +16,13 @@
 </head>
 <body>
 	<table>
-		<caption>Hiên thị</caption>
+		<caption style="font-size: 30px">LIST ORDER</caption>
 		<thead>
 			<tr>
-				<th>Tên người dùng</th>
-				<th>Email</th>
-				<th>Số điện thoai</th>
-				<th>Địa chỉ</th>
+				<th>NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>ADDRESS</th>
 			</tr>
 		</thead>
 		<tbody>

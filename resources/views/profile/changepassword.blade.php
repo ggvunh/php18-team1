@@ -4,7 +4,6 @@
   <div class="breadcrumbs">
     <ol class="breadcrumb" id="breadcrumb">
       <li><a href="{{ url('/') }}">Trang chủ</a></li>
-      <li class="active">Đặt hàng</li>
     </ol>
   </div>
   @if(count($errors) > 0)
@@ -32,12 +31,12 @@
             <div class="space20">&nbsp;</div>
             <div class="form-group">
               <label>Mật khẩu hiện tại</label>
-              <input type="password" class="form-control" name="oldPassword" required>
+              <input type="password" class="form-control" name="oldPassword" required placeholder="Nhập mật khẩu hiện tại">
               <span style="color:red">{{ $errors->first('old_password') }}</span>
             </div>
             <div class="form-group">
               <label>Mật khẩu mới</label>
-              <input type="password" class="form-control" name="newPassword" required>
+              <input type="password" class="form-control" name="newPassword" required placeholder="Nhâp mật khẩu mới">
               <span style="color:red">{{ $errors->first('newPassword') }}</span>
             </div>
             <div class="form-group" align="center">

@@ -80,7 +80,7 @@ class ExcelController extends Controller
     }
 
     //trang profile
-     public function getExportorder($id){
+     public function getExportorderinfo($id){
     	 $user_id = Auth::user()->id;
      	 $export = Order::all()->where('user_id', $user_id);
     	Excel::create('Export Data', function($excel) use ($export){

@@ -16,13 +16,13 @@
 </head>
 <body>
 	<table>
-		<caption>Hiên thị</caption>
+		<caption style="font-size: 30px">LIST ORDERS PENDING</caption>
 		<thead>
 			<tr>
-				<th>Tên người dùng</th>
-				<th>Ngày đặt hàng</th>
-				<th>Địa chỉ</th>
-				<th>Ghi chú</th>
+				<th>NAME</th>
+				<th>CREATED_AT</th>
+				<th>ADDRESS</th>
+				<th>NOTE</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -16,14 +16,14 @@
 	</style>
 </head>
 <body>
-	<h2>Hiên thị</h2>
 	<table>
+	<caption style="font-size: 30px">LIST AUTHORS</caption>
 		<thead>
 			<tr>
-				<th>Tên tác giả</th>
-				<th>Email</th>
-				<th>Số điện thoại</th>
-				<th>Địa chỉ</th>
+				<th>NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>ADDRESS</th>
 			</tr>
 		</thead>
 		<tbody>
