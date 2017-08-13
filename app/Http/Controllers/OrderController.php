@@ -28,7 +28,7 @@ class OrderController extends Controller
     {
         $date = substr($order_date,0,10);
         $a = date('Y-m-d', strtotime($date));
-        $orders = Order::withTrashed()->where('order_date','like',$date."%")->paginate(2);
+        $orders = Order::whereDate('order_date',$date)->paginate(2);
         return view('backend.searchorders.listorderuserid')->with('orders',$orders)->with('date',$date);
         // $orders = Order::whereDate('order_date', $order_date)->paginate(2);
         // return view('backend.searchorders.listorderuserid')->with('orders',$orders);
@@ -94,23 +94,33 @@ class OrderController extends Controller
         // $orders = Order::whereBetween('order_date',[$since,$to])->get();
         // return view('backend.searchorders.searchsincetodate')->with('orders', $orders)->with('since', $since)->with('c', $c);
         $input = Input::all();
-        $since = $input['since'];
-        $to = $input['to'];
-        $orders = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->paginate(2);
-        $orderssums = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"])->get();
+        $since = (isset($input['since'])) ? $input['since'] : '';
+        $to = (isset($input['to'])) ? $input['to'] : '';
+        if (empty($since)) 
+            {
+               $query = Order::whereBetween('order_date', [$to." 00:00:00", $to." 23:59:59"]);
+            }
+        elseif (empty($to)) 
+            {
+               $query = Order::whereBetween('order_date', [$since." 00:00:00", $since." 23:59:59"]);
+            }
+        else
+            {
+              $query = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"]); 
+            }        
+        $orderssums = $query->get();
+        $orders = $query->paginate(2);
         $count = count($orderssums);
         $sum = 0;
         foreach ($orderssums as $order) 
-        {
-            $id_order = $order->id;
-            $orderdetails = Orderdetail::where('order_id','=',$id_order)->get();
-            foreach ($orderdetails as $orderdetail) 
             {
-              $sum += $orderdetail['price'] * $orderdetail['quantity'];
+                $orderdetails = $order->order_detail;
+                foreach ($orderdetails as $orderdetail) 
+                {
+                  $sum += $orderdetail['price'] * $orderdetail['quantity'];
+                }
             }
-        }
-
-
         return view('backend.searchorders.searchsincetodate')->with('orders', $orders)->with('since', $since)->with('to', $to)->with('sum', $sum)->with('count', $count);
     }
+
 }

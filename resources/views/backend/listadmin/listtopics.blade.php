@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-4">
           <div class="pull-right">
-            <p class="btn btn-primary"><a href="{{url('/createtopic')}}" class="h4">Create new Topic</a></p>
+            <p class="btn btn-primary"><a href="{{ url('/createtopic') }}" class="h4">Create new Topic</a></p>
           </div>  
         </div>
         <div class="col-md-2">
@@ -54,7 +54,7 @@
                     <tr>
                       <td class="text-center">{{ $loop->iteration }}</td>
                       <td><a href="{{ url('/books/topics/'.$topic->id) }}">{{$topic->name}}</a></td>
-                      <td class="text-center"><a href="{{url('/topicedit/'.$topic->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/topicdelete/'.$topic->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                      <td class="text-center"><a href="{{ url('/topicedit/'.$topic->id) }}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{ url('/topicdelete/'.$topic->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
                   @endforeach  
                 </tbody>

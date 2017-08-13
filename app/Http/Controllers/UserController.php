@@ -73,7 +73,7 @@ public function logout()
 }
 
 public function listUsers(){
-  $users = User::all();
+  $users = User::paginate(10);
   return view('backend.listadmin.listusers')->with('users',$users);
 }
       //Sua thong tin nguoi dung

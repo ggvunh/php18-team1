@@ -57,10 +57,10 @@
                     <tr>
                       <td class="text-center">{{ $loop->iteration }}</td>
                       <td><a href="{{ url('/books/authors/'.$author->id) }}">{{$author->name}}</a></td>
-                      <td>{{$author->email}}</td>
-                      <td>0{{$author->phone}}</td>
-                      <td>{{$author->address}}</td>
-                      <td class="text-center"><a href="{{url('/authoredit/'.$author->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/authordelete/'.$author->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                      <td>{{ $author->email }}</td>
+                      <td>0{{ $author->phone }}</td>
+                      <td>{{ $author->address }}</td>
+                      <td class="text-center"><a href="{{ url('/authoredit/'.$author->id) }}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{ url('/authordelete/'.$author->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
                   @endforeach  
                 </tbody>

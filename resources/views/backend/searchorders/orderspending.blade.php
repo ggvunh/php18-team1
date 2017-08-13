@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+					{!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
 					<div>
 						<div class="form-group input-group-addon">
 							{!! Form::label('since', 'Since') !!}
@@ -61,6 +61,7 @@
 						<table id="example1" class="table table-bordered table-striped">
 							<thead>
 								<tr>
+									<th></th>
 									<th>Account</th>
 									<th>Order Date</th>
 									<th>Order ID</th>
@@ -72,16 +73,14 @@
 							<tbody>
 								@foreach ($orders as $order)
 								<tr>
+									<td class="text-center">{{ $loop->iteration }}</td>
 									<td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
 									<td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
 									<td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
 									<td>{{$order->address}}</td>
 									<td>{{$order->note}}</td>
 									<td class="text-center">
-										{!! Form::model($order, ['url' => 'statusorder1/' . $order->id,'method'=>'put']) !!}
-										{!! Form::hidden('shipping_status', 1, ['class' => 'form-control']) !!}
-										{!! Form::submit('Processed', ['class' => 'btn btn-primary']) !!}
-										{!! Form::close() !!}
+										<a href="{{url('statusorder1/'. $order->id)}}"><p class="btn btn-primary btn-sm">process</p></a>
 									</td>
 								</tr>
 								@endforeach

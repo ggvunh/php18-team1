@@ -36,50 +36,52 @@
 @stop
 @section('content')
 	<section class="content padright padleftorder">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <!-- /.box-header -->
-            <div class="box-body">
-            	<div class="col-xs-6 col-xs-offset-6">
-            		<h4>Sum Order: =<strong>&nbsp{{ $count }}</strong> &nbsp &nbsp Sum Money:<strong>&nbsp{{ number_format($sum,0,',',',') }}. đ </strong></h4>
-            	</div>
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <div class="box-body">
+          	<div class="col-xs-6 col-xs-offset-6">
+          		<h4>Sum Order: =<strong>&nbsp{{ $count }}</strong> &nbsp &nbsp Sum Money:<strong>&nbsp{{ number_format($sum,0,',',',') }}. đ </strong></h4>
+          	</div>
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Account</th>
+                  <th>Order Date</th>
+                  <th>Order ID</th>
+                  <th>Address</th>
+                  <th>Note</th>
+                  <th>Status Order</th>
+                </tr>
+              </thead>
+              <tbody>
+              	@foreach ($orders as $order)
 	                <tr>
-	                  <th>Account</th>
-	                  <th>Order Date</th>
-	                  <th>Order ID</th>
-	                  <th>Address</th>
-	                  <th>Note</th>
-	                  <th>Status Order</th>
+	                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
+	                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
+	                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
+	                  <td>{{$order->address}}</td>
+	                  <td>{{$order->note}}</td>
+	                  <td>{{$order->status_order}}</td>
 	                </tr>
-                </thead>
-                <tbody>
-                	@foreach ($orders as $order)
-		                <tr>
-		                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-		                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
-		                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
-		                  <td>{{$order->address}}</td>
-		                  <td>{{$order->note}}</td>
-		                  <td>{{$order->status_order}}</td>
-		                </tr>
-		            @endforeach
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
+	            @endforeach
+              </tbody>
+            </table>
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.box -->
       </div>
-  <!-- /.row -->
-  	  <div class="row">
-      	<div class="col-xs-4 col-xs-offset-8 paginate">
-      		{!! $orders->appends(['since'=> $since, 'to' =>$to])->render()!!}
-      	</div>
-      </div>
+      <!-- /.col -->
+    </div>
+<!-- /.row -->
+	  <div class="row">
+    	<div class="col-xs-4 col-xs-offset-8 paginate">
+       
+          {!! $orders->appends(['since'=> $since, 'to' =>$to])->render()!!}
+       
+    	</div>
+    </div>
 	</section>
 @stop

@@ -10,27 +10,27 @@
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! Form::open(['url' => '/createbook','method'=>'post', 'enctype' => 'multipart/form-data']) !!}
-					<div>
-						<div class="form-group input-group-addon">
-							{!! Form::label('from', 'From') !!}
-							<div class="form-controls">
-								{!! Form::date('since', null, ['class' => 'form-control']) !!}
+					{!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
+	        			<div>
+		        			<div class="form-group input-group-addon">
+							  {!! Form::label('since', 'Since') !!}
+							  <div class="form-controls">
+							    {!! Form::date('since', null, ['class' => 'form-control']) !!}
+							  </div>
 							</div>
+							<div class="form-group input-group-addon">
+							  {!! Form::label('to', 'To') !!}
+							  <div class="form-controls">
+							    {!! Form::date('to', null, ['class' => 'form-control']) !!}
+							  </div>
+							</div> 
+							<div class="form-group input-group-addon">
+							  <div class="form-controls">
+							  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
+							  </div>
+							</div>   
 						</div>
-						<div class="form-group input-group-addon">
-							{!! Form::label('to', 'To') !!}
-							<div class="form-controls">
-								{!! Form::date('to', null, ['class' => 'form-control']) !!}
-							</div>
-						</div>
-						<div class="form-group input-group-addon">
-							<div class="form-controls">
-								{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
-							</div>
-						</div>
-					</div>
-					{!! Form::close() !!}
+	      			{!! Form::close() !!} 
 				</div>
 			</div>
 			<div class="col-md-2">
@@ -72,14 +72,13 @@
 						<tbody>
 							@foreach ($orders as $order)
 							<tr>
-								<td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-								<td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
-								<td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
-								<td>{{$order->address}}</td>
-								<td>{{$order->note}}</td>
-								<td class="text-center">
-									
-									<a href="{{url('statusorder0/'. $order->id)}}"><p class="btn btn-primary btn-sm">process</p></a>
+								<td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{ $order->user->name }}</a></td>
+								<td><a href="{{ url('listorderdate/'.$order->order_date) }}">{{ $order->order_date }}</a></td>
+								<td><a href="{{ url('/orderdetailorderid/'.$order->id) }}"> {{ $order->id }}</a></td>
+								<td>{{ $order->address }}</td>
+								<td>{{ $order->note }}</td>
+								<td class="text-center">	
+									<a href="{{ url('statusorder0/'. $order->id) }}"><p class="btn btn-primary btn-sm">process</p></a>
 								</td>
 							</tr>
 							@endforeach

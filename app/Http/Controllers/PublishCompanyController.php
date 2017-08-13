@@ -48,7 +48,7 @@ class PublishCompanyController extends Controller
 
  	public function sdPublishCompanies()
  	{
- 		$publishcompanies = PublishCompany::onlyTrashed()->get();
+ 		$publishcompanies = PublishCompany::onlyTrashed()->paginate(10);
  		return view('backend.softdeleteadmin.sdlistpublishcompanies')->with('publishcompanies',$publishcompanies);
  	}
 

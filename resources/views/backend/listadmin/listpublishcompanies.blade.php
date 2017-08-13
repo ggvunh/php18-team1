@@ -56,11 +56,11 @@
                   @foreach ($publishcompanies as $publishcompany)
                     <tr>
                       <td class="text-center">{{ $loop->iteration }}</td>
-                      <td>{{$publishcompany->name}}</td>
-                      <td>{{$publishcompany->email}}</td>
-                      <td>0{{$publishcompany->phone}}</td>
-                      <td>{{$publishcompany->address}}</td>
-                      <td class="text-center"><a href="{{url('/editpublishcompany/'.$publishcompany->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/publishcompanydelete/'. $publishcompany->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                      <td>{{ $publishcompany->name }}</td>
+                      <td>{{ $publishcompany->email }}</td>
+                      <td>0{{ $publishcompany->phone }}</td>
+                      <td>{{ $publishcompany->address }}</td>
+                      <td class="text-center"><a href="{{ url('/editpublishcompany/'.$publishcompany->id) }}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{ url('/publishcompanydelete/'. $publishcompany->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
                   @endforeach  
                 </tbody>

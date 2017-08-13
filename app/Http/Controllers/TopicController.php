@@ -56,7 +56,7 @@ class TopicController extends Controller
 
  	public function sdListTopics()
  	{
- 		$topics = Topic::onlyTrashed()->get();
+ 		$topics = Topic::onlyTrashed()->paginate(10);
  		return view('backend.softdeleteadmin.sdlisttopics')->with('topics',$topics);
  	}
 

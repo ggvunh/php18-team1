@@ -10,7 +10,7 @@
 		</div> 
 		<div class="col-md-6">
 			<div class="form-group">
-				{!! Form::open(['url' => '/searchsinceto','method'=>'post']) !!}
+				{!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
 				<div>
 					<div class="form-group input-group-addon">
 						{!! Form::label('since', 'Since') !!}
@@ -60,25 +60,31 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th></th>
 								<th>Account</th>
 								<th>Order Date</th>
 								<th>Order ID</th>
 								<th>Address</th>
 								<th>Note</th>
-								<th>Status Order</th>
 								<th>Shipping Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach ($orders as $order)
 							<tr>
+								<td class="text-center">{{ $loop->iteration }}</td>
 								<td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
 								<td><a href="{{url('listorderdate/'.$order->order_date)}}"> {{$order->order_date}}</a></td>
 								<td><a href="{{url('/orderdetailorderid/'.$order->id)}}">{{$order->id}}</a></td>
 								<td>{{$order->address}}</td>
 								<td>{{$order->note}}</td>
-								<td>{{$order->status_order}}</td>
-								<td>{{$order->shipping_status}}</td>
+								<td>
+									@if ($order->shipping_status==1)
+									 	Have shipped
+									@else ($order->shipping_status==0)
+										Wait shipped
+									@endif
+								</td>
 							</tr>
 							@endforeach
 						</tbody>

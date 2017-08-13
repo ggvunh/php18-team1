@@ -121,7 +121,7 @@ class BookController extends Controller
 
 	public function sdListBook()
 	{
-		$books = Book::onlyTrashed()->get();
+		$books = Book::onlyTrashed()->paginate(15);
 		return view('backend.softdeleteadmin.sdlistbooks')->with('books',$books);
 	}
 

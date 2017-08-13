@@ -6,6 +6,7 @@
   <title>Book Shop</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="{{ asset('upload/bookicon.png')}}"/>
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -40,7 +41,12 @@
   <script>
     $( function() {
       $( "#tabs" ).tabs();
-    } );
+    });
+    jQuery(document).ready(function($){
+      var path = window.location.pathname.split("/").pop();
+      var target = $('ul li a[href="'+path+'"]');
+      taget.addClass('active');
+    });
   </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -182,6 +188,23 @@
             <li><a href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Soft Delete Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('/sdlistbooks') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Books</a></li>
+            <li><a href="{{ url('/sdlistauthors') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Authors</a></li>
+            <li><a href="{{ url('/sdlisttopics') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Topics</a></li>
+            <li><a href="{{ url('/sdlistpublishcompanies') }}"><i class="fa fa-circle-o text-aqua"></i>List SD Publishs Companies</a></li>
+          </ul>
+        </li>
+
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -207,7 +230,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2017 <a href="https://adminlte.io">Shopping Books</a>.</strong> All rights
+    <strong>Copyright &copy; 2017 <a href="/">Shopping Books</a>.</strong> All rights
     reserved.
   </footer>
 </div>
