@@ -10,7 +10,7 @@ use App\User;
 use App\Author;
 use App\PublishCompany;
 use App\Topic;
-
+use Illuminate\Support\Facades\Auth;
 class PDFController extends Controller
 {
 	public function getPDF(){
@@ -52,5 +52,19 @@ class PDFController extends Controller
 		$topics = Topic::all();
 		$pdf=PDF::loadview('pdf.topic',['topics' => $topics]);
 		return $pdf->download('topic.pdf');
+	}
+	public function getPDFlistorders(){
+		$orders = Order::all();
+		$pdf=PDF::loadview('pdf.listorders',['orders' => $orders]);
+		return $pdf->download('listorders.pdf');
+	}
+
+//order info
+	public function getPDForderinfo(){
+		
+		$user_id = Auth::user()->id;
+		$order = Order::withTrashed()->where('user_id', $user_id)->get();
+		$pdf=PDF::loadview('pdf.orderinfo',['order' => $order]);
+		return $pdf->download('order.pdf');
 	}
 }

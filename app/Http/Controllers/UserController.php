@@ -48,7 +48,7 @@ class UserController extends Controller
       $user = Auth::user();
       if($user->is_admin == 0)
       {
-       notificationMgs('success','Bạn đã đăng nhập thành công');
+       notificationMgs('success','Chào Admin');
        return redirect('/');
      }else
      {
@@ -87,24 +87,6 @@ public function updateinfo(Request $request,$id)
   $user->name = $request->name;
   $user->phone = $request->phone;
   $user->address = $request->address;
-
-  // if($request->changepassword)
-  // {
-  //   $this->validate($request,
-  //     [
-  //     'changepassword' => 'required|min:3|max:32',
-  //     're_password' => 'required'
-  //     ],
-  //     [
-  //     'password.required' => 'Bạn chưa nhập mật khâu',
-  //     'password.min' => 'Mật khẩu phải nhiều hơn 3 kí tự',
-  //     'password.max' => 'Mật khẩu không được quá 32 kí tự',
-  //     're_password.require' => 'Bạn chưa nhập lại mật khẩu',
-  //     're_password.same' => 'Mật khẩu nhập lại chưa khớp'
-  //     ]);
-  //   $user->password = bcrypt('$request->changepassword');
-  // }
-  //       //notificationMgs('success','Bạn đã thay đổi thông tin thành công');
   $user->save();
   return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
   }
@@ -118,14 +100,14 @@ public function updateinfo(Request $request,$id)
     $oldPassword = $request->oldPassword;
     $newPassword = $request->newPassword;
 
-    if(!Hash::check($oldPassword, Auth::user()->password)){
-      echo "Mật khâu bạn nhập không đúng";
+    if(!Hash::check($oldPassword, Auth::user()->password)){   
+      notificationMgs('success','Mật khẩu bạn nhập không đúng');
      }
      else{
       $request->user()->fill(['password' => Hash::make($newPassword)])->save();
       //echo 'done';//update password into user table
      };
-  notificationMgs('success','Bạn đã thay đổi thông tin thành công');
+  notificationMgs('success','Bạn đã thay đổi mật khẩu thành công');
   return back();
   }
 
