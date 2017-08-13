@@ -15,14 +15,15 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<h2>Hiên thị</h2>
+	
 	<table>
+	<caption style="font-size: 30px">LIST PUBLISH_COMPANIES</caption>
 		<thead>
 			<tr>
-				<th>Tên nhà xuât bản</th>
-				<th>Email</th>
-				<th>Số điện thoại</th>
-				<th>Địa chỉ</th>
+				<th>NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>ADDRESS</th>
 			</tr>
 		</thead>
 		<tbody>
