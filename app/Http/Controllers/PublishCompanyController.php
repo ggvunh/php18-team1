@@ -9,10 +9,18 @@ use File;
 
 class PublishCompanyController extends Controller
 {
-    public function createPublishCompany()
+  public function createPublishCompany()
  	{
 		return view('backend.createpublishcompany');
 	}
+
+  public function showpublish($id)
+  {
+      $publishs = PublishCompany::where('id', $id)->first();
+      $books = $publishs->book;
+      dd($books);
+      return view('books.showpublish')->with(['publishs' => $publishs, 'books' => $books]);
+  }
 
 	public function postCreatePublishCompany(Request $request)
     {

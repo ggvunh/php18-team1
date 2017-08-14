@@ -60,12 +60,11 @@
 											$.each(data.data, function (key, value) {
 
 												 //console.log(value);
-												 str += '<span class="pull-right"><button class="btn btn-xs btn-danger pull-right" onclick="deleteCart(' + value.rowId + ')">x</button></span>\
-												 <div class="media">\
-			 										<a class="pull-left" href="#"><img src="' + value.options.image + '" alt=""></a>\
+												 str += '<div class="media">\
+			 										<a class="pull-left" href="#"><img src="upload/' + value.options.image + '" alt=""></a>\
 			 										<div class="media-body">\
 			 											<span class="cart-item-title">' + value.name + '</span></br>\
-			 											<span class="cart-item-amount">S? Lu?ng :' + value.qty + '</span>\
+			 											<span class="cart-item-amount">Số Lượng :' + value.qty + '</span>\
 			 										</div>\
 			 									</div>';
 											});
@@ -86,8 +85,8 @@
 
 								//console.log(data);
 							//   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
-								$('#count').replaceWith('<span id="count">Gi? H�ng (' + data.count +')</span> ');
-								alert("�� Th�m V�o Gi? H�ng!");
+								$('#count').replaceWith('<span id="count">Giỏ Hàng (' + data.count +')</span> ');
+								alert("Đã Thêm Vào Giỏ Hàng!");
 							});
 					}
 
