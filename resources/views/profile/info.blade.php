@@ -4,7 +4,7 @@
   <div class="breadcrumbs">
     <ol class="breadcrumb" id="breadcrumb">
       <li><a href="{{ url('/books') }}">Trang chủ</a></li>
-      <li class="">Đặt hàng</li>
+      <li class=>Đặt hàng</li>
     </ol>
   </div>
   @if(count($errors) > 0)

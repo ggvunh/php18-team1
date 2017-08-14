@@ -4,7 +4,7 @@
 <section>
 	<div class="container">
 		<div class="row">
-			<h1>Xin chào <span style="color: green" >{{Auth::user()->name}}</span></h1>
+			<h1>Xin chào <span style="color: green" >{{Auth::user()->name}}</span></h1>
 
 		</div>
 	</div>
@@ -14,7 +14,6 @@
 	<div class="breadcrumbs">
 		<ol class="breadcrumb" id="breadcrumb">
 			<li><a href="{{ url('/books') }}">Trang chủ</a></li>
-			<li class="">Đặt hàng</li>
 		</ol>
 	</div>
 	<div class="row">

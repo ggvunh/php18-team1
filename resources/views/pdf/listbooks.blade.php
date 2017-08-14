@@ -16,11 +16,11 @@
 </head>
 <body>
 	<table>
-		<caption>Hiên thị</caption>
+		<caption style="font-size: 30px">LIST BOOKS</caption>
 		<thead>
 			<tr>
-				<th>Tên sách</th>
-				<th>Tên tác giả</th>
+				<th>NAME</th>
+				<th>AUTHOR</th>
 			</tr>
 		</thead>
 		<tbody>

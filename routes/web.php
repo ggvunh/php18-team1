@@ -156,6 +156,8 @@ Route::group(['middleware' => ['auth']], function(){
 			Route::get('listauthors/getPDF', 'PDFController@getPDFlistauthors');
 			Route::get('listpublishcompanies/getPDF', 'PDFController@getPDFlistcompanies');
 			Route::get('listtopics/getPDF', 'PDFController@getPDFlisttopics');
+			Route::get('listorders/getPDF', 'PDFController@getPDFlistorders');
+
 			//using Excel export
 			Route::get('listauthors/getExport', 'ExcelController@getExportauthors');
 			Route::get('listbooks/getExport', 'ExcelController@getExportbooks');
@@ -165,7 +167,11 @@ Route::group(['middleware' => ['auth']], function(){
 			Route::get('listusers/getExport', 'ExcelController@getExportusers');
 			Route::get('orderspending/getExport', 'ExcelController@getExportorderspending');
 			Route::get('orderssent/getExport', 'ExcelController@getExportorderssent');
-			Route::get('order/list/{id}/getExport', 'ExcelController@getExportorder');
+			// Route::get('order/list/{id}/getExport', 'ExcelController@getExportorder');
 
 		});
+
 });
+
+	Route::get('orderinfo/getPDF', 'PDFController@getPDForderinfo');
+	Route::get('ordersinfo/{id}/getExport', 'ExcelController@getExportorderinfo');
