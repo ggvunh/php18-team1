@@ -1,12 +1,15 @@
  @extends('layouts.admin.master')
   @section('header')
-    <h1>
-      REPORT DASHBOARD
-    </h1>
+    <div class="dashboard">
+      <h4>
+        REPORT DASHBOARD
+      </h4>
+    </div>  
   @stop
   @section('content')
-     <div class="row">
-        <div class="col-lg-2 col-xs-6">
+    <div class="container">
+     <div class="row padtop">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -21,7 +24,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-2 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -36,7 +39,7 @@
           </div>
         </div>
         <!-- ./col -->
-      <div class="col-lg-2 col-xs-6">
+      <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -51,7 +54,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-2 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -66,7 +69,7 @@
           </div>
         </div>
 
-         <div class="col-lg-2 col-xs-6">
+         <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -81,7 +84,7 @@
           </div>
         </div>
 
-         <div class="col-lg-2 col-xs-6">
+         <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
@@ -98,5 +101,6 @@
         <!-- ./col -->
       </div>
       <!-- /.row -->
+    </div>  
       <!-- Main row -->
   @stop

@@ -18,6 +18,7 @@ class TopicController extends Controller
   {
       $topic = Topic::where('id', $id)->first();
       $books = $topic->book;
+      
       return view('books.showtopic')->with(['topic' => $topic, 'books' => $books]);
   }
 
@@ -30,7 +31,7 @@ class TopicController extends Controller
 
  	public function listTopics()
  	{
- 		$topics = Topic::all();
+ 		$topics = Topic::paginate(10);
  		return view('backend.listadmin.listtopics')->with('topics',$topics);
  	}
 
@@ -55,7 +56,7 @@ class TopicController extends Controller
 
  	public function sdListTopics()
  	{
- 		$topics = Topic::onlyTrashed()->get();
+ 		$topics = Topic::onlyTrashed()->paginate(10);
  		return view('backend.softdeleteadmin.sdlisttopics')->with('topics',$topics);
  	}
 

@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Book Shop</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" href="{{ asset('upload/bookicon.png')}}"/>
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -40,7 +41,12 @@
   <script>
     $( function() {
       $( "#tabs" ).tabs();
-    } );
+    });
+    jQuery(document).ready(function($){
+      var path = window.location.pathname.split("/").pop();
+      var target = $('ul li a[href="'+path+'"]');
+      taget.addClass('active');
+    });
   </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -49,11 +55,11 @@
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="index2.html" class="logo">
+      <a href="/orderspending" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Book Shop</b> Admin</span>
       </a>
 
       <!-- Header Navbar: style can be found in header.less -->
@@ -102,12 +108,12 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs">{{Auth::user()->name}}</span>
               </a>
             </li>
             <!-- Control Sidebar Toggle Button -->
             <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              <a href="{{ url('/logout') }}"></span>Logout</a>
             </li>
           </ul>
         </div>
@@ -123,7 +129,7 @@
             <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p>{{Auth::user()->name}}</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
@@ -146,7 +152,7 @@
           </li>
           <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Production</span>
+            <i class="fa fa-dashboard"></i> <span>Product</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -182,6 +188,23 @@
             <li><a href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Soft Delete Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ url('/sdlistbooks') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Books</a></li>
+            <li><a href="{{ url('/sdlistauthors') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Authors</a></li>
+            <li><a href="{{ url('/sdlisttopics') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Topics</a></li>
+            <li><a href="{{ url('/sdlistpublishcompanies') }}"><i class="fa fa-circle-o text-aqua"></i>List SD Publishs Companies</a></li>
+          </ul>
+        </li>
+
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -207,7 +230,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2017 <a href="https://adminlte.io">Shopping Books</a>.</strong> All rights
+    <strong>Copyright &copy; 2017 <a href="/">Shopping Books</a>.</strong> All rights
     reserved.
   </footer>
 </div>
