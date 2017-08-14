@@ -2,10 +2,10 @@
   @section('header')
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <h1>
+        <div class="col-md-7">
+          <h3 class="paddtop">
             Soft Delete List Author
-          </h1>
+          </h3>
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
@@ -16,25 +16,63 @@
     </div>
   @stop
   @section('content')
-     <div class="col-md-10 col-md-offset-1 border">
-      @foreach ($authors as $author)
-        <div class="row borderlist">
-          <div class="col-sm-2">
-            <p class="h5">{{$author->name}}</p>
+    <section class="content padtop">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped ">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Name Author</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th class="text-center">Features</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($authors as $author)
+                    <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
+                      <td>{{ $author->name }}</a></td>
+                      <td>{{ $author->email }}</td>
+                      <td>0{{ $author->phone }}</td>
+                      <td>{{ $author->address }}</td>
+                      <td class="text-center"><a href="{{ url('/restoreauthor/'.$author->id) }}" class="glyphicon glyphicon-refresh">Restore</a></td>
+                    </tr>
+                  @endforeach  
+                </tbody>
+                  <tfoot>
+                    <tr>
+                      <th></th>
+                      <th>Name Author</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+                      <th class="text-center">Features</th>
+                    </tr>
+                  </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
           </div>
-          <div class="col-sm-3">
-            <p class="h5">{{$author->email}}</p>
-          </div>
-          <div class="col-sm-2">
-            <p class="h5">0{{$author->phone}}</p>
-          </div>
-          <div class="col-sm-3">
-            <p class="h5">{{$author->address}}</p>
-          </div>
-          <div class="col-sm-2">
-            <p class="h5"><a href="{{url('/restoreauthor/'.$author->id)}}" class="glyphicon glyphicon-refresh">Restore</a></p>
-          </div>
+          <!-- /.box -->
         </div>
-      @endforeach
-    </div>
-  @stop
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+          <div class="col-xs-4 col-xs-offset-8 paginate">
+            {!! $authors->links() !!}
+          </div>
+      </div>
+    </section>
+  @stop    
+

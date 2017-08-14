@@ -19,7 +19,7 @@
                     <span>Ngôn Ngữ : {{ $book->language }}</span>
                   </p>
                   <p class="single-item-title">
-                    <span>Chủ Đề : <a href="{{ url('/books/topics/' . $book->topic->id) }}">{{ $book->topic->name }}</a></span>
+                    <span>Chủ Đề : <a href="{{ url('/books/topics/'.$book->topic->id) }}">{{ $book->topic->name }}</a></span>
                   </p>
                   <p class="single-item-title">
                     <span>Tác Giả : <a href="{{ url('/books/authors/' . $book->author->id) }}">{{ $book->author->name }}</a></span>

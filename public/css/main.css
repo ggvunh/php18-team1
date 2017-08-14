@@ -23,7 +23,7 @@
 	padding-right: 50px;
 }
 .padleftorder{
-	margin-top: -20px;
+	margin-top: -55px;
 }
 .paddtop{
 	margin-top: 0px;
@@ -33,4 +33,16 @@
 }
 .paginate{
 	margin-top: -30px;
+}
+.len{
+	margin-top: -20px;
+}
+.active { 
+    background: #fff;
+}
+.dashboard{
+	padding-bottom: 20px;
+}
+.paddright{
+	margin-right: 40px;
 }
