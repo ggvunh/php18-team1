@@ -72,9 +72,6 @@
                         <input class="btn btn-primary pull-right" type="submit" name="submit" value="Send">
                     </form>
                   <div class="space40">&nbsp;</div>
-                  <div class="form-group">
-                      <span>{{ count('$comments') }} comments.</span>
-                  </div>
                   @foreach($comments as $comment)
                     @if($comment->book_id == $book->id)
                       <div class="form-group">
