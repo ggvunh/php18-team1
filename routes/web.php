@@ -25,7 +25,7 @@ Route::post('register','UserController@postregister');
 Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');
 Route::get('/books/topics/{id}', 'TopicController@showtopic');
-Route::get('/books/publish/{id}', 'BookController@showpublish');
+Route::get('/books/publish/{id}', 'PublishCompanyController@showpublish');
 Route::get('/search', 'SearchController@searchAll');
 //cart
 Route::get('/cartshow', 'CartController@cartshow');
@@ -35,7 +35,11 @@ Route::get('cart/{rowId}/downqty', 'CartController@downqty');
 Route::get('cart/{rowId}/upqty', 'CartController@upqty');
 
 
+
 Route::group(['middleware' => ['auth']], function(){
+		//comment
+		//Route::get('/comment/{book}', 'CommentController@commentshow');
+		Route::post('/books/{book}', 'CommentController@comment');
 		//cart
 		Route::get('/deleteCart/{book}', 'CartController@deleteCart');
 		Route::get('/cartcheckout', 'CartController@checkout');

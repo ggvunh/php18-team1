@@ -42,7 +42,7 @@
             <div class="form-group" align="center">
               <button type="submit" class="btn btn-info btn-primary">Thay đổi</button>
             </div>
-          </div> 
+          </div>
         </form>
       </div>
     </div>
@@ -56,7 +56,7 @@
       $("#changepassword").change(function(){
         if($(this).is(":checked"))
         {
-          $(".password").removeAttr('disabled');  
+          $(".password").removeAttr('disabled');
         }
         else
         {

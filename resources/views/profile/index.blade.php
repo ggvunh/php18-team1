@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<h1>Xin chào <span style="color: green" >{{Auth::user()->name}}</span></h1>
-			
+
 		</div>
 	</div>
 </section>

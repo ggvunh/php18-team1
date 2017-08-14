@@ -8,6 +8,7 @@ use App\Topic;
 use App\PublishCompany;
 use App\Author;
 use App\Book;
+use App\Comment;
 use Illuminate\Http\UploadedFile;
 use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -18,7 +19,8 @@ class BookController extends Controller
 
   public function index()
   {
-      $books = Book::paginate(8);
+      $books = Book::orderBy('id', 'desc')->paginate(8);
+      //$books->orderBy('id', 'desc');
       $authors = Author::paginate(4);
       $publishs = PublishCompany::paginate(4);
       $topics = Topic::paginate(4);
@@ -27,7 +29,7 @@ class BookController extends Controller
 
   public function viewhome()
   {
-      return redirect('/');
+      return redirect('/books');
   }
 
   public function show(Book $book)
@@ -36,8 +38,9 @@ class BookController extends Controller
       $author = Author::all();
       $publish = PublishCompany::all();
       $topic = Topic::all();
-      //dd($book->name);
-      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic]);
+      $comments = $book->comment;
+      //dd($comments);
+      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic, 'comments' => $comments])->with('publish', $publish);
   }
 
   public function createBook()
@@ -52,7 +55,7 @@ class BookController extends Controller
 	public function postCreateBook(Request $request)
   {
     $this->validate($request,
-        ['name'=>'required|unique:books|min:3'],
+        ['name'=>'required|unique:books,min:3'],
         ['name.required'=>'chua nhap ten',
           'name.unique'=>'ten da ton tai',
           'name.min'=>'name phai lon hon 3 ki tu']
@@ -78,7 +81,7 @@ class BookController extends Controller
 
 	public function listBook()
 	{
-		$books = Book::paginate(15);
+		$books = Book::all();
 		return view('backend.listadmin.listbooks')->with('books',$books);
 	}
 
@@ -121,7 +124,7 @@ class BookController extends Controller
 
 	public function sdListBook()
 	{
-		$books = Book::onlyTrashed()->paginate(15);
+		$books = Book::onlyTrashed()->get();
 		return view('backend.softdeleteadmin.sdlistbooks')->with('books',$books);
 	}
 
