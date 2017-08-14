@@ -45,7 +45,7 @@
                       <td>{{ $author->email }}</td>
                       <td>0{{ $author->phone }}</td>
                       <td>{{ $author->address }}</td>
-                      <td class="text-center"><a href="{{url('/restoreauthor/'.$author->id)}}" class="glyphicon glyphicon-refresh">Restore</a></td>
+                      <td class="text-center"><a href="{{ url('/restoreauthor/'.$author->id) }}" class="glyphicon glyphicon-refresh">Restore</a></td>
                     </tr>
                   @endforeach  
                 </tbody>

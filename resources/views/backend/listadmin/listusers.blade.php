@@ -62,10 +62,10 @@
                 @foreach ($users as $user)
                   <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
-                    <td><a href="{{url('/listordersuserid/'.$user->id)}}">{{$user->name}}</a></td>
-                    <td>{{$user->email}}</td>
-                    <td>0{{$user->phone}}</td>
-                    <td>{{$user->address}}</td>
+                    <td><a href="{{ url('/listordersuserid/'.$user->id) }}">{{ $user->name }}</a></td>
+                    <td>{{ $user->email }}</td>
+                    <td>0{{ $user->phone }}</td>
+                    <td>{{ $user->address }}</td>
                     <td>
                       @if ($user->is_admin==1)
                         Admin
@@ -73,7 +73,7 @@
                         User
                       @endif    
                     </td>
-                    <td class="text-center"><a href="{{url('/userdelete/'.$user->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                    <td class="text-center"><a href="{{ url('/userdelete/'.$user->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
                   </tr>
                 @endforeach  
               </tbody>
@@ -100,9 +100,9 @@
     <div class="row">
       <div class="col-xs-4 col-xs-offset-8 paginate">
         @if(isset($key))
-          {!! $users->appends(['key'=> $key])->links()!!}
+          {!! $users->appends(['key'=> $key])->links() !!}
         @else
-          {!! $users->links()!!}
+          {!! $users->links() !!}
         @endif  
       </div>
     </div>

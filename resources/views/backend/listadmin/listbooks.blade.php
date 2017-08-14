@@ -54,9 +54,9 @@
               @foreach($books as $book)
               <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
-                <td><a href="{{url('/books/'.$book->id)}}">{{$book->name}}</a></td>
-                <td><a href="{{url('/books/authors/'.$book->author->id)}}">{{$book->author->name}}</a></td>
-                <td><a href="{{url('/bookedit/'.$book->id)}}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{url('/bookdelete/'.$book->id)}}" class="glyphicon glyphicon-trash">Delete</a></td>
+                <td><a href="{{ url('/books/'.$book->id) }}">{{ $book->name }}</a></td>
+                <td><a href="{{ url('/books/authors/'.$book->author->id) }}">{{ $book->author->name }}</a></td>
+                <td><a href="{{ url('/bookedit/'.$book->id) }}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{ url('/bookdelete/'.$book->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
               </tr>
               @endforeach  
             </tbody>
@@ -79,7 +79,7 @@
   <!-- /.row -->
   <div class="row">
     <div class="col-xs-4 col-xs-offset-8 paginate">
-      {!! $books->render() !!}
+      {!! $books->links() !!}
     </div>
   </div>
 </section>

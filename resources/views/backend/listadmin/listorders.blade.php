@@ -66,23 +66,25 @@
 								<th>Order ID</th>
 								<th>Address</th>
 								<th>Note</th>
-								<th>Shipping Status</th>
+								<th class="text-center">Shipping Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach ($orders as $order)
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
-								<td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-								<td><a href="{{url('listorderdate/'.$order->order_date)}}"> {{$order->order_date}}</a></td>
-								<td><a href="{{url('/orderdetailorderid/'.$order->id)}}">{{$order->id}}</a></td>
-								<td>{{$order->address}}</td>
-								<td>{{$order->note}}</td>
-								<td>
+								<td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{ $order->user->name }}</a></td>
+								<td><a href="{{ url('listorderdate/'.$order->order_date) }}"> {{ $order->order_date }}</a></td>
+								<td><a href="{{ url('/orderdetailorderid/'.$order->id) }}" title="View Order detail">{{ $order->id }}</a></td>
+								<td>{{ $order->address }}</td>
+								<td>{{ $order->note }}</td>
+								<td class="text-center">
 									@if ($order->shipping_status==1)
-									 	Have shipped
-									@else ($order->shipping_status==0)
-										Wait shipped
+									 	<span class="label label-success">Have shipped</span>
+									@elseif ($order->shipping_status==0)
+										<span class="label label-warning">Wait shipped</span>
+									@else
+										<span class="label label-danger">Delivered</span>	
 									@endif
 								</td>
 							</tr>

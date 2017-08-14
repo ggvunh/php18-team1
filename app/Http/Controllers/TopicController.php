@@ -31,7 +31,7 @@ class TopicController extends Controller
 
  	public function listTopics()
  	{
- 		$topics = Topic::paginate(15);
+ 		$topics = Topic::paginate(10);
  		return view('backend.listadmin.listtopics')->with('topics',$topics);
  	}
 

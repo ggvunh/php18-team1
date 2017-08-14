@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h3>
-					List Orders Sent
+					List Orders Have Shipped
 					<small>(All)</small>
 				</h3>
 			</div>
@@ -66,7 +66,7 @@
 								<th>Order ID</th>
 								<th>Address</th>
 								<th>Note</th>
-								<th>Shipping Status</th>
+								<th>Edit Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,7 +78,7 @@
 								<td>{{ $order->address }}</td>
 								<td>{{ $order->note }}</td>
 								<td class="text-center">	
-									<a href="{{ url('statusorder0/'. $order->id) }}"><p class="btn btn-primary btn-sm">process</p></a>
+									<a href="{{ url('statusorder0/'. $order->id) }}"><p class="btn btn-primary btn-sm">Not Shipped</p></a>
 								</td>
 							</tr>
 							@endforeach

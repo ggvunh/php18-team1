@@ -53,7 +53,7 @@
                   @foreach ($topics as $topic)
                     <tr>
                       <td class="text-center">{{ $loop->iteration }}</td>
-                      <td><a href="{{ url('/books/topics/'.$topic->id) }}">{{$topic->name}}</a></td>
+                      <td><a href="{{ url('/books/topics/'.$topic->id) }}">{{ $topic->name }}</a></td>
                       <td class="text-center"><a href="{{ url('/topicedit/'.$topic->id) }}" class="glyphicon glyphicon-edit">Edit</a>&nbsp&nbsp&nbsp&nbsp<a href="{{ url('/topicdelete/'.$topic->id) }}" class="glyphicon glyphicon-trash">Delete</a></td>
                     </tr>
                   @endforeach  
@@ -76,7 +76,7 @@
       <!-- /.row -->
       <div class="row">
           <div class="col-xs-4 col-xs-offset-8 paginate">
-            {!! $topics->render() !!}
+            {!! $topics->links() !!}
           </div>
       </div>
     </section>

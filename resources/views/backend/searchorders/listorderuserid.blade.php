@@ -4,9 +4,10 @@
 		<div class="row">
 	    	<div class="col-md-5">
 		      <h3>
-		        List Orders User
-		        @if(isset($user))"{{$user->name}}"
+		      	@if(isset($user))
+		        	List Orders User "{{ $user->name }}"
 		        @else
+		        	List Orders Date  {{ $date }}
 		        @endif
 		      </h3>
 		    </div>
@@ -61,13 +62,13 @@
 	                	@foreach ($orders as $order)
 			                <tr>
 			                  <td>{{ $loop->iteration }}</td>
-			                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-			                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
-			                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
-			                  <td>{{$order->address}}</td>
-			                  <td>{{$order->note}}</td>
-			                  <td>{{$order->status_order}}</td>
-			                  <td>{{$order->deleted_at}}</td>
+			                  <td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{ $order->user->name }}</a></td>
+			                  <td><a href="{{ url('listorderdate/'.$order->order_date) }}">{{ $order->order_date }}</a></td>
+			                  <td title="View Order detail"><a href="{{ url('/orderdetailorderid/'.$order->id) }}"> {{ $order->id }}</a></td>
+			                  <td>{{ $order->address }}</td>
+			                  <td>{{ $order->note }}</td>
+			                  <td>{{ $order->status_order }}</td>
+			                  <td>{{ $order->deleted_at }}</td>
 			                </tr>
 			            @endforeach
 	                </tbody>
@@ -83,7 +84,7 @@
       	  <div class="row">
 	      	<div class="col-xs-4 col-xs-offset-8 paginate">
 		      	@if(isset($user))
-		      		{!! $orders->appends(['user'=> $user])->render()!!}
+		      		{!! $orders->appends(['user'=> $user])->links() !!}
 		      	@else
 			        {!! $orders->links() !!}
 			    @endif

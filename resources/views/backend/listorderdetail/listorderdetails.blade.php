@@ -57,11 +57,11 @@
 	                	@foreach ($orderdetails as $orderdetail)
 			                <tr>
 			                  <td class="text-center">{{ $loop->iteration }}</td>
-			                  <td>{{$orderdetail->order->id}}</td>
-			                  <td>{{$orderdetail->book->name}}</td>
-			                  <td class="text-right">{{$orderdetail->quantity}}</td>
-			                  <td class="text-right">{{$orderdetail->price}}</td>
-			                  <td class="text-right">{{$orderdetail->quantity * $orderdetail->price}}</td>
+			                  <td>{{ $orderdetail->order->id }}</td>
+			                  <td>{{ $orderdetail->book->name }}</td>
+			                  <td class="text-right">{{ $orderdetail->quantity }}</td>
+			                  <td class="text-right">{{ $orderdetail->price }}</td>
+			                  <td class="text-right">{{ $orderdetail->quantity * $orderdetail->price }}</td>
 			                </tr>
 			            @endforeach
 	                </tbody>
@@ -72,7 +72,7 @@
 		                  <th></th>
 		                  <th></th>
 		                  <th>Sum Money</th>
-		                  <th class="text-right">{{$sum}}</th>
+		                  <th class="text-right">{{ $sum }}</th>
 		                </tr>
 	                </tfoot>
 	              </table>

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h3>
-					List Orders Has Not Been Sent
+					List Orders Pending
 					<small>(All)</small>
 				</h3>
 			</div>
@@ -67,20 +67,20 @@
 									<th>Order ID</th>
 									<th>Address</th>
 									<th>Note</th>
-									<th>Shipping Status</th>
+									<th>Edit Status</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach ($orders as $order)
 								<tr>
 									<td class="text-center">{{ $loop->iteration }}</td>
-									<td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-									<td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
-									<td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
-									<td>{{$order->address}}</td>
-									<td>{{$order->note}}</td>
+									<td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{$order->user->name }}</a></td>
+									<td><a href="{{ url('listorderdate/'.$order->order_date) }}">{{ $order->order_date }}</a></td>
+									<td><a href="{{ url('/orderdetailorderid/'.$order->id) }}"> {{ $order->id }}</a></td>
+									<td>{{ $order->address }}</td>
+									<td>{{ $order->note }}</td>
 									<td class="text-center">
-										<a href="{{url('statusorder1/'. $order->id)}}"><p class="btn btn-primary btn-sm">process</p></a>
+										<a href="{{ url('statusorder1/'. $order->id) }}"><p class="btn btn-primary btn-sm">Have Shipped</p></a>
 									</td>
 								</tr>
 								@endforeach
