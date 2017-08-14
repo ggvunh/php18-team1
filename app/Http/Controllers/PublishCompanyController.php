@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\PublishCompany;
 use File;
+use App\Book;
 
 class PublishCompanyController extends Controller
 {
@@ -16,9 +17,10 @@ class PublishCompanyController extends Controller
 
   public function showpublish($id)
   {
-      $publishs = PublishCompany::where('id', $id)->first();
-      $books = $publishs->book;
-      dd($books);
+      $publish = PublishCompany::where('id', $id)->first();
+      $books = Book::where('publish_id', $publish->id);
+      //$books = $publish->book;
+      //dd($books);
       return view('books.showpublish')->with(['publishs' => $publishs, 'books' => $books]);
   }
 

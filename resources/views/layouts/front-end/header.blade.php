@@ -16,7 +16,7 @@
          <li><a href="{{ url('order/profile') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{Auth::user()->name}}</a></li>
          <li><a href="{{ url('/logout') }}"></span>Đăng xuất</a></li>
          @else
-         <li><a href="{{ url('user/register') }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Đăng kí</a></li>
+         <li><a href="{{ url('register') }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Đăng kí</a></li>
          <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
          @endif
        </ul>
@@ -68,7 +68,7 @@
   				<li><a href="#">Chủ Đề</a>
   					<ul class="sub-menu">
                 @foreach($topics as $topic)
-  						      <li><a href="{{url('/books/topics/' . $topic->id)}}">{{ $topic->name }}</a></li>
+  						      <li class="{{is_current_route('/books/*/*')}}"><a href="{{url('/books/topics/' . $topic->id)}}">{{ $topic->name }}</a></li>
                 @endforeach
   					</ul>
   				</li>

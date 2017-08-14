@@ -54,27 +54,14 @@
                   <p>{{ $book->detail }}</p>
               </div>
               <div class="panel" id="tab-comment">
-                <!-- <form class="form-horizontal" method="post" role="form">
-                  <div class="form-group">
-                    <label for="comment">Comment</label>
-                      <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                  </div>
-
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary" name="comment">Send</button>
-                  </div>
-                </form> -->
-                    <form class="form-group" method="post" action="{{ url('/books/' . $book->id) }}" id="comment" role="comment">
-                        {{ csrf_field() }}
-                        <label for="comment">Comment</label>
-                        <textarea id="comment" name="comment" class="form-control" rows="5" required></textarea>
-                        <div class="space10">&nbsp;</div>
-                        <input class="btn btn-primary pull-right" type="submit" name="submit" value="Send">
-                    </form>
+                  <form class="form-group" method="post" action="{{ url('/books/' . $book->id) }}" id="comment" role="comment">
+                      {{ csrf_field() }}
+                      <label for="comment">Comment</label>
+                      <textarea id="comment" name="comment" class="form-control" rows="5" required></textarea>
+                      <div class="space10">&nbsp;</div>
+                      <input class="btn btn-primary pull-right" type="submit" name="submit" value="Send">
+                  </form>
                   <div class="space40">&nbsp;</div>
-                  <div class="form-group">
-                      <span>{{ count('$comments') }} comments.</span>
-                  </div>
                   @foreach($comments as $comment)
                     @if($comment->book_id == $book->id)
                       <div class="form-group">

@@ -134,24 +134,4 @@ class BookController extends Controller
 		$book->restore($id);
 		return redirect('/sdlistbooks');
 	}
-
-  public function searchbook(Request $request)
-  {
-      $books = Book::all();
-
-    if($request->key == '')
-    {
-      $books = Book::paginate(16);
-    }
-    else
-    {
-      $books = Book::where('name', 'like', '%' . $request->key . '%')
-                        ->orWhere('language', 'like', '%' . $request->key . '%')
-                        ->orWhere('price', 'like', $request->key)
-                        ->orWhere('quantity', 'like', $request->key)
-                        ->orWhere('detail', 'like', '%' . $request->key . '%')
-                        ->paginate(16);
-    }
-    return view('books.search')->with('books', $books);
-  }
 }
