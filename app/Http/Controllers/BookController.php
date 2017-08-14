@@ -8,6 +8,7 @@ use App\Topic;
 use App\PublishCompany;
 use App\Author;
 use App\Book;
+use App\Comment;
 use Illuminate\Http\UploadedFile;
 use File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -18,14 +19,15 @@ class BookController extends Controller
 
   public function index()
   {
-      $books = Book::paginate(8);
+      $books = Book::orderBy('id', 'desc')->paginate(8);
+      //$books->orderBy('id', 'desc');
       $authors = Author::paginate(4);
       $publishs = PublishCompany::paginate(4);
       $topics = Topic::paginate(4);
       return view('books.index')->with('books', $books);
   }
 
-  public function return()
+  public function viewhome()
   {
       return redirect('/books');
   }
@@ -36,8 +38,9 @@ class BookController extends Controller
       $author = Author::all();
       $publish = PublishCompany::all();
       $topic = Topic::all();
-      //dd($topic);
-      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic])->with('publish', $publish);
+      $comments = $book->comment;
+      //dd($comments);
+      return view('books.show')->with(['book' => $book, 'books' => $books, 'author' =>$author, 'topic' => $topic, 'comments' => $comments])->with('publish', $publish);
   }
 
   public function createBook()

@@ -5,7 +5,7 @@
     <div class="breadcrumbs">
       <ol class="breadcrumb" id="breadcrumb">
         <li><a href="{{ url('/books') }}">Trang chủ</a></li>
-        <li class="active">Mât khẩu</li>
+        <li class="">Mât khẩu</li>
       </ol>
     </div>
     <div class="row">

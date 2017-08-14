@@ -4,7 +4,7 @@
   <div class="breadcrumbs">
     <ol class="breadcrumb" id="breadcrumb">
       <li><a href="{{ url('/') }}">Trang chủ</a></li>
-      <li class="active">Đặt hàng</li>
+      <li class="">Đặt hàng</li>
     </ol>
   </div>
   @if(count($errors) > 0)
@@ -43,7 +43,7 @@
             <div class="form-group" align="center">
               <button type="submit" class="btn btn-info btn-primary">Thay đổi</button>
             </div>
-          </div> 
+          </div>
         </form>
       </div>
     </div>
@@ -57,7 +57,7 @@
       $("#changepassword").change(function(){
         if($(this).is(":checked"))
         {
-          $(".password").removeAttr('disabled');  
+          $(".password").removeAttr('disabled');
         }
         else
         {

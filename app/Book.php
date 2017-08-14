@@ -33,4 +33,9 @@ class Book extends Model
     {
       return $this->hasMany('App\OrderDetail');
     }
+
+    public function comment()
+    {
+      return $this->hasMany('App\Comment');
+    }
 }
