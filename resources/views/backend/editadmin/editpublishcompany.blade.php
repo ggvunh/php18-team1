@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
-	          <p class="btn btn-primary"><a href="{{url('/createpublishcompany')}}" class="h4">Create new Public Company</a></p>
+	          <p class="btn btn-primary"><a href="{{ url('/createpublishcompany') }}" class="h4">Create new Public Company</a></p>
 	        </div>  
         </div>  
       </div>

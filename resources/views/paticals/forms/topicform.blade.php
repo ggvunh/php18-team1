@@ -5,5 +5,5 @@
 	  </div>
 	</div>
 	<div class="padright">
-	{!! Form::submit('Save Topic', ['class' => 'btn btn-primary pull-right btn-lg']) !!}
+	{!! Form::submit('Save Topic', ['class' => 'btn btn-primary pull-right']) !!}
 	</div>

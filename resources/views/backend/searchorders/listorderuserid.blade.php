@@ -1,45 +1,46 @@
 @extends('layouts.admin.master')
   @section('header')
-    <section class="content-header">
-    	<div class="col-md-6">
-	      <h3>
-	        List Orders User
-	        @if(isset($user))"{{$user->name}}"
-	        @else
-	        <small>(All)</small>
-	        @endif
-	      </h3>
-	    </div>
-	    <div class="col-md-6">
-	    	<div class="form-group">
-               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
-        			<div>
-	        			<div class="form-group input-group-addon">
-						  {!! Form::label('since', 'Since') !!}
-						  <div class="form-controls">
-						    {!! Form::date('since', null, ['class' => 'form-control']) !!}
-						  </div>
+    <div class="container">
+		<div class="row">
+	    	<div class="col-md-5">
+		      <h3>
+		      	@if(isset($user))
+		        	List Orders User "{{ $user->name }}"
+		        @else
+		        	List Orders Date  {{ $date }}
+		        @endif
+		      </h3>
+		    </div>
+		    <div class="col-md-6">
+		    	<div class="form-group">
+	               {!! Form::open(['url' => '/searchsinceto','method'=>'get']) !!}
+	        			<div>
+		        			<div class="form-group input-group-addon">
+							  {!! Form::label('since', 'Since') !!}
+							  <div class="form-controls">
+							    {!! Form::date('since', null, ['class' => 'form-control']) !!}
+							  </div>
+							</div>
+							<div class="form-group input-group-addon">
+							  {!! Form::label('to', 'To') !!}
+							  <div class="form-controls">
+							    {!! Form::date('to', null, ['class' => 'form-control']) !!}
+							  </div>
+							</div>
+							<div class="form-group input-group-addon">
+							  <div class="form-controls">
+							  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
+							  </div>
+							</div>
 						</div>
-						<div class="form-group input-group-addon">
-						  {!! Form::label('to', 'To') !!}
-						  <div class="form-controls">
-						    {!! Form::date('to', null, ['class' => 'form-control']) !!}
-						  </div>
-						</div>
-						<div class="form-group input-group-addon">
-						  <div class="form-controls">
-						  	{!! Form::submit('Search', ['class' => 'btn btn-primary pull-right']) !!}
-						  </div>
-						</div>
-					</div>
-      			{!! Form::close() !!}
-             </div>
-	    </div>
-
-    </section>
+	      			{!! Form::close() !!}
+	             </div>
+		    </div>
+		</div>
+    </div>
   @stop
   @section('content')
-    	<section class="content padright padleftorder">
+    	<div class="content padright padleftorder">
 	      <div class="row">
 	        <div class="col-xs-12">
 	          <div class="box">
@@ -61,13 +62,13 @@
 	                	@foreach ($orders as $order)
 			                <tr>
 			                  <td>{{ $loop->iteration }}</td>
-			                  <td><a href="{{url('/listordersuserid/'.$order->user->id)}}"> {{$order->user->name}}</a></td>
-			                  <td><a href="{{url('listorderdate/'.$order->order_date)}}">{{$order->order_date}}</a></td>
-			                  <td><a href="{{url('/orderdetailorderid/'.$order->id)}}"> {{$order->id}}</a></td>
-			                  <td>{{$order->address}}</td>
-			                  <td>{{$order->note}}</td>
-			                  <td>{{$order->status_order}}</td>
-			                  <td>{{$order->deleted_at}}</td>
+			                  <td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{ $order->user->name }}</a></td>
+			                  <td><a href="{{ url('listorderdate/'.$order->order_date) }}">{{ $order->order_date }}</a></td>
+			                  <td title="View Order detail"><a href="{{ url('/orderdetailorderid/'.$order->id) }}"> {{ $order->id }}</a></td>
+			                  <td>{{ $order->address }}</td>
+			                  <td>{{ $order->note }}</td>
+			                  <td>{{ $order->status_order }}</td>
+			                  <td>{{ $order->deleted_at }}</td>
 			                </tr>
 			            @endforeach
 	                </tbody>
@@ -80,5 +81,14 @@
 	        <!-- /.col -->
 	      </div>
       <!-- /.row -->
-    	</section>
+      	  <div class="row">
+	      	<div class="col-xs-4 col-xs-offset-8 paginate">
+		      	@if(isset($user))
+		      		{!! $orders->appends(['user'=> $user])->links() !!}
+		      	@else
+			        {!! $orders->links() !!}
+			    @endif
+	      	</div>
+	      </div>
+    	</div>
   @stop

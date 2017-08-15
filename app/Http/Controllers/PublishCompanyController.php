@@ -33,7 +33,7 @@ class PublishCompanyController extends Controller
 
  	public function listPublishCompanies()
  	{
- 		$publishcompanies = PublishCompany::all();
+ 		$publishcompanies = PublishCompany::paginate(10);
  		return view('backend.listadmin.listpublishcompanies')->with('publishcompanies', $publishcompanies);
  	}
 
@@ -58,7 +58,7 @@ class PublishCompanyController extends Controller
 
  	public function sdPublishCompanies()
  	{
- 		$publishcompanies = PublishCompany::onlyTrashed()->get();
+ 		$publishcompanies = PublishCompany::onlyTrashed()->paginate(10);
  		return view('backend.softdeleteadmin.sdlistpublishcompanies')->with('publishcompanies',$publishcompanies);
  	}
 

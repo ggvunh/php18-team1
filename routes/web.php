@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 //index
 Route::get('/', 'BookController@index');
 //login
-Route::get('/login', 'UserController@getlogin');
+Route::get('login', 'UserController@getlogin');
 Route::post('login', 'UserController@postlogin');
 Route::get('logout', 'UserController@logout');
 //register
@@ -61,7 +61,10 @@ Route::group(['middleware' => ['auth']], function(){
 			Route::get('changepass/{id}', 'UserController@pass');
 			Route::post('changepass/{id}', 'UserController@changepass');
 		});
-		//admin
+
+
+
+		//huong
 		Route::group(['middleware' => ['admin']], function(){
 			//list users
 			Route::get('/listusers','UserController@listUsers');

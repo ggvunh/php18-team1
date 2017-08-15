@@ -29,7 +29,7 @@ class AuthorController extends Controller
  	}
  	public function listAuthor()
 	{
-		$authors = Author::all();
+		$authors = Author::paginate(10);
 		return view('backend.listadmin.listauthors')->with('authors',$authors);
 	}
 
@@ -54,7 +54,7 @@ class AuthorController extends Controller
 
 	public function sdListAuthors()
 	{
-		$authors = Author::onlyTrashed()->get();
+		$authors = Author::onlyTrashed()->paginate(10);
 		return view('backend.softdeleteadmin.sdlistauthors')->with('authors',$authors);
 	}
 

@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-3">
 	        <div class="pull-right">
-	          <p class="btn btn-primary"><a href="{{url('/createtopic')}}" class="h4">Create new Topic</a></p>
+	          <p class="btn btn-primary"><a href="{{ url('/createtopic') }}" class="h4">Create new Topic</a></p>
 	        </div>  
         </div>  
       </div>
