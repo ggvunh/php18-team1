@@ -81,7 +81,7 @@ class BookController extends Controller
 
 	public function listBook()
 	{
-		$books = Book::all();
+		$books = Book::paginate(10);
 		return view('backend.listadmin.listbooks')->with('books',$books);
 	}
 

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Session;
 use App\Topic;
+use App\PublishCompany;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
         if (\Schema::hasTable('topics')) {
             $topics = Topic::all();
             view()->share('topics',$topics);
+        }
+
+        if (\Schema::hasTable('publish_companies')) {
+            $publishs = PublishCompany::all();
+            view()->share('publishs',$publishs);
         }
     }
 

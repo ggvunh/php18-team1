@@ -32,8 +32,8 @@
     <div class="pull-right beta-components space-left ov">
      <div class="space10">&nbsp;</div>
      <div class="beta-comp">
-      <form role="search" method="get" id="searchform" action="/">
-       <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+      <form role="search" method="get" id="searchform" action="/timkiem">
+       <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
        <button class="fa fa-search" type="submit" id="searchsubmit"></button>
      </form>
    </div>
@@ -68,7 +68,14 @@
   				<li><a href="#">Chủ Đề</a>
   					<ul class="sub-menu">
                 @foreach($topics as $topic)
-  						      <li class="{{is_current_route('/books/*/*')}}"><a href="{{url('/books/topics/' . $topic->id)}}">{{ $topic->name }}</a></li>
+  						      <li class="{{is_current_route('books/*')}}"><a href="{{url('/books/topics/' . $topic->id)}}">{{ $topic->name }}</a></li>
+                @endforeach
+  					</ul>
+  				</li>
+          <li><a href="#">Nhà Xuất Bản</a>
+  					<ul class="sub-menu">
+                @foreach($publishs as $publish)
+  						      <li class="{{is_current_route('books/*/*')}}"><a href="{{url('/books/publish/' . $publish->id)}}">{{ $publish->name }}</a></li>
                 @endforeach
   					</ul>
   				</li>

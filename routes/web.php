@@ -26,7 +26,9 @@ Route::get('/books/{book}', 'BookController@show');
 Route::get('/books/authors/{id}', 'AuthorController@showauthor');
 Route::get('/books/topics/{id}', 'TopicController@showtopic');
 Route::get('/books/publish/{id}', 'PublishCompanyController@showpublish');
+Route::get('/timkiem', 'SearchController@searchbook');
 Route::get('/search', 'SearchController@searchAll');
+
 //cart
 Route::get('/cartshow', 'CartController@cartshow');
 Route::get('/books/{id}/addcart', 'CartController@addcart');

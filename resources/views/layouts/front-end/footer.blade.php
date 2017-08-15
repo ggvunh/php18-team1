@@ -5,7 +5,7 @@
         <div class="col-sm-3">
           <div class="widget">
             <h4 class="widget-title">Fanpage</h4>
-            <div id="beta-instagram-feed"><a href="#"><p>địa chỉ facebook của shop</p></div>
+            <div id="beta-instagram-feed"><a href="#"><p>Facebook</p></div>
           </div>
         </div>
         <div class="col-sm-2">

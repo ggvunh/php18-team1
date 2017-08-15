@@ -18,10 +18,10 @@ class PublishCompanyController extends Controller
   public function showpublish($id)
   {
       $publish = PublishCompany::where('id', $id)->first();
-      $books = Book::where('publish_id', $publish->id);
-      //$books = $publish->book;
-      //dd($books);
-      return view('books.showpublish')->with(['publishs' => $publishs, 'books' => $books]);
+      $books = Book::where('publish_id', $id)->get();
+      //$book = $publish->book;
+      //dd($book);
+      return view('books.showpublish')->with(['publish' => $publish, 'books' => $books]);
   }
 
 	public function postCreatePublishCompany(Request $request)
