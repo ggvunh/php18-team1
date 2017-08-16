@@ -60,7 +60,10 @@ class CartController extends Controller
           $order_detail = Cart::content();
           foreach($order_detail as $item){
             OrderDetail::create(['quantity' => $item->qty, 'price' => $item->price, 'book_id' => $item->id, 'order_id' => $order->id]);
+            // $quantity = $book->quantity - $item->qty;
+            // Book::update(['quantity' => $quantity]);
           }
+
       // }else
       // {
       //      MsgBox("Bạn có chắc muốn hủy đơn hàng?", vbOkCancel, "Thông Báo!");

@@ -5,7 +5,7 @@
         <div class="col-sm-3">
           <div class="widget">
             <h4 class="widget-title">Fanpage</h4>
-            <div id="beta-instagram-feed"><a href="#"><p>Facebook</p></div>
+            <div><a href="#"><p>Link Facebook</p></a></div>
           </div>
         </div>
         <div class="col-sm-2">
@@ -13,9 +13,9 @@
             <h4 class="widget-title">TIN TỨC SÁCH</h4>
             <div>
               <ul>
-                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Tin Tức</a></li>
-                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Điemr Sách</a></li>
-                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Phê Bình</a></li>
+                <li><a href="#"><i class="fa fa-chevron-right"></i> Tin Tức</a></li>
+                <li><a href="#"><i class="fa fa-chevron-right"></i> Điểm Sách</a></li>
+                <li><a href="#"><i class="fa fa-chevron-right"></i> Phê Bình</a></li>
 
               </ul>
             </div>
