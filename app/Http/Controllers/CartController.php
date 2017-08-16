@@ -78,7 +78,7 @@ class CartController extends Controller
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty - 1);
         $total = Cart::total();
-        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'total' => $total], 200);
+        return response(['qty' => $item->qty, 'subtotal' => number_format($item->subtotal,2), 'total' => $total], 200);
     }
 
     public function upqty($rowId)
@@ -87,6 +87,6 @@ class CartController extends Controller
       $item = Cart::get($rowId);
       Cart::update($rowId, $item->qty + 1);
       $total = Cart::total();
-      return response(['qty' => $item->qty, 'subtotal' => $item->subtotal, 'total' => $total], 200);
+      return response(['qty' => $item->qty, 'subtotal' => number_format($item->subtotal,2), 'total' => $total], 200);
     }
 }

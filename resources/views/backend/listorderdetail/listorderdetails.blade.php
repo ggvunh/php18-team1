@@ -46,18 +46,16 @@
 	                <thead>
 	                <tr>
 	                  <th class="text-center"></th>
-	                  <th>Order ID</th>
-	                  <th>Name Books</th>
-	                  <th>Quantity</th>
-	                  <th>Price</th>
-	                  <th>Into money</th>
+	                  <th class="text-center">Name Books</th>
+	                  <th class="text-center">Quantity</th>
+	                  <th class="text-center">Price</th>
+	                  <th class="text-center">Into money</th>
 	                </tr>
 	                </thead>
 	                <tbody>
 	                	@foreach ($orderdetails as $orderdetail)
 			                <tr>
 			                  <td class="text-center">{{ $loop->iteration }}</td>
-			                  <td>{{ $orderdetail->order->id }}</td>
 			                  <td>{{ $orderdetail->book->name }}</td>
 			                  <td class="text-right">{{ $orderdetail->quantity }}</td>
 			                  <td class="text-right">{{ $orderdetail->price }}</td>
@@ -70,9 +68,8 @@
 	                	  <th class="text-center"></th>
 		                  <th></th>
 		                  <th></th>
-		                  <th></th>
-		                  <th>Sum Money</th>
-		                  <th class="text-right">{{ $sum }}</th>
+		                  <th class="text-right">Sum Money</th>
+		                  <th class="text-right">{{ number_format($sum,0,',',',') }}đ.</th>
 		                </tr>
 	                </tfoot>
 	              </table>

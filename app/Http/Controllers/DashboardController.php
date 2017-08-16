@@ -21,12 +21,12 @@ class DashboardController extends Controller
     	$topic = Topic::all();
     	$publish = PublishCompany::all();
     	$user = User::all();
-        // $dateto = date('Y-m-d');
-        // $datesince = strtotime('-7 days');
-        // $datesince = date('Y-m-d',$datesince);
-        // dd($datesince);
-        // $comment = Comment::whereBetween('created_at', [$datesince." 00:00:00", $dateto." 23:59:59"])->get();
-        // return view('backend.viewpage.dashboard',['order'=>$order,'book'=>$book,'author'=>$author,'topic'=>$topic,'publish'=>$publish,'user'=>$user,'comment'=>$comment]);
-    	return view('backend.viewpage.dashboard',['order'=>$order,'book'=>$book,'author'=>$author,'topic'=>$topic,'publish'=>$publish,'user'=>$user]);
+        $dateto = date('Y-m-d');
+        $datesince = strtotime('-7 days');
+        $datesince = date('Y-m-d',$datesince);
+        $comments = Comment::whereBetween('created_at', [$datesince." 00:00:00", $dateto." 23:59:59"])->get();
+        return view('backend.viewpage.dashboard',['order'=>$order,'book'=>$book,'author'=>$author,'topic'=>$topic,'publish'=>$publish,'user'=>$user,'comments'=>$comments]);
     }
+    // 	return view('backend.viewpage.dashboard',['order'=>$order,'book'=>$book,'author'=>$author,'topic'=>$topic,'publish'=>$publish,'user'=>$user]);
+    // }
 }

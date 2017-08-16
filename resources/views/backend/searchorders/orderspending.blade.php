@@ -62,12 +62,12 @@
 							<thead>
 								<tr>
 									<th></th>
-									<th>Account</th>
-									<th>Order Date</th>
-									<th>Order ID</th>
-									<th>Address</th>
-									<th>Note</th>
-									<th>Edit Status</th>
+									<th class="text-center">Account</th>
+									<th class="text-center">Order Date</th>
+									<th class="text-center">Order ID</th>
+									<th class="text-center">Address</th>
+									<th class="text-center">Note</th>
+									<th class="text-center">Edit Status</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -76,7 +76,7 @@
 									<td class="text-center">{{ $loop->iteration }}</td>
 									<td><a href="{{ url('/listordersuserid/'.$order->user->id) }}"> {{$order->user->name }}</a></td>
 									<td><a href="{{ url('listorderdate/'.$order->order_date) }}">{{ $order->order_date }}</a></td>
-									<td><a href="{{ url('/orderdetailorderid/'.$order->id) }}"> {{ $order->id }}</a></td>
+									<td class="text-center"><a href="{{ url('/orderdetailorderid/'.$order->id) }}" title="View Order detail"> {{ $order->id }}</a></td>
 									<td>{{ $order->address }}</td>
 									<td>{{ $order->note }}</td>
 									<td class="text-center">

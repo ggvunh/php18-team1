@@ -128,7 +128,7 @@
 					        $.get($root + '/' + rowId + '/' + 'downqty', function(data, status){
 					            var subtotal = data.subtotal;
 											console.log(data);
-					            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+					            $('#' + rowId).replaceWith('<input class="wid" type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
 					            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
 											$('#total').replaceWith('<span id="total">' + data.total + '</span>');
 									});
@@ -140,7 +140,7 @@
 					        $.get($root + '/' + rowId + '/' + 'upqty', function(data, status){
 					            var subtotal = data.subtotal;
 											console.log(data);
-					            $('#' + rowId).replaceWith('<input type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
+					            $('#' + rowId).replaceWith('<input class="wid" type="text" id="' + rowId + '" name="quantity" value="' + data.qty + '">');
 					            $('#amount' + rowId).replaceWith('<span class="amount" id="amount' + rowId + '">' + subtotal + '</span>');
 											$('#total').replaceWith('<span id="total">' + data.total + '</span>');
 									});
