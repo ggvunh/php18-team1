@@ -10,6 +10,7 @@ use Auth;
 use App\Order;
 use App\OrderDetail;
 use DateTime;
+use notificationMgs;
 
 class CartController extends Controller
 {
@@ -30,12 +31,22 @@ class CartController extends Controller
 
     public function cartshow()
     {
-      return view('books.cart');
+      if(Cart::count() != 0)
+      {
+          return view('books.cart');
+      }
+      notificationMgs('error','Bạn chưa đặt hàng.');
+      return redirect('/');
     }
 
     public function checkout()
     {
-      return view('books.checkout');
+      if(Cart::count() != 0)
+      {
+          return view('books.checkout');
+      }
+      notificationMgs('error','Bạn đã xóa hết mặt hàng.');
+      return redirect('/');
     }
 
     public function deleteCart($rowId)
@@ -60,7 +71,11 @@ class CartController extends Controller
           $order_detail = Cart::content();
           foreach($order_detail as $item){
             OrderDetail::create(['quantity' => $item->qty, 'price' => $item->price, 'book_id' => $item->id, 'order_id' => $order->id]);
+            // $quantity = $book->quantity - $item->qty;
+            // Book::update(['quantity' => $quantity]);
           }
+          notificationMgs('success','Bạn đã đặt hàng thành công.');
+
       // }else
       // {
       //      MsgBox("Bạn có chắc muốn hủy đơn hàng?", vbOkCancel, "Thông Báo!");

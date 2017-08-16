@@ -35,6 +35,7 @@
         </ul>
       </div>
     </div>
+    <div class="space10">&nbsp;</div>
     <div>
       <table class="table table-bordered table-responsive jambo_table bulk_action">
         <thead>
@@ -67,7 +68,7 @@
             </td>
             <td class=" ">{{ $od->user->phone}}</td>
             <td class=" ">
-             @if ($od->shipping_status == 1)  
+             @if ($od->shipping_status == 1)
              {{ "Đã chuyển" }}
              @elseif($od->status_order == 0)
              {{ "Chưa chuyển" }}
@@ -87,13 +88,13 @@
              <td class=" onClick="delete">
               @if ($od->deleted_at != null)
               <p>Đã hủy</p>
-              @else 
+              @else
               <a href="order/delete/{{ $od->id }}">Hủy</a>
               @endif
-            </td>     
+            </td>
           </tr>
           @endforeach
-        </tbody>                   
+        </tbody>
       </table>
 
     </div>

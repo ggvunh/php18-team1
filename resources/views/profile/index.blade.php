@@ -29,7 +29,15 @@
 			// </table>
 		?>
 		<h2 class="page-header" align="center"><span style='color:green'>{{ucwords(Auth::user()->name)}}</span></h2>
-		<p align="center">Đây là trang cá nhân của bạn</p>
+		<p class="single-item-title">
+			<span> User Name : {{ Auth::user()->name }}</span>
+		</p>
+		<p class="single-item-title">
+			<span> Address : {{ Auth::user()->address }}</span>
+		</p>
+		<p class="single-item-title">
+			<span> Phone : {{ Auth::user()->phone }}</span>
+		</p>
 		</div>
 	</div>
 </div>
