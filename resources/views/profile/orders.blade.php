@@ -1,8 +1,8 @@
 @extends('layouts.front-end.master')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<link rel="stylesheet" title="style" href="front-end/assets/dest/css/huong-style.css">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" title="style" href="front-end/assets/dest/css/huong-style.css">
 @section('content')
 <section>
   <div class="container">
@@ -20,7 +20,7 @@
   @include('profile.menu');
   <div class="col-sm-9">
     <h2 class="page-header" align="center"><span style='color:green'>{{ucwords(Auth::user()->name)}}</span>, đây là đơn hàng của bạn</h2>
-    <div class="1">
+    <div class="col-md-2">
       <div class="btn-group export" align="center">
         <button type="button" class="btn btn-info">Export</button>
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">

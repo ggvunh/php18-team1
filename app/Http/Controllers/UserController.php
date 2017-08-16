@@ -46,21 +46,21 @@ class UserController extends Controller
     if(Auth::attempt(['email'=>$request->email,'password'=>($request->password)]))
     {
       $user = Auth::user();
-      if($user->is_admin == 0)
+      if($user->is_admin == 1)
       {
        notificationMgs('success','Chào Admin');
-       return redirect('/');
+       return redirect('/dashboard');
      }else
      {
       notificationMgs('success','Bạn đã đăng nhập thành công');
-      return redirect('/dashboard');
+      return redirect('/');
     }
   }
   else
   {
-     notificationMgs('error','Bạn đăng nhập không thành công');
-     return redirect('/login');
-  }
+   notificationMgs('error','Bạn đăng nhập không thành công');
+   return redirect('/login');
+ }
 }
 public function getlogin(){
   return view('auth.login');
@@ -89,35 +89,35 @@ public function updateinfo(Request $request,$id)
   $user->address = $request->address;
   $user->save();
   return redirect('order/profile')->with('thongbao', 'Bạn đã sửa thành công');
-  }
-  public function pass($id)
-  {
+}
+public function pass($id)
+{
   $user = User::find($id);
   return view('profile.changepassword',['user'=>$user]);
-  }
-  public function changepass(Request $request,$id)
-  {
-    $oldPassword = $request->oldPassword;
-    $newPassword = $request->newPassword;
+}
+public function changepass(Request $request,$id)
+{
+  $oldPassword = $request->oldPassword;
+  $newPassword = $request->newPassword;
 
-    if(!Hash::check($oldPassword, Auth::user()->password)){   
-      notificationMgs('success','Mật khẩu bạn nhập không đúng');
-     }
-     else{
-      $request->user()->fill(['password' => Hash::make($newPassword)])->save();
+  if(!Hash::check($oldPassword, Auth::user()->password)){   
+    notificationMgs('success','Mật khẩu bạn nhập không đúng');
+  }
+  else{
+    $request->user()->fill(['password' => Hash::make($newPassword)])->save();
       //echo 'done';//update password into user table
-     };
+  };
   notificationMgs('success','Bạn đã thay đổi mật khẩu thành công');
   return back();
-  }
+}
 
-  public function searchUser()
-  {
-    $input = Input::all();
-    $key = $input['key'];
-    $users = User::where('name','like','%'.$key.'%')->
-                    orWhere('email','like','%'.$key.'%')->paginate(10);
-    return view('backend.listadmin.listusers')->with('users',$users)->with('key',$key);
-  }
+public function searchUser()
+{
+  $input = Input::all();
+  $key = $input['key'];
+  $users = User::where('name','like','%'.$key.'%')->
+  orWhere('email','like','%'.$key.'%')->paginate(10);
+  return view('backend.listadmin.listusers')->with('users',$users)->with('key',$key);
+}
 
 }
