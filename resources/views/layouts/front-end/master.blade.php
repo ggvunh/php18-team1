@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="front-end/assets/dest/css/font-awesome.min.css">
 		<link rel="stylesheet" href="front-end/assets/dest/vendors/colorbox/example3/colorbox.css">
 		<link rel="stylesheet" href="front-end/assets/dest/rs-plugin/css/settings.css">
+		<link rel="stylesheet" href="front-end/assets/dest/js/css/jquery.js">
 		<link rel="stylesheet" href="front-end/assets/dest/rs-plugin/css/responsive.css">
 		<link rel="stylesheet" title="style" href="front-end/assets/dest/css/style.css">
 		<link rel="stylesheet" href="front-end/assets/dest/css/animate.css">
