@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Book Shop</title>
+  <title>Book Shop Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="shortcut icon" href="{{ asset('upload/bookicon.png')}}"/>
@@ -42,11 +42,11 @@
     $( function() {
       $( "#tabs" ).tabs();
     });
-    jQuery(document).ready(function($){
-      var path = window.location.pathname.split("/").pop();
-      var target = $('ul li a[href="'+path+'"]');
-      taget.addClass('active');
-    });
+    // jQuery(document).ready(function($){
+    //   var path = window.location.pathname.split("/").pop();
+    //   var target = $('ul li a[href="'+path+'"]');
+    //   taget.addClass('active');
+    // });
   </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -106,6 +106,11 @@
               </ul>
             </li>
             <li class="dropdown user user-menu">
+              <a href="/" class="hometop" data-toggle="dropdown">
+                <span><a href="/"><img class="imgset" src="{{ asset('upload/home.png') }}" alt="Image Home">  Home</a></span>
+              </a>
+            </li>
+            <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
                 <span class="hidden-xs">{{Auth::user()->name}}</span>
@@ -146,11 +151,11 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
-          <li> <a href="{{ url('/dashboard') }}">
+          <li class="{{ is_current_route('dashboard') }}"> <a href="{{ url('/dashboard') }}">
            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
           </li>
-          <li class="treeview">
+          <li class="treeview {{ is_current_route('listbooks') }} {{ is_current_route('listauthors') }} {{ is_current_route('listtopics') }} {{ is_current_route('listpublishcompanies') }}">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Product</span>
             <span class="pull-right-container">
@@ -158,13 +163,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/listbooks')}}"><i class="fa fa-circle-o text-aqua"></i> List Books</a></li>
-            <li><a href="{{url('/listauthors')}}"><i class="fa fa-circle-o text-aqua"></i> List Authors</a></li>
-            <li><a href="{{url('/listtopics')}}"><i class="fa fa-circle-o text-aqua"></i> List Topics</a></li>
-            <li><a href="{{url('/listpublishcompanies')}}"><i class="fa fa-circle-o text-aqua"></i>List Publishs Companies</a></li>
+            <li ><a  class="{{ is_current_route('listbooks') }}" href="{{url('/listbooks')}}"><i class="fa fa-circle-o text-aqua"></i> List Books</a></li>
+            <li><a class="{{ is_current_route('listauthors') }}" href="{{url('/listauthors')}}"><i class="fa fa-circle-o text-aqua"></i> List Authors</a></li>
+            <li><a class="{{ is_current_route('listtopics') }}" href="{{url('/listtopics')}}"><i class="fa fa-circle-o text-aqua"></i> List Topics</a></li>
+            <li><a class="{{ is_current_route('listpublishcompanies') }}" href="{{url('/listpublishcompanies')}}"><i class="fa fa-circle-o text-aqua"></i>List Publishs Companies</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ is_current_route('listorders') }} {{ is_current_route('orderspending') }} {{ is_current_route('orderssent') }} ">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Orders</span>
             <span class="pull-right-container">
@@ -172,12 +177,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/listorders')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders</a></li>
-            <li><a href="{{url('/orderspending')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Pending</a></li>
-            <li><a href="{{url('/orderssent')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Sent</a></li>
+            <li><a class="{{ is_current_route('listorders') }}" href="{{url('/listorders')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders</a></li>
+            <li><a class="{{ is_current_route('orderspending') }}" href="{{url('/orderspending')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Pending</a></li>
+            <li><a class="{{ is_current_route('orderssent') }}" href="{{url('/orderssent')}}"><i class="fa fa-circle-o text-aqua"></i> List Orders Sent</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ is_current_route('listusers') }}">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Users</span>
             <span class="pull-right-container">
@@ -185,10 +190,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
+            <li><a class="{{ is_current_route('listusers') }}" href="{{url('/listusers')}}"><i class="fa fa-circle-o text-aqua"></i> List Users</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview {{ is_current_route('sdlistbooks') }} {{ is_current_route('sdlisttopics') }} {{ is_current_route('sdlistauthors') }} {{ is_current_route('sdlistpublishcompanies') }}">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Soft Delete Product</span>
             <span class="pull-right-container">
@@ -196,10 +201,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/sdlistbooks') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Books</a></li>
-            <li><a href="{{ url('/sdlistauthors') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Authors</a></li>
-            <li><a href="{{ url('/sdlisttopics') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Topics</a></li>
-            <li><a href="{{ url('/sdlistpublishcompanies') }}"><i class="fa fa-circle-o text-aqua"></i>List SD Publishs Companies</a></li>
+            <li><a class="{{ is_current_route('sdlistbooks') }}" href="{{ url('/sdlistbooks') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Books</a></li>
+            <li><a class="{{ is_current_route('sdlistauthors') }}" href="{{ url('/sdlistauthors') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Authors</a></li>
+            <li><a class="{{ is_current_route('sdlisttopics') }}" href="{{ url('/sdlisttopics') }}"><i class="fa fa-circle-o text-aqua"></i> List SD Topics</a></li>
+            <li><a class="{{ is_current_route('sdlistpublishcompanies') }}" href="{{ url('/sdlistpublishcompanies') }}"><i class="fa fa-circle-o text-aqua"></i>List SD Publishs Companies</a></li>
           </ul>
         </li>
 

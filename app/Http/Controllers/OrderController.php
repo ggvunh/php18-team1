@@ -13,7 +13,7 @@ class OrderController extends Controller
 {
     public function listOrders()
     {
-    	$orders = Order::withTrashed()->paginate(10);
+    	$orders = Order::paginate(10);
     	return view('backend.listadmin.listorders')->with('orders', $orders);
     }
 
