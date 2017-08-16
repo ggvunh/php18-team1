@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function listOrdersUseId($id)
     {
     	$user = User::find($id);
-    	$orders = Order::withTrashed()->where('user_id',$id)->paginate(2);
+    	$orders = Order::withTrashed()->where('user_id',$id)->paginate(10);
     	return view('backend.searchorders.listorderuserid')->with('user',$user)->with('orders', $orders);
     }
 
@@ -28,9 +28,9 @@ class OrderController extends Controller
     {
         $date = substr($order_date,0,10);
         $a = date('Y-m-d', strtotime($date));
-        $orders = Order::whereDate('order_date',$date)->paginate(2);
+        $orders = Order::whereDate('order_date',$date)->paginate(10);
         return view('backend.searchorders.listorderuserid')->with('orders',$orders)->with('date',$date);
-        // $orders = Order::whereDate('order_date', $order_date)->paginate(2);
+        // $orders = Order::whereDate('order_date', $order_date)->paginate(10);
         // return view('backend.searchorders.listorderuserid')->with('orders',$orders);
     }
 
@@ -109,7 +109,7 @@ class OrderController extends Controller
               $query = Order::whereBetween('order_date', [$since." 00:00:00", $to." 23:59:59"]); 
             }        
         $orderssums = $query->get();
-        $orders = $query->paginate(2);
+        $orders = $query->paginate(10);
         $count = count($orderssums);
         $sum = 0;
         foreach ($orderssums as $order) 

@@ -141,7 +141,7 @@
         <!-- search form -->
         {!! Form::open(['url' => '/search','method'=>'get','class' => 'sidebar-form']) !!}
         <div class="input-group">
-          {!! Form::text('tukhoa', null, ['class' => 'form-control','placeholder'=>'seach...']) !!}
+          {!! Form::text('tukhoa', null, ['class' => 'form-control','placeholder'=>'search...']) !!}
           <span class="input-group-btn">
             {{ Form::button('<i class="fa fa-search"></i>', ['type' => 'submit', 'class' => 'btn btn-default'] )  }}
           </span>

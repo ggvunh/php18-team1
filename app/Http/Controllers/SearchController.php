@@ -45,7 +45,7 @@ class SearchController extends Controller
         else
         {
           $keyword = $request->key;
-          $books = Book::whereHas('Author', 'Topic', function ($query) use($keyword) {
+          $books = Book::whereHas('Author', function ($query) use($keyword) {
                                 $query->where('name', 'like', '%' . $keyword . '%');
                               //dd($query);
                             })->orwhere('name', 'like', '%' .$keyword. '%')
