@@ -1,4 +1,4 @@
-<?php 
+<?php
 	function notificationMgs($type, $message){
 		Session::put($type, $message);
 	}
@@ -20,5 +20,5 @@
     function is_current_route($route){
         return Request::is($route) ? 'active' : '';
     }
-}
- ?>
+	}
+?>
