@@ -53,7 +53,7 @@ class UserController extends Controller
      }else
      {
       notificationMgs('success','Bạn đã đăng nhập thành công');
-      return redirect('/orderspending');
+      return redirect('/dashboard');
     }
   }
   else

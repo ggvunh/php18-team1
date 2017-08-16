@@ -103,4 +103,27 @@
       <!-- /.row -->
     </div>  
       <!-- Main row -->
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          @foreach($comments as $comment)
+            <div class="form-group">
+              <div class="col-xs-2">
+                <label class="labelpd ion ion-person-add h4"><a href="#"><strong>  {{ $comment->user->name }}</strong></a></label>
+              </div>  
+              <div class="dialogbox col-xs-9">
+                <div class="body">
+                  <span class="tip tip-left"></span>
+                  <div class="message">
+                    <span>{{ $comment->content }}</span><br>
+                    <span> Sent date:  {{ $comment->created_at }}</span>
+                    <a href="{{url('/books/'.$comment->book_id)}}"><span>Reply comment</span></a>
+                  </div>
+                </div>
+              </div>   
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
   @stop
