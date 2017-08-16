@@ -33,9 +33,9 @@
 	@include('themes.alert')
 	@yield('content')
 	@include('layouts.front-end.footer')
-	@yield('script')
+	<!-- @yield('script') -->
 </body>
-			<script src="front-end/assets/dest/js/jquery-3.2.1.min.js"></script>
+			<script src="front-end/assets/dest/js/jquery.js"></script>
 			<!-- <script src="front-end/assets/dest/js/cart.js"></script> -->
 			<script src="front-end/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
 			<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -90,20 +90,6 @@
 							});
 					}
 
-					function deleteCart(rowId)
-					{
-						console.log(123);
-						// var root = '{{url('/')}}';
-						// $.get(root + 'deleteCart/' + rowId, function(data, status){
-						//
-						// 		//console.log(data);
-						// //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
-						// 	$('#count').replaceWith('<span id="count">Gi? H?ng (' + data.count +')</span> ');
-						// 	alert("?? X?a Kh?i Gi? H?ng!");
-						// });
-					}
-
-					// $( document ).ready(function() {
 					  function ud_find_text(self) {
 					      var children = self.parentNode.getElementsByTagName('input');
 					      for (var i = 0; i < children.length; i++) {

@@ -1,4 +1,8 @@
 @extends('layouts.front-end.master')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" title="style" href="front-end/assets/dest/css/huong-style.css">
 @section('content')
 <section>
   <div class="container">
@@ -31,6 +35,7 @@
         </ul>
       </div>
     </div>
+    <div class="space10">&nbsp;</div>
     <div>
       <table class="table table-bordered table-responsive jambo_table bulk_action">
         <thead>
@@ -63,7 +68,7 @@
             </td>
             <td class=" ">{{ $od->user->phone}}</td>
             <td class=" ">
-             @if ($od->shipping_status == 1)  
+             @if ($od->shipping_status == 1)
              {{ "Đã chuyển" }}
              @elseif($od->status_order == 0)
              {{ "Chưa chuyển" }}
@@ -83,13 +88,13 @@
              <td class=" onClick="delete">
               @if ($od->deleted_at != null)
               <p>Đã hủy</p>
-              @else 
+              @else
               <a href="order/delete/{{ $od->id }}">Hủy</a>
               @endif
-            </td>     
+            </td>
           </tr>
           @endforeach
-        </tbody>                   
+        </tbody>
       </table>
 
     </div>
